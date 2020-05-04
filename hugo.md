@@ -93,6 +93,24 @@ Refer to the author in posts with the value in `name`.
 
 `hugo new post/post-title.md`
 
+#### Footer at bottom of page
+
+On pages where the content does fill the full height, the footer won't go to the bottom of the page. To fix this (for taxomonies) you should add `min-height: calc(100vh - 121px);` to the `<main>` element in all the `list.html` files.
+
+The hight to subtract should be the exact height of the footer.
+
+#### Commento
+
+You can add the url to the commento `.js` file in the `config.toml`.
+
+```toml
+[params.commento]
+enable = true
+url = "http://localhost/js/commento.js"
+```
+
+Comments will then be available on a post page.
+
 ## Features
 
 ### Taxonomies
@@ -116,6 +134,10 @@ Actor                    <- Taxonomy
 ```
 
 For example, you could have a series taxomony to group together a long series of blog posts. This blog post could be "deploying Strapi to EB" and be comprised of many posts in different tags all grouped under one taxomony. You can then add additional series for different things and see them all from one place.
+
+When you visit a taxomony URL (say <http://localhost:1313/tags/>) it will use (in theme) `./layouts/_default/list.html`.
+
+If you want a custom layout for a certain taxomony, e.g author, create this file in the relative path: `./layouts/authors/list.html`.
 
 #### Configure
 
@@ -171,3 +193,5 @@ A really useful feature is the ability to quickly generate a link to another pag
 [Neat]({{< ref "blog/neat.md" >}})
 [Who]({{< relref "about.md#who" >}})
 ```
+
+
