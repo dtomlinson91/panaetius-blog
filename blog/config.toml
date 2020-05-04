@@ -1,5 +1,5 @@
 baseURL = "http://example.org/"
-title = "My New Hugo Site"
+title = "Tech blog"
 theme = "hugo-theme-chunky-poster"
 paginate = 2
 languageCode = "en"
@@ -30,4 +30,8 @@ showLanguageSwitcher = false
 
 [params.prismJS]
 enable = true
-theme = ""
+theme = "okaidia"
+
+[params.commento]
+enable = true
+url = "http://localhost/js/commento.js"
