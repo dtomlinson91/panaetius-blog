@@ -1,6 +1,37 @@
 # Hugo block
 
+## Running server
+
+You can use `hugo server -D` to run a server locally to view your site in real time.
+
+The `-D` flag will include drafts - make sure to set the draft to false in any content before publishing.
+
 ## Initialising
+
+### gitignore
+
+TODO: Add this add a seperate Trilium link for resources.
+
+Use <https://www.gitignore.io>.
+
+Example for Hugo:
+
+```text
+# Created by https://www.gitignore.io/api/hugo
+# Edit at https://www.gitignore.io/?templates=hugo
+
+### Hugo ###
+# Generated files by hugo
+/public/
+/resources/_gen/
+
+# Executable may be added to repository
+hugo.exe
+hugo.darwin
+hugo.linux
+
+# End of https://www.gitignore.io/api/hugo
+```
 
 ### Installation
 
@@ -42,9 +73,11 @@ In the `config.toml` you should configure the theme.
 
 You should configure the menubar, taxonomies and the params of the homepage.
 
-
+Example `config.toml` file: <https://git.panaetius.co.uk/hugo/blog/src/branch/master/blog/config.toml>.
 
 #### Create a new Author
+
+The author folder name should have `-` not `_`.
 
 Based on <https://www.netlify.com/blog/2018/07/24/hugo-tips-how-to-create-author-pages/>.
 
@@ -54,7 +87,29 @@ Author is a taxomony, create a new author with (in the root of the hugo project)
 
 Example file: <https://raw.githubusercontent.com/puresyntax71/hugo-theme-chunky-poster/master/exampleSite/content/authors/hugo-authors/_index.md>.
 
-#### Create new page
+Refer to the author in posts with the value in `name`.
+
+#### Create new post
+
+`hugo new post/post-title.md`
+
+#### Footer at bottom of page
+
+On pages where the content does fill the full height, the footer won't go to the bottom of the page. To fix this (for taxomonies) you should add `min-height: calc(100vh - 121px);` to the `<main>` element in all the `list.html` files.
+
+The hight to subtract should be the exact height of the footer.
+
+#### Commento
+
+You can add the url to the commento `.js` file in the `config.toml`.
+
+```toml
+[params.commento]
+enable = true
+url = "http://localhost/js/commento.js"
+```
+
+Comments will then be available on a post page.
 
 ## Features
 
@@ -79,6 +134,10 @@ Actor                    <- Taxonomy
 ```
 
 For example, you could have a series taxomony to group together a long series of blog posts. This blog post could be "deploying Strapi to EB" and be comprised of many posts in different tags all grouped under one taxomony. You can then add additional series for different things and see them all from one place.
+
+When you visit a taxomony URL (say <http://localhost:1313/tags/>) it will use (in theme) `./layouts/_default/list.html`.
+
+If you want a custom layout for a certain taxomony, e.g author, create this file in the relative path: `./layouts/authors/list.html`.
 
 #### Configure
 
@@ -119,3 +178,20 @@ Aliases can be used to redirect people to another page.
 For example, if you write a new blog post to replace an old one, you can add an alias to the old one in the new one. Then whenever someone visits the old page they will be redirected automatically to the new one.
 
 <https://gohugo.io/content-management/urls/#aliases>.
+
+### Shortcodes
+
+<https://gohugo.io/content-management/shortcodes/#use-hugo-s-built-in-shortcodes>
+
+Shortcodes are snippets provided by Hugo that allow quick linking to additional content. E.g you can refer to a youtube video in your markdown with: `{{< youtube ZJthWmvUzzc >}}`.
+
+A really useful feature is the ability to quickly generate a link to another page in Hugo using its filename:
+
+<https://gohugo.io/content-management/shortcodes/#use-hugo-s-built-in-shortcodes>
+
+```markdown
+[Neat]({{< ref "blog/neat.md" >}})
+[Who]({{< relref "about.md#who" >}})
+```
+
+

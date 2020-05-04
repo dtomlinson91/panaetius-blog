@@ -1,7 +1,7 @@
 ---
 name: "Daniel Tomlinson"
 images:
-- daniel_tomlinson.png
+- "daniel-tomlinson.png"
 twitter: ""
 ---
 
