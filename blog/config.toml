@@ -8,11 +8,12 @@ enableInlineShortcodes = true
 footnoteReturnLinkContents = "^"
 
 [menu]
-  [[menu.main]]
-    identifier = "home"
-    name = "Home"
-    url = "/"
-    weight = 10
+
+[[menu.main]]
+identifier = "home"
+name = "Home"
+url = "/"
+weight = 10
 
 [taxonomies]
 category = "categories"
@@ -21,8 +22,12 @@ series = "series"
 author = "authors"
 
 [params]
-  author = "Daniel Tomlinson"
-  description = "Lorem ipsum dolor sit amets."
+author = "Daniel Tomlinson"
+description = "Lorem ipsum dolor sit amets."
 #   homepageImage = "/images/homepage-image.jpg"
-  share = true
-  showLanguageSwitcher = false
+share = true
+showLanguageSwitcher = false
+
+[params.prismJS]
+enable = true
+theme = ""
