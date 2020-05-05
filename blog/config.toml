@@ -23,15 +23,15 @@ author = "authors"
 
 [params]
 author = "Daniel Tomlinson"
-description = "Lorem ipsum dolor sit amets."
-#   homepageImage = "/images/homepage-image.jpg"
+description = "Lorem ipsum dolor sit amets. Lorem ipsum dolor sit amets."
+  homepageImage = "/images/homepage.svg"
 share = true
 showLanguageSwitcher = false
 
 [params.prismJS]
 enable = true
-theme = "okaidia"
+# theme = "nord"
 
 [params.commento]
 enable = true
-url = "http://localhost/js/commento.js"
+url = "https://commento.panaetius.co.uk/js/commento.js"

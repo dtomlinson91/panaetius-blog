@@ -53,3 +53,16 @@ $code-color: $body-color;
 $navbar-brand-font-size: 1rem;
 $navbar-nav-link-padding-x: 1.25rem;
 $navbar-padding-y: .4rem;
+
+// Overrides
+
+$body-bg: #f9f9f9;
+
+.navbar {
+  border-bottom: 1px solid rgb(210, 210, 214)
+}
+
+body {
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif !important;
+}
+
