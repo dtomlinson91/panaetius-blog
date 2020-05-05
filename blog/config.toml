@@ -1,5 +1,5 @@
 baseURL = "http://example.org/"
-title = "Tech blog"
+title = "panaetius.io"
 theme = "hugo-theme-chunky-poster"
 paginate = 2
 languageCode = "en"
@@ -15,6 +15,12 @@ name = "Home"
 url = "/"
 weight = 10
 
+[[menu.main]]
+identifier = "about"
+name = "About"
+url = "/about/"
+weight = 0
+
 [taxonomies]
 category = "categories"
 tag = "tags"
@@ -23,15 +29,21 @@ author = "authors"
 
 [params]
 author = "Daniel Tomlinson"
-description = "Lorem ipsum dolor sit amets. Lorem ipsum dolor sit amets."
-  homepageImage = "/images/homepage.svg"
+description = "Tech blog showcasing Python"
+homepageImage = "/images/homepage.svg"
 share = true
 showLanguageSwitcher = false
+# Custom CSS and JS. Relative to /static/css and /static/js respectively.
+customCSS = []
+customJS = []
 
 [params.prismJS]
 enable = true
-# theme = "nord"
 
+# theme = "nord"
 [params.commento]
 enable = true
 url = "https://commento.panaetius.co.uk/js/commento.js"
+
+[imaging]
+resampleFilter = "Lanczos"

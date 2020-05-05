@@ -55,6 +55,8 @@ Add the theme to the `config.toml` file:
 theme = "hugo-theme-chunky-poster"
 ```
 
+If you want to edit the theme, you should fork the theme, and commit it to a new repo. Then add the theme from the new repo as a submodule. Any merges upstreaming can then be done into your fork.
+
 ### Adding content
 
 Use the command `hugo new folder/content.md`. You can manually create the file, but this command will insert some metadata for you automatically.
@@ -127,6 +129,8 @@ Refer to the author in posts with the value in `name`.
 On pages where the content does fill the full height, the footer won't go to the bottom of the page. To fix this (for taxomonies) you should add `min-height: calc(100vh - 121px);` to the `<main>` element in all the `list.html` files.
 
 The hight to subtract should be the exact height of the footer.
+
+Alternatively you can follow this commit here which sets the footer to sticky: <https://github.com/MooseMagnet/hugo-theme-chunky-poster/commit/f7961d3b54cf4a0c00e8b00cf5b1b7c0b6600516>.
 
 #### Commento
 
@@ -251,3 +255,57 @@ A really useful feature is the ability to quickly generate a link to another pag
 [Neat]({{< ref "blog/neat.md" >}})
 [Who]({{< relref "about.md#who" >}})
 ```
+
+### Image processing
+
+You can edit and insert images dynamically with front matter. See <https://git.panaetius.co.uk/hugo/chunky-theme/src/branch/master/layouts/post/single.html#L25> for an example.
+
+You can apply additional filtering, apply blur, resize etc: <https://gohugo.io/content-management/image-processing/>.
+
+### Adding images to content
+
+Good blog post explaining different ways to utilise Hugo's features: <https://laurakalbag.com/processing-responsive-images-with-hugo/>.
+
+### Working with parameters and front matter
+
+You can define data in your front matter, say a list of images or a single image path.
+
+In the `html` of the post, you can then access these variables:
+
+```hugo
+{{- with $page.Params.images -}}
+    {{- $images := . -}}
+    {{- with $page.Site.GetPage "section" "images" -}}
+        {{- with .Resources.GetMatch (strings.TrimPrefix "/images/" (index $images 0)) -}}
+            {{- $image := .  -}}
+            <div class="row justify-content-center mb-3">
+                <div class="col-lg-10">
+                    <img data-src="{{ $image.RelPermalink }}" class="img-fluid rounded mx-auto d-block" alt="{{ $page.Title }}">
+                </div>
+```
+
+You can use `{{- with $page.Params.images -}}` to open a `with` block in a list.
+
+You can set a variable to whatever the `with` block is referencing by immediately doing a `{{- $images:= . -}}`.
+
+The `-` on both sides trims any whitespace in the outputted HTML.
+
+## Email
+
+### Sending email with AWS SES
+
+You can use SES to send emails for software/clients that request email credentials (commento is one example).
+
+The main documentation page is here: <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-smtp.html>.
+
+A IAM user for sending emails is:
+
+```yaml
+IAM User: ses-smtp-user.20200505-212533
+SMTP Username: AKIA23D4RF6O2UKDMTCW
+SMTP Password: BIx9F8PR7g1K9oObHQGElHmf3nIjCkUhJpu4GP3O3/Yq
+```
+
+You should verify an email (or domain ) that you own with AWS: <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-email-addresses.html>.
+
+An example `docker-compose` for compose app sending emails with SES is here: <https://git.panaetius.co.uk/hugo/docker-compose/src/branch/master/blog/commento/docker-compose.yml>.

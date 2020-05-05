@@ -1,7 +1,7 @@
 ---
 title: "First Post"
 date: "2020-05-04T02:14:50+01:00"
-images: ["/images/Untitled 3.png"]
+images: ["/images/first_post.svg"]
 draft: true
 authors: ["Daniel Tomlinson"]
 tags: ["Introduction"]

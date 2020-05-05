@@ -1,7 +1,7 @@
 ---
 title: "Second Post"
 date: "2020-05-05T02:14:50+01:00"
-images: ["/images/Untitled 3.png"]
+images: ["/images/data_report.svg"]
 draft: true
 authors: ["Daniel Tomlinson"]
 tags: ["Introduction"]
