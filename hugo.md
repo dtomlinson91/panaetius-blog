@@ -140,18 +140,34 @@ url = "http://localhost/js/commento.js"
 
 Comments will then be available on a post page.
 
-### Adding images to content
+### Adding images + description to content
 
 You can edit the `config.toml` under the `[params]` stanza to edit the homepage description text on the homepage. The title is under the root header.
 
-Images should go in `contents/images`. For each post you can specify an image that shares the same filename. E.g `post1.md` should have `post1.png` in `content/images`.
+You should create an `index.md` under `./content/images`. This file shoudld contain front matter:
+
+```yaml
+headless: true
+```
+
+Images should go in `contents/images`. For each post you can specify an image that shares the same filename. E.g `post1.md` should have `post1.png` in `content/images`. Remember to add the image to the list in the front matter of the post:
+
+```yaml
+title: "First Post"
+date: "2020-05-04T02:14:50+01:00"
+images: ["/images/Untitled 3.png"]
+```
 
 The homepage image should go under the `params` stanza.
+
+The images should be `.png` with a size of `900x500`. You should edit
+
+`index.html`, `single.html` and `card.html` and change the image widthxheight to `900x500` if you have downloaded the theme from scratch.
 
 ### Editing default files
 
 - homepage
-- _index for posts (explain how)
+- \_index for posts (explain how)
 
 ## Features
 
@@ -235,4 +251,3 @@ A really useful feature is the ability to quickly generate a link to another pag
 [Neat]({{< ref "blog/neat.md" >}})
 [Who]({{< relref "about.md#who" >}})
 ```
-
