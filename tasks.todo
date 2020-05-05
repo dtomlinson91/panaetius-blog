@@ -2,7 +2,7 @@ Projects:
 
 Tasks:
   Images:
-    ☐ Add image to homepage + document
+    ✔ Add image to homepage + document @done (5/5/2020, 4:09:20 AM)
     ☐ Add image to post + document
 
   Animate:
@@ -11,9 +11,16 @@ Tasks:
           Do we add this to the html, or do we use the themes js options?
 
   Layout:
-    ☐ Sort out colour scheme
+    ✔ Sort out colour scheme @done (5/5/2020, 4:09:10 AM)
+    ☐ Document editing layout
+      Note:
+        How to edit the homepage, how to edit taxonomy content (the _index.html) file and what this means.
+    ☐ Change homepage description layout.
 
   Misc:
     ☐ Add search to project
     ✔ Add commento to project @done (5/4/2020, 4:59:34 AM)
     ☐ Add SEO (https://keithpblog.org/post/hugo-website-seo/)
+
+  Custom layout:
+    ☐ Use the envanto website layouts (whole static themes) to find suitable wallpaper for a post page.

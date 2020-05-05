@@ -67,6 +67,35 @@ Use the command `hugo new folder/content.md`. You can manually create the file, 
 
 Example `config.toml` for this theme: <https://github.com/puresyntax71/hugo-theme-chunky-poster/blob/master/exampleSite/config.toml>.
 
+#### Rebuilding theme
+
+Any custom scss should go in `./blog/themes/hugo-theme-chunky-poster/src/scss/chunky-poster.scss`.
+
+Beware that any overrides must come **before** the scss import. It is better to place them in `_variables.scss` as in the source code this comes before the bootstrap + chunky-poster stylesheets.
+
+Any bootstrap variable overrides can go in `_variables.scss` in that folder.
+
+To rebuild the theme for production, you should first do `yarn install` then `yarn build`. Make sure you do not commit the `node_modules` folder to git.
+
+##### Overriding css
+
+In the `_variables.scss` you can add an overrides section:
+
+```scss
+// Overrides
+
+$body-bg: #f9f9f9;
+
+.navbar {
+  border-bottom: 1px solid rgb(210, 210, 214);
+}
+
+body {
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif !important;
+}
+```
+
 #### Configuration
 
 In the `config.toml` you should configure the theme.
@@ -110,6 +139,19 @@ url = "http://localhost/js/commento.js"
 ```
 
 Comments will then be available on a post page.
+
+### Adding images to content
+
+You can edit the `config.toml` under the `[params]` stanza to edit the homepage description text on the homepage. The title is under the root header.
+
+Images should go in `contents/images`. For each post you can specify an image that shares the same filename. E.g `post1.md` should have `post1.png` in `content/images`.
+
+The homepage image should go under the `params` stanza.
+
+### Editing default files
+
+- homepage
+- _index for posts (explain how)
 
 ## Features
 
@@ -193,5 +235,4 @@ A really useful feature is the ability to quickly generate a link to another pag
 [Neat]({{< ref "blog/neat.md" >}})
 [Who]({{< relref "about.md#who" >}})
 ```
-
 
