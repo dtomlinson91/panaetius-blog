@@ -1,26 +1,33 @@
 Projects:
 
+  Tomorrow:
+    ☐ Document adding background as wallpaper
+
 Tasks:
+
+  Responsive:
+    ☐ Fix the navbar on mobile.
+    ☐ Change text on homepage on mobile.
+
   Images:
+    ☐ Add random animal image to corner of card.
     ✔ Add image to homepage + document @done (5/5/2020, 4:09:20 AM)
     ✔ Add image to post + document @done (5/5/2020, 7:32:50 PM)
 
-  Animate:
-    ☐ Add animate on scroll
-        Note:
-          Do we add this to the html, or do we use the themes js options?
-
   Layout:
-    ✔ Sort out colour scheme @done (5/5/2020, 4:09:10 AM)
     ☐ Document editing layout
-      Note:
-        How to edit the homepage, how to edit taxonomy content (the _index.html) file and what this means.
-    ☐ Change homepage description layout.
+    Note:
+      How to edit the homepage, how to edit taxonomy content (the _index.html) file and what this means.
+      ☐ Change homepage description layout.
+      ☐ Refactor front page like (https://www.educative.io/edpresso)
+      ✔ Sort out colour scheme @done (5/5/2020, 4:09:10 AM)
 
   Misc:
     ☐ Add search to project
-    ✔ Add commento to project @done (5/4/2020, 4:59:34 AM)
     ☐ Add SEO (https://keithpblog.org/post/hugo-website-seo/)
+    ☐ Add social metadata
+    ☐ Add Hugo notice (admonitions) (https://github.com/martignoni/hugo-notice)
+    ✔ Add commento to project @done (5/4/2020, 4:59:34 AM)
 
   Custom layout:
     ☐ Use the envanto website layouts (whole static themes) to find suitable wallpaper for a post page.
@@ -33,7 +40,10 @@ Tasks:
       Notes:
         Needs it's own page listing all series
         Each series needs its own page with image and intro + TOC (https://simpleisbetterthancomplex.com/series/beginners-guide/1.11/)
+        Could have a banner or side content saying this is part N in a series?
+
+  Animate:
+    ✔ Add animate on scroll @done (5/5/2020, 11:12:10 PM)
 
   Email:
-    ☐ Configure AWS SES for sending emails with commento.
-      Document the steps + links to AWS documentation.
+    ✔ Configure AWS SES for sending emails with commento. @done (5/5/2020, 11:08:13 PM)

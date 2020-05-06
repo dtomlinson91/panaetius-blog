@@ -1,5 +1,7 @@
 # Hugo block
 
+Awesome Hugo: <https://github.com/msfjarvis/hugo-social-metadata>
+
 ## Running server
 
 You can use `hugo server -D` to run a server locally to view your site in real time.
@@ -170,9 +172,6 @@ The images should be `.png` with a size of `900x500`. You should edit
 
 ### Editing default files
 
-- homepage
-- \_index for posts (explain how)
-
 ## Features
 
 ### Taxonomies
@@ -266,6 +265,14 @@ You can apply additional filtering, apply blur, resize etc: <https://gohugo.io/c
 
 Good blog post explaining different ways to utilise Hugo's features: <https://laurakalbag.com/processing-responsive-images-with-hugo/>.
 
+If you want to insert an image in the html you can use the `<img>` tag directly.
+
+Place all images in `./static/images`, Hugo will reference these as `/images/$image`:
+
+```html
+<img src="/images/DUCK_256.png" width="30" height="30" class="mr-3 rotate-a-20"/>
+```
+
 ### Working with parameters and front matter
 
 You can define data in your front matter, say a list of images or a single image path.
@@ -290,6 +297,7 @@ You can set a variable to whatever the `with` block is referencing by immediatel
 
 The `-` on both sides trims any whitespace in the outputted HTML.
 
+
 ## Email
 
 ### Sending email with AWS SES
@@ -309,3 +317,4 @@ SMTP Password: BIx9F8PR7g1K9oObHQGElHmf3nIjCkUhJpu4GP3O3/Yq
 You should verify an email (or domain ) that you own with AWS: <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-email-addresses.html>.
 
 An example `docker-compose` for compose app sending emails with SES is here: <https://git.panaetius.co.uk/hugo/docker-compose/src/branch/master/blog/commento/docker-compose.yml>.
+

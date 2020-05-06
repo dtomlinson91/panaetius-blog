@@ -29,7 +29,7 @@ author = "authors"
 
 [params]
 author = "Daniel Tomlinson"
-description = "Tech blog showcasing Python"
+description = "Tech blog showcasing Python, Machine-Learning, Vue, Homelab and other technologies to try at home."
 homepageImage = "/images/homepage.svg"
 share = true
 showLanguageSwitcher = false
