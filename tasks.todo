@@ -14,23 +14,30 @@ Tasks:
     ✔ Add image to homepage + document @done (5/5/2020, 4:09:20 AM)
     ✔ Add image to post + document @done (5/5/2020, 7:32:50 PM)
 
+  Colour:
+    ☐ Add colour to default `<a>` like Forestry <https://forestry.io/blog/search-with-algolia-in-hugo/
+
   Layout:
-    ☐ Document editing layout
+    ✔ Document editing layout @done (5/7/2020, 6:34:47 PM)
     Note:
       How to edit the homepage, how to edit taxonomy content (the _index.html) file and what this means.
-      ☐ Change homepage description layout.
-      ☐ Refactor front page like (https://www.educative.io/edpresso)
-      ✔ Sort out colour scheme @done (5/5/2020, 4:09:10 AM)
+
+    ✔ Change homepage description layout. @done (5/7/2020, 6:39:03 PM)
+    ☐ Refactor front page like (https://www.educative.io/edpresso)
+    ✔ Sort out colour scheme @done (5/5/2020, 4:09:10 AM)
+    ✔ Document the taxonomies list page http://localhost:1313/authors/ @done (5/7/2020, 6:35:07 PM)
+    ✔ Using scratch? @done (5/7/2020, 6:56:29 PM)
 
   Misc:
     ☐ Add search to project
-    ☐ Add SEO (https://keithpblog.org/post/hugo-website-seo/)
     ☐ Add social metadata
     ☐ Add Hugo notice (admonitions) (https://github.com/martignoni/hugo-notice)
     ✔ Add commento to project @done (5/4/2020, 4:59:34 AM)
 
   Custom layout:
     ☐ Use the envanto website layouts (whole static themes) to find suitable wallpaper for a post page.
+    ☐ Add tags to front page cards
+    ☐ Using date in the slug, customising the slugs further?
 
   Sidebar:
     ☐ Add a table of contents to the side.
@@ -47,3 +54,17 @@ Tasks:
 
   Email:
     ✔ Configure AWS SES for sending emails with commento. @done (5/5/2020, 11:08:13 PM)
+
+  Links:
+    Useful links that might be useful to the above for later
+    ☐ https://www.netlify.com/blog/2018/07/24/hugo-tips-how-to-create-author-pages/
+
+  SEO:
+    ☐ Document + Set all metadata using https://www.skcript.com/svr/perfect-seo-meta-tags-with-hugo/
+    ☐ Change the manifest.json
+    ☐ Set the favicon and apple-touch-icons
+
+  CI:
+    ☐ Use circle CI to deploy
+      Notes:
+        Make sure we run `yarn build` on the theme first.

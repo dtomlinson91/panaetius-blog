@@ -1,9 +1,11 @@
 ---
 title: "Second Post"
 date: "2020-05-05T02:14:50+01:00"
-images: ["/images/data_report.svg"]
+images: ["images/data_report.svg"]
 draft: true
-authors: ["Daniel Tomlinson"]
+authors:
+- "Daniel Tomlinson"
+- "New Authors"
 tags: ["Introduction"]
 ---
 
@@ -48,3 +50,9 @@ def flask():
 ## Vimeo Simple Shortcode
 
 {{< vimeo_simple 48912912 >}}
+
+---
+
+## Test img shortcode
+
+{{< img "images/banner.svg*" >}}
