@@ -536,6 +536,26 @@ Create a `schema.html` file in `./layouts/partials/`.
 
 An example file for an article is: <https://git.panaetius.co.uk/hugo/chunky-theme/src/branch/master/layouts/partials/schema.html>.
 
+You **need to make sure** that there is an `_index.md` in `./content/post/` which defines front matter for the `list.html`. The `schema.html` references `"image": {{ index .Params.images 0 | absURL }},` which will be checked on the `list` page because its section is equal to `post`. If you ommit this then Hugo will fail to build and give a `<index .Params.images 0>: error calling index: index of untyped nil` error.
+
+Set the relevant parameters in the `config.toml`:
+
+```toml
+baseURL = "https://weekinmemes.com"
+
+[params]
+author = "DK"
+logo = "img/logo.jpg"
+header = "Week In Memes"
+
+facebook = "weekinmemes"
+twitter = "weekinmemes"
+instagram = "weekinmemes"
+github = "weekinmemes"
+```
+
+You should test your structured data against: <https://search.google.com/structured-data/testing-tool/u/0/>. Make sure that it is recognising all contexts you've defined. Your object should be valid json so make sure there is a parent array with commas seperating the objects.
+
 #### Generic meta tags
 
 The following should go in your `<head>` block:
@@ -593,4 +613,141 @@ This description should be no more than 155 characters and a few sentences. It s
 <meta itemprop="description" content={{ $scratch.Get "description" }} />
 <meta property="og:description" content={{ $scratch.Get "description" }} />
 <meta name="twitter:description" content={{ $scratch.Get "description" }} />
+```
+
+#### Languages
+
+<https://regisphilibert.com/blog/2018/08/hugo-multilingual-part-1-managing-content-translation/>
+
+<https://gohugo.io/content-management/multilingual/>
+
+You should set in your `config.toml`:
+
+```toml
+[languages]
+[lanugages.en]
+weight = 1
+[languages.en.params]
+LanguageName = "English"
+```
+
+And the following at the top level (root no header):
+
+```toml
+languageCode = "en"
+DefaultContentLanguage = "en"
+```
+
+Then in the `head.html`:
+
+```html
+<meta property="og:locale" content="{{ .Language.Lang }}" />
+<meta name="language" content="{{ .Site.Params.LanguageName }}" />
+{{ range .AllTranslations }}
+<link
+  rel="alternate"
+  hreflang="{{ .Language.Lang }}"
+  href="{{ .Permalink }}"
+  title="{{ .Language.LanguageName }}"
+/>
+{{ end }}
+```
+
+#### Images
+
+Add the following to `head.html`
+
+```hugo
+<!-- Set image -->
+{{ with .Params.images }}
+{{ $image := index . 0 }}
+<meta itemprop="image" content="{{ $image | absURL }}" />
+<meta property="og:image" content="{{ $image | absURL }}" />
+<meta name="twitter:image" content="{{ $image | absURL }}" />
+<meta name="twitter:image:src" content="{{ $image | absURL }}" />
+{{ else }}
+<meta itemprop="image" content="{{ .Site.Params.homepageimage | absURL }}" />
+<meta property="og:image" content="{{ .Site.Params.homepageimage | absURL }}" />
+<meta name="twitter:image" content="{{ .Site.Params.homepageimage | absURL }}" />
+<meta name="twitter:image:src" content="{{ .Site.Params.homepageimage | absURL }}" />
+{{ end }}
+```
+
+We are using the `homepageimage` and the first image of the `images` array for any list content.
+
+#### Date
+
+We set the property of updated time and get the sitemap for the whole site, and for the page we are on.
+
+```hugo
+<!-- Set date -->
+<meta property="og:updated_time" content={{ .Lastmod.Format "2006-01-02T15:04:05Z0700" | safeHTML }} />
+<!-- Sitemap & RSS Feed Tags -->
+<link rel="sitemap" type="application/xml" title="Sitemap" href="{{ .Site.BaseURL }}sitemap.xml" />
+{{ with .OutputFormats.Get "RSS" }}
+  <link href="{{ .Permalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
+  <link href="{{ .Permalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" />
+{{ end }}
+```
+
+#### Article pages
+
+These tags set the pagination, the publish time and author information. These should only be for blog posts or articles, not single pages like `home` or `about`.
+
+This should be set for each `.Section` that is an article type, in this case it is just `post`.
+
+```hugo
+<!-- Set tags for article pages -->
+{{ if eq .Section "post" }}
+  <!-- Pagination meta tags for list pages only -->
+  {{ $paginator := .Paginate (where .Pages "Section" "post") }}
+  {{ if $paginator }}
+    <link rel="first" href="{{ $paginator.First.URL }}">
+    <link rel="last" href="{{ $paginator.Last.URL }}">
+    {{ if $paginator.HasPrev }}
+      <link rel="prev" href="{{ $paginator.Prev.URL }}">
+    {{end }}
+    {{ if $paginator.HasNext }}
+      <link rel="next" href="{{ $paginator.Next.URL }}">
+    {{end }}
+  {{end }}
+  <meta property="og:type" content="article" />
+  <meta property="article:publisher" content="{{ .Site.Params.facebook }}" />
+  <meta property="og:article:published_time" content={{ .Date.Format "2006-01-02T15:04:05Z0700" | safeHTML }} />
+  <meta property="article:published_time" content={{ .Date.Format "2006-01-02T15:04:05Z0700" | safeHTML }} />
+  {{ if .Params.authors }}
+  {{ $authors := delimit .Params.authors ", " }}
+    <meta property="og:article:author" content="{{ $authors }}" />
+    <meta property="article:author" content="{{ $authors }}" />
+    <meta name="author" content="{{ $authors }}" />
+  {{ else }}
+  {{ $authors := .Site.Params.author }}
+    <meta property="og:article:author" content="{{ $authors }}" />
+    <meta property="article:author" content="{{ $authors }}" />
+    <meta name="author" content="{{ $authors }}" />
+  {{ end }}
+{{ end }}
+```
+
+#### Single pages
+
+These should only be set on pages that are not articles. To do this we can use Hugo's scratch.
+
+You should set `{{ .Scratch.Set "IsSingle" true }}` on the following templates:
+
+- `./layouts/index.html` which is for the homepage.
+- `./layouts/_default/single.html` which is for single pages like `About`.
+
+For each article you need to make sure the `single.html` is set it is own folder where this isn't set. For example `./layouts/post/single.html` exists and does not set it.
+
+You need to make sure the right context is passed into the partial if you do this.
+
+Alternatively, you can do:
+
+```hugo
+<!-- Set tags for single pages -->
+{{ if ne .Section "post" }}
+<meta property="og:type" content="website" />
+<meta name="author" content="{{ .Site.Params.author }}" />
+{{ end }}
 ```

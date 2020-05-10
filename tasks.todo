@@ -63,8 +63,14 @@ Tasks:
     ☐ Document + Set all metadata using https://www.skcript.com/svr/perfect-seo-meta-tags-with-hugo/
     ☐ Change the manifest.json
     ☐ Set the favicon and apple-touch-icons
+    ☐ Fix the structured data
+    ☐ Finish the metadata + document
+    ☐ Create social media accounts for the site and add to structured data + config.toml
 
   CI:
     ☐ Use circle CI to deploy
       Notes:
         Make sure we run `yarn build` on the theme first.
+
+  Final build:
+    ☐ Change the front matter for `_index.md` in `post`.
