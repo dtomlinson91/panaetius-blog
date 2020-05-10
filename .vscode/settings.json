@@ -1,3 +1,13 @@
 {
-    "editor.defaultFormatter": "HookyQR.beautify"
+    "editor.defaultFormatter": "HookyQR.beautify",
+    "editor.formatOnPaste": false,
+    "[html]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "[handlebars]": {
+
+    },
+    "beautify.config": {
+        "indent_handlebars": false
+    },
 }

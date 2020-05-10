@@ -8,6 +8,12 @@ enableInlineShortcodes = true
 footnoteReturnLinkContents = "^"
 description ="Tech blog showcasing Python, Machine-Learning, Vue, Homelab and other technologies to try at home."
 
+[languages]
+[lanugages.en]
+weight = 1
+[languages.en.params]
+LanguageName = "English"
+
 [menu]
 
 [[menu.main]]
@@ -29,11 +35,15 @@ series = "series"
 author = "authors"
 
 [params]
+header = "panaetius.io"
 author = "Daniel Tomlinson"
 description = "Tech blog showcasing Python, Machine-Learning, Vue, Homelab and other technologies to try at home."
 homepageImage = "/images/homepage.svg"
+logo = "/images/homepage.svg"
 share = true
-showLanguageSwitcher = false
+twitter = "dmot7291"
+github = "dtomlinson91"
+
 # Custom CSS and JS. Relative to /static/css and /static/js respectively.
 customCSS = []
 customJS = []
@@ -41,7 +51,6 @@ customJS = []
 [params.prismJS]
 enable = true
 
-# theme = "nord"
 [params.commento]
 enable = true
 url = "https://commento.panaetius.co.uk/js/commento.js"
