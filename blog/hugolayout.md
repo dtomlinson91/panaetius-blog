@@ -491,7 +491,9 @@ If you're writing a `terms.html` you can find all page in the bundle with
 {{ end }}
 ```
 
-### Creating a search index using Scratch
+### Search
+
+#### Creating a search index using Scratch
 
 <https://gohugo.io/functions/scratch/>
 <https://regisphilibert.com/blog/2017/04/hugo-scratch-explained-variable/>
@@ -517,6 +519,14 @@ We can utilise the Hugo command scratch, which creates a temporary scratch pad t
 {{- end -}}
 {{- $.Scratch.Get "index" | jsonify -}}
 ```
+
+#### Creating a search page
+
+You can create a new `single.html` in `./layouts/search/`.
+
+Then you can create a new markdown file `index.md` in `./content/search`.
+
+This markdown file should set the `type` in the front matter - this should be set to `search` so it uses the search `single.html`.
 
 ### SEO
 
@@ -750,4 +760,75 @@ Alternatively, you can do:
 <meta property="og:type" content="website" />
 <meta name="author" content="{{ .Site.Params.author }}" />
 {{ end }}
+```
+
+#### Favicon
+
+TODO: Create seperate note with link to generating a favicon for a project.
+
+You can generate a favicon here: <https://favicon.io/favicon-generator/>.
+
+If you already have an icon you want to use, you can create a set of favicons out of it here: <https://realfavicongenerator.net>.
+
+You should add the following to the `head.html` to set the favicon and additional ios/android settings. Remember to set the `manifest.json`.
+
+```hugo
+<!-- Set favicon tags -->
+<link rel="shortcut icon" href="{{ "favicon.ico" | absURL }}" />
+<link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="{{ "favicon.ico" | absURL }}" />
+<link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | absURL }}" sizes="180x180">
+<link rel="icon" href="{{ "favicon-32x32.png" | absURL }} " sizes="32x32" type="image/png">
+<link rel="icon" href="{{ "favicon-16x16.png" | absURL }}" sizes="16x16" type="image/png">
+<link rel="manifest" href="{{ "manifest.json" | absURL }}">
+<link rel="mask-icon" href="{{ "safari-pinned-tab.svg" | absURL }}" color="#0c344b">
+```
+
+#### Search engine tags
+
+These tell google and other search engines that they can index and scrape the site.
+
+```hugo
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+```
+
+#### Twitter/Facebook tags
+
+More information on these is here: <https://stackoverflow.com/questions/10836135/when-do-i-need-a-fbapp-id-or-fbadmins>. These are optional if you're not maintaining a facebook app to go alongside the website.
+
+```hugo
+<meta name="twitter:site" content="{{ .Site.Params.twitter }}">
+<meta name="twitter:creator" content="{{ .Site.Params.twitter }}" />
+<meta property="fb:app_id" content="538089519640705" />
+<meta property="fb:admins" content="100000686899395" />
+```
+
+#### Other tags
+
+```hugo
+<!-- Theme Color -->
+<meta name="theme-color" content="#141414" />
+<meta name="msapplication-TileColor" content="#141414" />
+
+<meta name="keywords" content="" />
+<meta name="imagemode" content="force" />
+<meta name="coverage" content="Worldwide" />
+<meta name="distribution" content="Global" />
+<meta name="HandheldFriendly" content="True" />
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="apple-mobile-web-app-title" content="{{ .Site.Params.header }}" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-touch-fullscreen" content="yes" />
+```
+
+#### Internal templates
+
+Hugo ships with internal templates for common metadata for sites: <https://gohugo.io/templates/internal/>.
+
+```hugo
+{{- template "_internal/opengraph.html" . -}}
+{{- template "_internal/google_news.html" . -}}
+{{- template "_internal/schema.html" . -}}
+{{- template "_internal/twitter_cards.html" . -}}
 ```

@@ -24,12 +24,12 @@ Tasks:
 
     ✔ Change homepage description layout. @done (5/7/2020, 6:39:03 PM)
     ☐ Refactor front page like (https://www.educative.io/edpresso)
+    ☐ Another layout for cards (https://codewithhugo.com)
     ✔ Sort out colour scheme @done (5/5/2020, 4:09:10 AM)
     ✔ Document the taxonomies list page http://localhost:1313/authors/ @done (5/7/2020, 6:35:07 PM)
     ✔ Using scratch? @done (5/7/2020, 6:56:29 PM)
 
   Misc:
-    ☐ Add search to project
     ☐ Add social metadata
     ☐ Add Hugo notice (admonitions) (https://github.com/martignoni/hugo-notice)
     ✔ Add commento to project @done (5/4/2020, 4:59:34 AM)
@@ -74,3 +74,17 @@ Tasks:
 
   Final build:
     ☐ Change the front matter for `_index.md` in `post`.
+
+  Search:
+    ☐ Find simple CSS design for search bar.
+    ☐ Implement search using a library.
+    Notes:
+      - Search is done from the navbar, when enter is pressed, go to a html page for results?
+    Flow:
+      - Implement search in JS, have it return a js object
+      - Use JQuery to render a "card" with this metadata
+        - Using the title, the image and the tags etc
+    Links:
+      - https://codewithhugo.com/hugo-lunrjs-search-index/
+      - https://gist.github.com/HugoDF/aac2e529f79cf90d2050d7183571684b
+      - https://git.sr.ht/~exprez135/mediumish-taliaferro/tree/master/layouts/search-page/search.html (recursive search for subdirectories)
