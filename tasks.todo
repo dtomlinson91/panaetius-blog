@@ -41,6 +41,8 @@ Tasks:
 
   Sidebar:
     ☐ Add a table of contents to the side.
+      Notes:
+        - Maybe fontawesome docs as a guide? (https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use)
 
   Content:
     ☐ Add a series taxonomy
