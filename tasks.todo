@@ -32,6 +32,7 @@ Tasks:
   Misc:
     ☐ Add social metadata
     ☐ Add Hugo notice (admonitions) (https://github.com/martignoni/hugo-notice)
+      ☐ Create own admonitions with shortcode with custom animal themeing.
     ✔ Add commento to project @done (5/4/2020, 4:59:34 AM)
 
   Custom layout:
@@ -50,6 +51,11 @@ Tasks:
         Needs it's own page listing all series
         Each series needs its own page with image and intro + TOC (https://simpleisbetterthancomplex.com/series/beginners-guide/1.11/)
         Could have a banner or side content saying this is part N in a series?
+    ☐ Have a categories taxonomy (https://www.integralist.co.uk/posts/static-search-with-lunr/ at the bottom)
+      Notes:
+        Categories are high level: code, guides/tutorials, deployment etc
+        Tags will be specifics: python, aws etc
+        Series will be like a collection of posts in a series.
 
   Animate:
     ✔ Add animate on scroll @done (5/5/2020, 11:12:10 PM)
@@ -79,14 +85,20 @@ Tasks:
 
   Search:
     ☐ Find simple CSS design for search bar.
-    ☐ Implement search using a library.
-    Notes:
-      - Search is done from the navbar, when enter is pressed, go to a html page for results?
-    Flow:
-      - Implement search in JS, have it return a js object
-      - Use JQuery to render a "card" with this metadata
-        - Using the title, the image and the tags etc
+    ✔ Implement search using a library. @done (5/13/2020, 1:57:50 AM)
+    ✔ Search needs to recusrively go into folders @done (5/12/2020, 3:36:52 AM)
     Links:
       - https://codewithhugo.com/hugo-lunrjs-search-index/
       - https://gist.github.com/HugoDF/aac2e529f79cf90d2050d7183571684b
       - https://git.sr.ht/~exprez135/mediumish-taliaferro/tree/master/layouts/search-page/search.html (recursive search for subdirectories)
+
+  Webpack:
+    ☐ Document and follow this tutorial: (https://www.sitepoint.com/bundle-static-site-webpack/).
+    ☐ Look at the chunky themes webpack.prod.js - document all the extra modules being used.
+    ☐ Add the lunr index build to the webpack bundle.
+    ☐ Include lunr in the bundle + any other modules needed for search.
+
+  Tutorials:
+    ☐ https://www.integralist.co.uk/posts/python-asyncio/
+      Notes:
+        This blog in general has some interesting things to look at.
