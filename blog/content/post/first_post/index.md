@@ -2,7 +2,7 @@
 title: "First Post"
 description: "The first post testing Hugo out for its markdown features and commento integration."
 date: "2020-05-04T02:14:50+01:00"
-images: ["images/first_post.svg"]
+images: ["images/banner.svg"]
 draft: true
 authors: ["Daniel Tomlinson"]
 tags: ["Introduction", "another"]
