@@ -4,8 +4,8 @@ date: "2020-05-05T02:14:50+01:00"
 images: ["images/banner.svg"]
 draft: true
 authors:
-- "Daniel Tomlinson"
-- "New Authors"
+  - "Daniel Tomlinson"
+  - "New Authors"
 tags: ["Introduction", "test", "another", "tagging", "hugo", "newz"]
 ---
 
@@ -56,3 +56,14 @@ def flask():
 ## Test img shortcode
 
 {{< img "images/banner.svg*" >}}
+
+## Test table
+
+Does Hugo put the class of the table as `content table`? If so do we need to add the bootstrap `table` class?.
+
+Hugo adds no css to the table. In order to style it you should select the `<table>` element in the `.content` class, and add the `.table` class to it.
+
+| Name   | Job      |
+| ------ | -------- |
+| Daniel | Capacity |
+| Dale   | Capacity |
