@@ -1,0 +1,3 @@
+App.js:
+  ☐ Document using the `/* webpackChunkname: "name" */
+  ☐ What does `const { default: App }` do?
