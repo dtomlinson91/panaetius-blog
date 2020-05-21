@@ -99,6 +99,7 @@ Tasks:
     ☐ Find simple CSS design for search bar.
     ✔ Implement search using a library. @done (5/13/2020, 1:57:50 AM)
     ✔ Search needs to recusrively go into folders @done (5/12/2020, 3:36:52 AM)
+    ☐ Document using and creating a search page with lunrjs. (use the temporary search note).
     Links:
       - https://codewithhugo.com/hugo-lunrjs-search-index/
       - https://gist.github.com/HugoDF/aac2e529f79cf90d2050d7183571684b

@@ -270,7 +270,12 @@ If you want to insert an image in the html you can use the `<img>` tag directly.
 Place all images in `./static/images`, Hugo will reference these as `/images/$image`:
 
 ```html
-<img src="/images/DUCK_256.png" width="30" height="30" class="mr-3 rotate-a-20"/>
+<img
+  src="/images/DUCK_256.png"
+  width="30"
+  height="30"
+  class="mr-3 rotate-a-20"
+/>
 ```
 
 ### Working with parameters and front matter
@@ -297,7 +302,6 @@ You can set a variable to whatever the `with` block is referencing by immediatel
 
 The `-` on both sides trims any whitespace in the outputted HTML.
 
-
 ## Email
 
 ### Sending email with AWS SES
@@ -318,3 +322,37 @@ You should verify an email (or domain ) that you own with AWS: <https://docs.aws
 
 An example `docker-compose` for compose app sending emails with SES is here: <https://git.panaetius.co.uk/hugo/docker-compose/src/branch/master/blog/commento/docker-compose.yml>.
 
+## Adding a new font family with CSS
+
+To create a new font family you should create a `@font-face` in the scss. You should create multiple instances of these and specify the `font-weight` in order for the html to use the appropiate style of font.
+
+`font-face` documentation: <https://www.w3schools.com/cssref/css3_pr_font-face_rule.asp>.
+
+A table of `font-weight` and what `normal` and `black` correspond to in numbers (for css) can be found: <https://docs.microsoft.com/en-us/typography/opentype/spec/os2#usweightclass>.
+
+The default `font-weight` is `normal` and the default `font-style` is `normal`.
+
+To set an italic font you should set `font-style: italic;` in this `@font-face` for the custom italic font you want to use. Without setting this, the browser will take the weight font you are using, and apply its own slanting to it.
+
+You should apply `font-display: swap;` to make sure the browser shows text with the default system font while the custom font is loaded in.
+
+TODO: Link to `fonts.scss` in git
+
+An example of what this might look like for two styles is:
+
+```scss
+@font-face {
+  font-family: "RNSSanz";
+  src: url("../../static/fonts/RNSSanz-Light.ttf");
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "RNSSanz";
+  src: url("../../static/fonts/RNSSanz-Normal.ttf");
+  font-display: swap;
+}
+```
+
+Then in your other `scss` files you can refer to this with `font-family: "RNSSanz` along with any of the `font-weight` you have defined.
