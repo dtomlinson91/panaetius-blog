@@ -493,12 +493,18 @@ If you're writing a `terms.html` you can find all page in the bundle with
 
 ### Search
 
-#### Creating a search index using Scratch
+Using `lunr.js` with Hugo: <https://codewithhugo.com/hugo-lunrjs-search-index/>.
+
+Generating a search index that recursively finds all files: <https://git.sr.ht/~exprez135/mediumish-taliaferro/tree/master/layouts/search-page/search.html>.
+
+#### Creating a search index using Scratch (optional)
 
 <https://gohugo.io/functions/scratch/>
 <https://regisphilibert.com/blog/2017/04/hugo-scratch-explained-variable/>
 
 You can dynamically create a whole index of all blog posts or any content in a json file with Hugo.
+
+This won't be used to search against, but it can be useful if you want to see all content across all pages.
 
 You should first add `JSON` to the `[outputs]` stanza in your `config.toml` file:
 
@@ -527,6 +533,67 @@ You can create a new `single.html` in `./layouts/search/`.
 Then you can create a new markdown file `index.md` in `./content/search`.
 
 This markdown file should set the `type` in the front matter - this should be set to `search` so it uses the search `single.html`.
+
+```markdown
+---
+headless: false
+type: "search"
+---
+```
+
+#### Using lunr.js
+
+In the root of the Hugo project, next to the `config.toml`, do:
+
+`yarn add lunr`
+`yarn add parser-front-matter`
+
+TODO: document installing this using webpack bundles! Not copying `lunr` across to the `./static/js` folder.
+
+We write the javascript that runs `lunr.js` to build the index. An example can be found here:
+
+TODO: link to the `build-lunrjs-index.js` file.
+
+Edit this file appropiately (content to be displayed, filenames to be ignored) for your project.
+
+To build the index you run the following with node:
+
+`node ./build-lunrjs-index.js > static/search-index.json`.
+
+#### Search page content
+
+TODO: Link to the search's `index.html` in the new theme.
+
+You can see an example of the search page's content in the repo above.
+
+The idea is to have Hugo generate the data you want to show after a search for all posts that you want to search against. Since Hugo is a static site generator, once it's built it's final and we can't dynamically alter content easily.
+
+```hugo
+<div class="row">
+    {{ $p := slice }}
+    {{ range (where .Site.RegularPages "Section" "==" "post") }}
+    {{ $.Scratch.Set "image" .RelPermalink }}
+    {{ $.Scratch.Add "image" (index .Params.images 0) }}
+    {{ $post := dict "link" .RelPermalink "author" (index .Params.authors 0) "tags" .Params.tags "title" .Title "date" (.Params.date.Format "January 2, 2006") "image" ($.Scratch.Get "image") "content" (substr .Plain 0 200) -}}
+    {{ $p = $p | append $post -}}
+    {{ end }}
+    {{ $p | jsonify }}
+</div>
+```
+
+Here we are getting the title, image, tags, author and first 200 words of the content. This is the content we want to show after a search has been ran, it has nothing to do with the query itself. The final line is printing the content on the page so you can debug/test it.
+
+In our `single.html` we load the content of this variable into javascript using Hugo's templating:
+
+```javascript
+const posts = JSON.parse(
+  {{ $p | jsonify }}
+);
+```
+
+We can then write the `lunr.js` code that takes the input from the user, runs it against the `lunr.js` index it has created and return a list of titles that match the search query.
+
+We then map these titles from `lunr.js` with the titles from the frontmatter. We can then return some `html` that dynamically renders search results using the Hugo loaded variable as the content.
 
 ### SEO
 

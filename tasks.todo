@@ -99,11 +99,10 @@ Tasks:
     ☐ Find simple CSS design for search bar.
     ✔ Implement search using a library. @done (5/13/2020, 1:57:50 AM)
     ✔ Search needs to recusrively go into folders @done (5/12/2020, 3:36:52 AM)
-    ☐ Document using and creating a search page with lunrjs. (use the temporary search note).
-    Links:
-      - https://codewithhugo.com/hugo-lunrjs-search-index/
-      - https://gist.github.com/HugoDF/aac2e529f79cf90d2050d7183571684b
-      - https://git.sr.ht/~exprez135/mediumish-taliaferro/tree/master/layouts/search-page/search.html (recursive search for subdirectories)
+    ✔ Document using and creating a search page with lunrjs. (use the temporary search note). @done (5/21/2020, 9:22:39 PM)
+    ☐ Use GULP to generate the lunr index when running webpack build.
+    ☐ Use webpack to install lunr and load it in
+    ☐ Use webpack to load the `search-index.json` file into the bundle.
 
   Webpack:
     ☐ Document and follow this tutorial: (https://www.sitepoint.com/bundle-static-site-webpack/).
@@ -119,3 +118,6 @@ Tasks:
   Restructure:
     ☐ Create new theme entirely, using a fresh webpack configuration.
     ☐ Move the AOS from the partials css and js into a webpack configuration.
+
+  Webpack:
+    ☐ Use webpack to fill a html partial for the baseof.html file (see the notes).
