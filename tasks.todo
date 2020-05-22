@@ -109,6 +109,7 @@ Tasks:
     ☐ Look at the chunky themes webpack.prod.js - document all the extra modules being used.
     ☐ Add the lunr index build to the webpack bundle.
     ☐ Include lunr in the bundle + any other modules needed for search.
+    ☐ Use webpack to fill a html partial for the baseof.html file (see the notes).
 
   Tutorials:
     ☐ https://www.integralist.co.uk/posts/python-asyncio/
@@ -119,5 +120,5 @@ Tasks:
     ☐ Create new theme entirely, using a fresh webpack configuration.
     ☐ Move the AOS from the partials css and js into a webpack configuration.
 
-  Webpack:
-    ☐ Use webpack to fill a html partial for the baseof.html file (see the notes).
+  CSS:
+    ☐ Document using a fullscreen wallpaper (front-background in _variables.scss)
