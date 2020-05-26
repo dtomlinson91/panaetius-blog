@@ -90,7 +90,7 @@ module.exports = {
 
 | Package                 | Command                                               | Description                                                                                                                                                                                                                                 |
 | ----------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `AssetsPlugin`          | `yarn add assets-webpack-plugin`                      | Exports a `json` file containing a mapping for dynamically importing webpack outputs into `HTML`.|
+| `AssetsPlugin`          | `yarn add assets-webpack-plugin`                      | Exports a `json` file containing a mapping for dynamically importing webpack outputs into `HTML`.                                                                                                                                           |
 | `webpack.ProvidePlugin` | `yarn add` the plugin you want to provide.            | This functionality of webpack will make a library available everywhere in your javascript, without you having to import them individually in each file. Use this if you need a library available across multiple files.                     |
 | `babel-loader`          | `yarn add babel-loader @babel/core @babel/preset-env` | Babel will transform ES javascript into browser compatible javascript. We use `babel-loader` as a `module` in `webpack` module. We transform any `.mjs` files that will be resolved when we import a library and we exclude `node_modules`. |
 
@@ -139,6 +139,8 @@ This file is for production builds.
 | --------------- | ------------------------ | ----------------------------------------------- |
 | `webpack-merge` | `yarn add webpack-merge` | Merge webpack configs for common, dev and prod. |
 
+This will configure webpack for javascript files.
+
 A bare basic config should look like:
 
 ```javascript
@@ -158,3 +160,66 @@ module.exports = merge(common, {
 ```
 
 The output files are using dynamic naming in `webpack`. We include the `contenthash` in the files to assist with caching. If you don't want to use dynamic importing, you can take this out for semi-static naming. Alternatively, use optimization settings to only output 1 `css` and `js` file - but for large files this will be unoptimal.
+
+For `css` and `scss` files we should add additional config.
+
+| Package                   | Command                            | Description                                                                              |
+| ------------------------- | ---------------------------------- | ---------------------------------------------------------------------------------------- |
+| `mini-css-extract-plugin` | `yarn add mini-css-extract-plugin` | Extracts css files into seperate files. It creates a seperate css file per each js file. |
+
+Built in webpack plugins:
+
+| Plugin           | Command                   | Description                                                                                                                                                                                                                                                     |
+| ---------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `css-loader`     | `yarn add css-loader`     | Allows the import of css files in javascript.                                                                                                                                                                                                                   |
+| `postcss-loader` | `yarn add postcss-loader` | Will add additional css to your files for compatibility across multiple browsers and versions. Uses a `postcss.config.js` file. If you are using css modules, you should add config to the css loader: <https://github.com/postcss/postcss-loader#css-modules>. |
+| `sass-loader`    | `yarn add sass-loader`    | Allows the import of scss files with javascript.                                                                                                                                                                                                                |
+| `style-loader`   | `yarn add style-loader`   | Injects css into the DOM.                                                                                                                                                                                                                                       |
+
+We should create the `postcss.config.js` file. This config will ensure our css is compatible across the previous 2 versions of each browser:
+
+```javascript
+module.exports = {
+  plugins: {
+    "postcss-present-env": {
+      browsers: "last 2 versions",
+    },
+  },
+};
+```
+
+We should add to our `webpack.prod.js` file.
+
+For the `module` object we should create a rule for all `scss`, `sass` and `css` files. We should specify the loaders in order (bottom comes first!).
+
+Don't forget to add the `const MiniCssExtractPlugin = reuire("mini-css-extract-plugin");` to the top imports.
+
+```javascript
+  module: {
+    rules: [
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          "style-loader",
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "postcss-loader",
+          "sass-loader",
+        ],
+      },
+    ],
+  },
+```
+
+For the `plugins` object we should configure our `MiniCssExtractPlugin` which will configure how split css files are named (exactly like the `output` object which is for javascript files. CSS is done with a plugin.)
+
+```javascript
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "[name].[contenthash].min.css",
+      chunkFilename: "[name].[contenthash].min.css",
+      sourceMap: true,
+    }),
+    new webpack.HashedModuleIdsPlugin(),
+  ],
+```
