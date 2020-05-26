@@ -213,6 +213,8 @@ Don't forget to add the `const MiniCssExtractPlugin = reuire("mini-css-extract-p
 
 For the `plugins` object we should configure our `MiniCssExtractPlugin` which will configure how split css files are named (exactly like the `output` object which is for javascript files. CSS is done with a plugin.)
 
+We need to add the `webpack.HashedModuleIdsPlugin` to the plugins since we are using it for the hash for our `js` and `css` files.
+
 ```javascript
   plugins: [
     new MiniCssExtractPlugin({

@@ -14,3 +14,5 @@ hugo.linux
 # End of https://www.gitignore.io/api/hugo
 
 blog/node_modules
+
+*.DS_Store*
