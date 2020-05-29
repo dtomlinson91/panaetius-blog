@@ -225,3 +225,48 @@ We need to add the `webpack.HashedModuleIdsPlugin` to the plugins since we are u
     new webpack.HashedModuleIdsPlugin(),
   ],
 ```
+
+Webpack will automatically minimise all js files by default in production mode using Terser. For more control over this we should add, import and configure it in the minimizer object.
+
+| Plugin                  | Command                          | Description                 |
+| ----------------------- | -------------------------------- | --------------------------- |
+| `terser-webpack-plugin` | `yarn add terser-webpack-plugin` | Minimizes javascript files. |
+
+Import the module in the `webpack.prod.js`, then add the minimizer options to the `optimization` object:
+
+```javascript
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin({ extractComments: false })],
+  },
+```
+
+Add a css minmizer:
+
+| Plugin                               | Command                                       | Description         |
+| ------------------------------------ | --------------------------------------------- | ------------------- |
+| `optimize-css-assets-webpack-plugin` | `yarn add optimize-css-assets-webpack-plugin` | Minmizes css files. |
+
+Finally we should add the Purge CSS plugin:
+
+| Plugin                    | Command                            | Description                                                                                                                                    |
+| ------------------------- | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `purgecss-webpack-plugin` | `yarn add purgecss-webpack-plugin` | Scans a directory for files, and will only include css classes that it finds referenced. This can greatly reduce the size of your stylesheets. |
+
+We should import it:
+
+```javascript
+const PurgeCssPlugin = require("purgecss-webpack-plugin");
+const glob = require("glob");
+const path = require("path");
+```
+
+And add it to the `plugins` object:
+
+```javascript
+    new PurgeCssPlugin({
+      paths: glob.sync(path.join(__dirname, "layouts") + "/**/*.html", {
+        nodir: true,
+      }),
+    }),
+```

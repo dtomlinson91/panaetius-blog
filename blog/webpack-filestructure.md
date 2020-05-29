@@ -10,6 +10,12 @@ You can bundle anything up, we can even write `scss` and have webpack lint, comp
 
 ## Structure
 
+Overview:
+
+- When adding a new `scss` library add it to the `styles.scss` file using `@import`.
+- When adding a new `js` library add it to the `main.js` library using `import`.
+- You can split out your imports into subfiles, remember to import that file into the two files above.
+
 ### Folder structure
 
 The structure can depend on the project. If you are using webpack you can create `./src` folder where you can place `./src/js` or `./src/scss` for example. We can have a `./node_modules` folder then use webpack to compile.

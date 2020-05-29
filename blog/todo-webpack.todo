@@ -1,11 +1,11 @@
 App.js:
-  ☐ Document using the `/* webpackChunkname: "name" */
-  ☐ What does `const { default: App }` do?
+  ✔ Document using the `/* webpackChunkname: "name" */ @done (5/29/2020, 12:34:27 AM)
+  ✔ What does `const { default: App }` do? @done (5/29/2020, 12:34:29 AM)
 
 Plugins:
-  ☐ Add `purgecss-webpack-plugin`: <https://pusher.com/tutorials/webpack-part-7>.
-    Notes:
-      Do this after the html templates have been added - this will only import the css classes that have been used.
+  ✔ Add `purgecss-webpack-plugin`: <https://pusher.com/tutorials/webpack-part-7>. @done (5/29/2020, 12:46:26 AM)
+  Notes:
+    Do this after the html templates have been added - this will only import the css classes that have been used.
 
 Layout:
-  ☐ Make sure the contents of app.js and main.js are documented. Specifically the content of main.js so it imports the app.js.
+  ✔ Make sure the contents of app.js and main.js are documented. Specifically the content of main.js so it imports the app.js. @done (5/29/2020, 12:46:35 AM)
