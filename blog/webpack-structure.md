@@ -36,7 +36,7 @@ You should create the file structure for your project.
 
 TODO: Link to the webpack-filestructure note in Trilium.
 
-We will create `./src/js` and `./src/scss` folders. We create a `./dist` folder for webpacks output and we create a `./static` folder for anything that needs to be outside the bundle.
+We will create `./src/js` and `./src/scss` folders. We create a `./static/dist` folder for webpacks output. The `./static` folder can also be used for files that go outside the bundle.
 
 Inside `./src/js` we will create an `App.js`. Inside `./src` we will create a `main.js`.
 
@@ -76,11 +76,11 @@ module.exports = {
   devtool: "source-map",
   entry: path.resolve(__dirname, "src/main.js"),
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "static/dist"),
   },
   plugins: [
     new CleanWebpackPlugin({
-      cleanAfterEveryBuildPatterns: ["dist/*"],
+      cleanAfterEveryBuildPatterns: ["static/dist/*"],
     }),
   ],
 };
@@ -102,7 +102,7 @@ module.exports = {
   devtool: "source-map",
   entry: path.resolve(__dirname, "src/main.js"),
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "static/dist"),
   },
   module: {
     rules: [
@@ -115,7 +115,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin({
-      cleanAfterEveryBuildPatterns: ["dist/*"],
+      cleanAfterEveryBuildPatterns: ["static/dist/*"],
     }),
     new AssetsPlugin({
       filename: "assets.json",
@@ -154,7 +154,7 @@ module.exports = merge(common, {
   output: {
     filename: "[name].[contenthash].min.js",
     chunkFilename: "[id].[name].[contenthash].min.js",
-    publicPath: "dist/",
+    publicPath: "/dist/",
   },
 });
 ```

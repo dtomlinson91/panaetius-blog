@@ -1,6 +1,7 @@
 Tasks:
-  ☐ Move all the scss into the new theme.
+  ✔ Move all the scss into the new theme. @done (5/31/2020, 3:26:30 AM)
   ☐ Move the image shortcode into the new theme.
   ☐ Recreate the fonts scss file and apply it.
     ☐ Download and create the monospace font.
+  ☐ Remove any unneccessary additions from old theme (custom css, prism etc).
   ☐ Create a gulpfile to build the search index.
