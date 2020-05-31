@@ -1,6 +1,7 @@
 baseURL = "http://127.0.0.1:6060"
 title = "panaetius.io"
-theme = "panaetius-chunky-theme"
+# theme = "panaetius-chunky-theme"
+theme = "panaetius-theme"
 paginate = 2
 languageCode = "en"
 DefaultContentLanguage = "en"
@@ -62,9 +63,6 @@ github = "dtomlinson91"
 customCSS = []
 customJS = []
 
-[params.prismJS]
-enable = true
-
 [params.commento]
 enable = true
 url = "https://commento.panaetius.co.uk/js/commento.js"
@@ -79,4 +77,5 @@ page = ["HTML", "RSS"]
 [markup]
 
 [markup.highlight]
-style = "fruity"
+style = "monokailight"
+lineNos = true
