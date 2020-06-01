@@ -14,7 +14,11 @@ Create an empty `package.json` file:
 
 Run `yarn add --dev webpack webpack-cli` to install webpack locally and add it as a dev dependency to your `package.json`.
 
-You should add `main`, `license` and `scripts` to the `package.json` object. Your scripts object should contain the commands for `build` and `watch` using webpack. At this point your `package.json` should look like:
+You should add `main`, `license` and `scripts` to the `package.json` object. Your scripts object should contain the commands for `build` and `watch` using webpack.
+
+You should add the `"browserslist": []` object to the `package.json` file. This will be used for plugins `postcss-present-env` and `autoprefixer` to add css compatibility across many browsers.
+
+At this point your `package.json` should look like:
 
 ```json
 {
@@ -24,6 +28,7 @@ You should add `main`, `license` and `scripts` to the `package.json` object. You
     "build": "webpack --config webpack.prod.js",
     "watch": "webpack --watch --progress --colors --config webpack.dev.js"
   },
+  "browserslist": ["last 2 versions"],
   "dependencies": {},
   "devDependencies": {
     "webpack": "^4.43.0",
