@@ -275,3 +275,46 @@ And add it to the `plugins` object:
       }),
     }),
 ```
+
+If you want to use multiple paths you should use `glob-all` instead of glob: `yarn add glob-all`. Then import as usual with: `const glob = require("glob-all");`.
+
+You can then use a list of paths to find files in multiple directories:
+
+```javascript
+new PurgeCssPlugin({
+  paths: glob.sync([path.join(__dirname, "layouts") + "/**/*.html"], {
+    nodir: true,
+  }),
+});
+```
+
+You can whitelist specific classes/selectors/ids with the `whitelist` option.
+
+You can use regex with `whitelistPatterns`.
+
+You can also use the `whitelister` addon `yarn add whitelister`, and pass instances of this into the `whitelist`, although it may not be perfect.
+
+An example using whitelisting:
+
+```javascript
+new PurgeCssPlugin({
+  paths: glob.sync([path.join(__dirname, "layouts") + "/**/*.html"], {
+    nodir: true,
+  }),
+  whitelistPatterns: [
+    /zoom/,
+    /aos/,
+    /table/,
+    /thead/,
+    /blockquote/,
+    /img-fluid/,
+    /code/,
+    /highlight/,
+  ],
+  whitelistPatternsChildren: [/code/, /highlight/],
+  whitelist: [
+    whitelister("node_modules/aos/dist/aos.css"),
+    whitelister("node_modules/bootstrap/dist/css/bootstrap.css"),
+  ],
+});
+```

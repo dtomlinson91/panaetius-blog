@@ -4,19 +4,21 @@ Tasks:
   ✔ Recreate the fonts scss file and apply it. @done (5/31/2020, 5:06:58 AM)
     ✔ Download and create the monospace font. @done (5/31/2020, 5:06:59 AM)
   ✔ Remove any unneccessary additions from old theme (custom css, prism etc). @done (6/1/2020, 4:27:36 AM)
-  ☐ Create a gulpfile to build the search index.
   ✔ Configure autoprefixer. @done (6/1/2020, 4:13:55 AM)
-  ☐ Add matomo to project.
   ✔ Add animate on scroll to the bundle. @done (6/1/2020, 4:51:38 AM)
   ✔ Configure purgecss with aos library. @done (6/1/2020, 5:36:38 AM)
-  ☐ Document purgecss with multiple paths
-    Notes:
-      ☐ Using glob-all
-      ☐ Using paths and whitelistPatterns
-      ☐ Using whitelister plugin
+  ✔ Document purgecss with multiple paths @done (6/2/2020, 3:46:41 AM)
+  ✔ Change font to Liberv2. @done (6/2/2020, 3:46:49 AM)
+  ✔ Change main font weight using variables rather than font file. @done (6/2/2020, 3:46:51 AM)
+  ✔ Fix table and bootstrap issues with monospace font. @done (6/2/2020, 3:47:27 AM)
+  ☐ Create a gulpfile to build the search index.
+  ☐ Add matomo to project.
+  ☐ Using archetypes.
   ☐ Theme similar to forestry.
-  ☐ Change font to Liberv2.
-  ☐ Change main font weight using variables rather than font file.
 
 Search:
   ☐ Have search auto run whenever a button is pressed
+
+Gulp:
+  ☐ Document yarn automatically resolving modules locally for commands you give it (running gulp it will automaitcally find it).
+  ☐ Document javascript exports using ES6.

@@ -68,3 +68,7 @@ run()
     console.error(error.stack);
     process.exit(1);
   });
+
+export default {
+  run: run()
+}
