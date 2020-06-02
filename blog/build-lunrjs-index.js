@@ -69,6 +69,4 @@ run()
     process.exit(1);
   });
 
-export default {
-  run: run()
-}
+exports.run = run
