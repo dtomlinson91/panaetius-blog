@@ -59,9 +59,6 @@ logo = "/images/homepage.svg"
 share = true
 twitter = "dmot7291"
 github = "dtomlinson91"
-# Custom CSS and JS. Relative to /static/css and /static/js respectively.
-customCSS = []
-customJS = []
 
 [params.commento]
 enable = true
