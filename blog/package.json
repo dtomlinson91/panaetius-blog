@@ -9,6 +9,7 @@
   "scripts": {
     "buildSearch": "gulp buildSearch",
     "buildHugo": "gulp buildHugo",
-    "buildBlog": "gulp buildBlog"
+    "buildBlog": "gulp buildBlog",
+    "buildTheme": "gulp buildTheme"
   }
 }

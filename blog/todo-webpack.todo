@@ -11,7 +11,7 @@ Tasks:
   ✔ Change font to Liberv2. @done (6/2/2020, 3:46:49 AM)
   ✔ Change main font weight using variables rather than font file. @done (6/2/2020, 3:46:51 AM)
   ✔ Fix table and bootstrap issues with monospace font. @done (6/2/2020, 3:47:27 AM)
-  ☐ Create a gulpfile to build the search index.
+  ✔ Create a gulpfile to build the search index. @done (6/3/2020, 4:05:01 AM)
   ☐ Add matomo to project.
   ☐ Using archetypes.
   ☐ Theme similar to forestry.
@@ -24,6 +24,8 @@ Gulp:
   Notes:
     ☐ If you are not using Hugo, you could use the above to dynamically reference images in your html, and use gulp to replace them with the images bundled with webpack. Name the images the same as they're referenced, then replace any `<img src="">` with the bundled image in the html. You can get the mapping from the output from webpack, using the unique image name as the key.. You can then use gulp to minimise or resize the images.
     ☐ Hugo will bundle your images into their own folders. You can use gulp to find images in your `./posts` (or even the whole project), and resize/minimise them.
+  ☐ Document everything in notes
+  ☐ Have search job save to a file.
   ✔ Document yarn automatically resolving modules locally for commands you give it (running gulp it will automaitcally find it). @done (6/3/2020, 1:21:46 AM)
   ✔ Document javascript exports using ES6. @done (6/3/2020, 1:21:47 AM)
   ✔ Using the cjs extension for gulpfile.or using type: module in package.json. @done (6/3/2020, 1:21:48 AM)
