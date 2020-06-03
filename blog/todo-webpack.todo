@@ -20,5 +20,12 @@ Search:
   ☐ Have search auto run whenever a button is pressed
 
 Gulp:
-  ☐ Document yarn automatically resolving modules locally for commands you give it (running gulp it will automaitcally find it).
-  ☐ Document javascript exports using ES6.
+  ☐ Using <https://stackoverflow.com/questions/23247642/modify-file-in-place-same-dest-using-gulp-js-and-a-globbing-pattern> and <https://www.npmjs.com/package/gulp-replace> to handle hashed images.
+  Notes:
+    ☐ If you are not using Hugo, you could use the above to dynamically reference images in your html, and use gulp to replace them with the images bundled with webpack. Name the images the same as they're referenced, then replace any `<img src="">` with the bundled image in the html. You can get the mapping from the output from webpack, using the unique image name as the key.. You can then use gulp to minimise or resize the images.
+    ☐ Hugo will bundle your images into their own folders. You can use gulp to find images in your `./posts` (or even the whole project), and resize/minimise them.
+  ✔ Document yarn automatically resolving modules locally for commands you give it (running gulp it will automaitcally find it). @done (6/3/2020, 1:21:46 AM)
+  ✔ Document javascript exports using ES6. @done (6/3/2020, 1:21:47 AM)
+  ✔ Using the cjs extension for gulpfile.or using type: module in package.json. @done (6/3/2020, 1:21:48 AM)
+  Notes:
+    ✔ When can we use require vs import? @done (6/3/2020, 1:21:49 AM)

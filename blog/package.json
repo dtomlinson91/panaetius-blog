@@ -3,10 +3,12 @@
     "gulp": "^4.0.2",
     "lunr": "^2.3.8",
     "parser-front-matter": "^1.6.4",
-    "readdirp": "^3.4.0"
+    "readdirp": "^3.4.0",
+    "webpack": "^4.43.0"
   },
   "scripts": {
-    "buildSearch": "gulp buildSearch"
-  },
-  "type": "module"
+    "buildSearch": "gulp buildSearch",
+    "buildHugo": "gulp buildHugo",
+    "buildBlog": "gulp buildBlog"
+  }
 }

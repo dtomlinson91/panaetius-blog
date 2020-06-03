@@ -63,6 +63,7 @@ Tasks:
         Needs it's own page listing all series
         Each series needs its own page with image and intro + TOC (https://simpleisbetterthancomplex.com/series/beginners-guide/1.11/)
         Could have a banner or side content saying this is part N in a series?
+        Use this shortcode on pages in a series: <https://www.robinwieruch.de/webpack-eslint> - showing what part of N it is and of what series. Should dynamically show depending on whether it is a series or not.
     ☐ Have a categories taxonomy (https://www.integralist.co.uk/posts/static-search-with-lunr/ at the bottom)
       Notes:
         Categories are high level: code, guides/tutorials, deployment etc

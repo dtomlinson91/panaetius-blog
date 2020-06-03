@@ -57,16 +57,16 @@ function makeIndex(posts) {
 async function run() {
   // The following line specifies which directory to use for indexing. See above
   // for excluded directories and filetypes.
-  const posts = await loadPostsWithFrontMatter(`${__dirname}/content/`);
+  const posts = await loadPostsWithFrontMatter(`${__dirname}/../content/`);
   const index = makeIndex(posts);
   console.log(JSON.stringify(index));
 }
 
-run()
-  .then(() => process.exit(0))
-  .catch((error) => {
-    console.error(error.stack);
-    process.exit(1);
-  });
+// run()
+//   .then(() => process.exit(0))
+//   .catch((error) => {
+//     console.error(error.stack);
+//     process.exit(1);
+//   });
 
-exports.run = run
+exports.run = run;
