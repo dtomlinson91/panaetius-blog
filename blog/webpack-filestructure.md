@@ -20,13 +20,15 @@ Overview:
 
 The structure can depend on the project. If you are using webpack you can create `./src` folder where you can place `./src/js` or `./src/scss` for example. We can have a `./node_modules` folder then use webpack to compile.
 
+Images/content to be bundled by webpack (used in the css) go in `./src`.
+
 You can use a layout suggestion as given here: <https://medium.com/@nmayurashok/file-and-folder-structure-for-web-development-8c5c83810a5> for inside the `./src` folder.
 
 ### Files location
 
 Raw files go in `./src` or at the root level. See the folder structure on how to name folders.
 
-Any bundled/compiled files which will be used by the website itself should go in `./dist` or `./static/dist`.
+Any bundled/compiled files which will be used by the website itself should go in `./dist` or `./static/dist`. You can also place content that goes outside the bundle (extra images not referenced in css) in `./static/images`.
 
 ## Build patterns/ code organisation
 
