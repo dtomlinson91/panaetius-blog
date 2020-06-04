@@ -13,6 +13,12 @@ hugo.linux
 
 # End of https://www.gitignore.io/api/hugo
 
+# node_modules
 blog/node_modules
 
-*.DS_Store*
+# static
+blog/static
+
+test/
+.DS_Store
+
