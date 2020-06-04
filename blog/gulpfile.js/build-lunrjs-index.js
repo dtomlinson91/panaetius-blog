@@ -59,7 +59,8 @@ async function run() {
   // for excluded directories and filetypes.
   const posts = await loadPostsWithFrontMatter(`${__dirname}/../content/`);
   const index = makeIndex(posts);
-  console.log(JSON.stringify(index));
+  // console.log(JSON.stringify(index));
+  return JSON.stringify(index);
 }
 
 // run()
