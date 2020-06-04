@@ -11,9 +11,10 @@ version: "3"
 
 services:
   server:
+    restart: unless-stopped
     image: registry.gitlab.com/commento/commento
     ports:
-      - 80:8080
+      - 6050:8080
     environment:
       COMMENTO_ORIGIN: localhost
       COMMENTO_PORT: 8080
@@ -21,6 +22,7 @@ services:
     depends_on:
       - db
   db:
+    restart: unless-stopped
     image: postgres
     environment:
       POSTGRES_DB: commento

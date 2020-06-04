@@ -1,11 +1,22 @@
-baseURL = "http://example.org/"
-title = "Tech blog"
-theme = "hugo-theme-chunky-poster"
+baseURL = "http://127.0.0.1:6060"
+title = "panaetius.io"
+# theme = "panaetius-chunky-theme"
+theme = "panaetius-theme"
 paginate = 2
 languageCode = "en"
 DefaultContentLanguage = "en"
 enableInlineShortcodes = true
 footnoteReturnLinkContents = "^"
+description = "Tech blog showcasing Python, Machine-Learning, Vue, Homelab and other technologies to try at home."
+
+
+[languages]
+
+[lanugages.en]
+weight = 1
+
+[languages.en.params]
+LanguageName = "English"
 
 [menu]
 
@@ -13,7 +24,25 @@ footnoteReturnLinkContents = "^"
 identifier = "home"
 name = "Home"
 url = "/"
-weight = 10
+weight = 1
+
+[[menu.main]]
+identifier = "about"
+name = "About"
+url = "/about/"
+weight = 2
+
+[[menu.main]]
+identifier = "tags"
+name = "Tags"
+url = "/tags/"
+weight = 3
+
+[[menu.main]]
+identifier = "search"
+name = "Search"
+url = "/search/"
+weight = 4
 
 [taxonomies]
 category = "categories"
@@ -22,16 +51,28 @@ series = "series"
 author = "authors"
 
 [params]
+header = "panaetius.io"
 author = "Daniel Tomlinson"
-description = "Lorem ipsum dolor sit amets."
-#   homepageImage = "/images/homepage-image.jpg"
+description = "Tech blog showcasing Python, Machine-Learning, Vue, Homelab and other technologies to try at home."
+homepageImage = "/images/homepage.svg"
+logo = "/images/homepage.svg"
 share = true
-showLanguageSwitcher = false
-
-[params.prismJS]
-enable = true
-theme = "okaidia"
+twitter = "dmot7291"
+github = "dtomlinson91"
 
 [params.commento]
 enable = true
-url = "http://localhost/js/commento.js"
+url = "https://commento.panaetius.co.uk/js/commento.js"
+
+[imaging]
+resampleFilter = "Lanczos"
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+page = ["HTML", "RSS"]
+
+[markup]
+
+[markup.highlight]
+style = "monokailight"
+lineNos = true

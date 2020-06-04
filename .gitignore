@@ -12,3 +12,13 @@ hugo.darwin
 hugo.linux
 
 # End of https://www.gitignore.io/api/hugo
+
+# node_modules
+blog/node_modules
+
+# static
+blog/static
+
+test/
+.DS_Store
+

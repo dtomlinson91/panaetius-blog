@@ -1,8 +1,9 @@
 ---
-name: "Daniel Tomlinson"
+name:
+- "Daniel Tomlinson"
 images:
 - "daniel-tomlinson.png"
-twitter: ""
+twitter: "dmot7291"
 ---
 
 Some text here.

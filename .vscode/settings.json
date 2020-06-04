@@ -1,1 +1,14 @@
-{}
+{
+    "editor.defaultFormatter": "HookyQR.beautify",
+    "editor.formatOnPaste": false,
+    "[html]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "[handlebars]": {
+    },
+    "beautify.config": {
+        "indent_handlebars": false
+    },
+    "twig-language-2.endComma": "always",
+}
+
