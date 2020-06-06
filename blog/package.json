@@ -8,6 +8,7 @@
     "gulp-replace": "^1.0.0",
     "gulp-uglify": "^3.0.2",
     "lunr": "^2.3.8",
+    "merge-stream": "^2.0.0",
     "parser-front-matter": "^1.6.4",
     "readdirp": "^3.4.0",
     "webpack": "^4.43.0"
@@ -17,9 +18,10 @@
     "buildHugo": "gulp buildHugo",
     "buildBlog": "gulp buildBlog",
     "buildTheme": "gulp buildTheme",
+    "buildLunr": "gulp buildLunr",
     "cleanJS": "gulp cleanJS",
     "insertJS": "gulp insertJS",
-    "lunr": "gulp lunr",
+    "minifyJS": "gulp minifyJS",
     "minifyImages": "gulp minifyImages"
   }
 }

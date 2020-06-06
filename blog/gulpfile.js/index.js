@@ -12,6 +12,7 @@ const hash = require("gulp-hash-filename");
 const rename = require("gulp-rename");
 const clean = require("gulp-clean");
 const replace = require("gulp-replace");
+const merge = require("merge-stream");
 
 // Directories
 const currentDir = getCurrentDir(__dirname);
@@ -58,40 +59,62 @@ async function buildTheme(cb) {
 }
 
 // Clear ./static/dist
-function cleanJS(cb) {
+async function cleanJS() {
   gulp.src(`${currentDir}/static/dist/*.js`, { read: false }).pipe(clean());
-  cb();
 }
 
-// Copy lunrjs into static
-const jsFiles = {
-  lunrjs_gulp: "s",
-};
+// Define js scripts outside of webpack bundle.
+// const jsFiles = {
+//   lunrjs_gulp: {
+//     node_path: "/node_modules/lunr/lunr.js",
+//   },
+// };
 
-function lunr(cb) {
-  gulp
-    .src(`${currentDir}/node_modules/lunr/lunr.js`)
-    .pipe(hash({ format: "{name}.{hash}.{ext}" }))
-    .pipe(uglify())
-    .pipe(
-      rename(function (path) {
-        file = path.basename += "min";
-        for (const key in jsFiles) {
-          if (jsFiles.hasOwnProperty(key)) {
-            jsFiles.key = file += ".js";
-            console.log(jsFiles.key);
-          }
-        }
-      })
-    )
-    .pipe(gulp.dest(`${currentDir}/static/dist`));
-  cb();
+var jsFiles = [
+  {
+    module: "lunrjs_gulp",
+    nodePath: "/node_modules/lunr/lunr.js",
+    minimizedFile: "",
+  },
+];
+
+function minifyJS() {
+  destinationPath = `${currentDir}/static/dist/`;
+  var streams = [];
+  jsFiles.forEach(function (module) {
+    var stream = gulp
+      .src(`${currentDir}/${module["nodePath"]}`)
+      .pipe(hash({ format: "{name}.{hash}.{ext}" }))
+      .pipe(uglify())
+      .pipe(
+        rename(function (path) {
+          // append min to the filename
+          path.basename += "min";
+          // add minimizedFile to the object
+          module["minimizedFile"] = path.basename + path.extname;
+        })
+      )
+      .pipe(gulp.dest(destinationPath));
+    streams.push(stream);
+  });
+  return merge(streams);
 }
 
-// Insert js into HTML
-function insertJS(cb) {
-
-  cb();
+function insertLunrJS() {
+  var streams = [];
+  jsFiles.forEach(function (module) {
+    console.log(JSON.stringify(module["minimizedFile"]));
+    var stream = gulp
+      .src([`${themeDir}/layouts/search/single.html`])
+      .pipe(replace(module["module"], module["minimizedFile"]))
+      .pipe(
+        gulp.dest(function (file) {
+          return file.base;
+        })
+      );
+    streams.push(stream);
+  });
+  return merge(streams);
 }
 
 module.exports = {
@@ -100,13 +123,13 @@ module.exports = {
   buildTheme: buildTheme,
   minifyImages: minifyImages,
   cleanJS: cleanJS,
-  insertJS: insertJS,
-  lunr: lunr,
+  minifyJS: minifyJS,
+  buildLunr: gulp.series(cleanJS, minifyJS, insertLunrJS),
   buildBlog: gulp.parallel([
     buildSearch,
     buildHugo,
     buildTheme,
     minifyImages,
-    lunr,
+    buildLunr,
   ]),
 };
