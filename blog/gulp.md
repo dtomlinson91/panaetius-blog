@@ -1,5 +1,7 @@
 # Gulp
 
+A complete gulpfile (using folders for structure) can be found [here](https://git.panaetius.co.uk/hugo/blog/src/branch/master/blog/gulpfile.js/index.js)
+
 Gulp can complement webpack by adding additional workflows to your project. Webpack can be used to package your bundles, gulp can be used to run additional things before or after the build.
 
 <https://forestry.io/blog/gulp-and-webpack-best-of-both-worlds/>
@@ -174,7 +176,7 @@ Some javascript won't be suitable for inclusion in a bundle (`lunr`). You can in
 Use `yarn add gulp-minify`.
 
 ```javascript
-const minify = require("gulp-minify")
+const minify = require("gulp-minify");
 
 function lunr(cb) {
   gulp
@@ -191,12 +193,59 @@ function lunr(cb) {
 
 Use <https://www.npmjs.com/package/gulp-replace> to replace a string in a file.
 
-Approach:
-If you are not using Hugo, you could use the above to dynamically reference images in your html.
+### Using outputs from webpack
 
-Use gulp to replace these references with the images bundled with webpack. If yuo name the images the same as they're referenced, then replace any `<img src="">` with the bundled image in the html.
+If you are not using Hugo, you could use the above to dynamically reference images in your html. Use gulp to replace these references with the images bundled with webpack. If you name the images the same as they're referenced, then replace any `<img src="">` with the bundled image in the html.
 
 You can get the mapping from the output from webpack, using the unique image name as the key. You can then use gulp to minimise or resize the images.
+
+### Minifying + hashing javascript
+
+If you need to include items outside of your bundle (`lunrjs` for example), you can use gulp to read the file in, minimise, hash and copy to the location.
+
+Steps:
+
+- Clean the folder from any existing files
+- Minify, hash and copy the file to the destination
+- Insert the file location in the html
+
+An example can be found [here](https://git.panaetius.co.uk/hugo/blog/src/branch/master/blog/gulpfile.js/index.js) under the `minifyJS` and `insertLunrJS` functions.
+
+To insert the filename in the `html` you can use `gulp-replace`. Define a `module` key in your list of objects that you can put in the raw html to be replaced:
+
+```javascript
+var jsFiles = [
+  {
+    module: "lunrjs_gulp",
+    nodePath: "/node_modules/lunr/lunr.js",
+    minimizedFile: "",
+  },
+];
+```
+
+## Streams in gulp
+
+If we use `Array.foreach` in gulp, we will create multiple streams. We need to use `merge-stream` and merge all streams at the end of the gulp function so gulp knows when the function has completed.
+
+If you use multiple `gulp.src()` in your function, you will have to merge the streams as well.
+
+```javascript
+function insertLunrJS() {
+  var streams = [];
+  jsFiles.forEach(function (module) {
+    var stream = gulp
+      .src([`${themeDir}/layouts/search/single.html`])
+      ...
+      .pipe(
+        gulp.dest(function (file) {
+          ...
+        })
+      );
+    streams.push(stream);
+  });
+  return merge(streams);
+}
+```
 
 ## Hugo
 

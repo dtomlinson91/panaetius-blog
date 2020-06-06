@@ -51,3 +51,20 @@ async function buildSearch() {
   fs.writeFileSync(currentDir + "/static/search-index.json", searchIndex);
 }
 ```
+
+## Functions in a for loop
+
+<https://stackoverflow.com/questions/37043095/gulp-rename-multiple-files>
+
+You shouldn't create functions in a `for` loop. Each loop will create multiple functions that refer to the same variable (the variable that you assign the loop to e.g `name` in `for name in obj`). These functions are not executed immediately but only after **all** of them have been created - so they will all use the last value of `name`.
+
+You should create an array of each thing you want to loop over, and use `Array.foreach`.
+
+If you need to loop through an object, you can use `Object.keys()` which will return an array. You can then use `Array.forEach()` on this: `Object.keys(jsonObject).forEach(function(key) {...`
+
+```javascript
+function minifyJS() {
+  jsFiles.forEach(function (module) {
+    console.log(module)
+  }
+```
