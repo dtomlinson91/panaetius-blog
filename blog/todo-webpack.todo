@@ -16,8 +16,18 @@ Tasks:
   ☐ Using archetypes.
   ☐ Theme similar to forestry.
 
+Theme:
+  ☐ Colour scheme (forestry)
+    ☐ Choose a Colour
+    ☐ Change link colour
+    ☐ Change post info colour
+  ☐ Info, warning admonitions (using colour scheme)
+  ☐ Post layout
+  ☐ TOC
+
 Search:
-  ☐ Have search auto run whenever a button is pressed
+  ☐ Search bar like Font awesome
+  ✔ Have search auto run whenever a button is pressed @done (6/7/2020, 5:38:31 PM)
 
 Gulp:
   ✔ Using <https://stackoverflow.com/questions/23247642/modify-file-in-place-same-dest-using-gulp-js-and-a-globbing-pattern> and <https://www.npmjs.com/package/gulp-replace> to handle hashed images. @done (6/4/2020, 1:28:15 AM)

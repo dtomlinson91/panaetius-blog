@@ -103,7 +103,7 @@ function minifyJS() {
 function insertLunrJS() {
   var streams = [];
   jsFiles.forEach(function (module) {
-    console.log(JSON.stringify(module["minimizedFile"]));
+    // console.log(JSON.stringify(module["minimizedFile"]));
     var stream = gulp
       .src([`${themeDir}/layouts/search/single.html`])
       .pipe(replace(module["module"], module["minimizedFile"]))
@@ -125,11 +125,11 @@ module.exports = {
   cleanJS: cleanJS,
   minifyJS: minifyJS,
   buildLunr: gulp.series(cleanJS, minifyJS, insertLunrJS),
-  buildBlog: gulp.parallel([
+  buildBlog: gulp.series([
     buildSearch,
     buildHugo,
     buildTheme,
     minifyImages,
-    buildLunr,
+    gulp.series(cleanJS, minifyJS, insertLunrJS),
   ]),
 };

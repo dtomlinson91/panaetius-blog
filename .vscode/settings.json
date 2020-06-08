@@ -1,5 +1,5 @@
 {
-    "editor.defaultFormatter": "HookyQR.beautify",
+    "editor.defaultFormatter": "akmittal.hugofy",
     "editor.formatOnPaste": false,
     "[html]": {
         "editor.defaultFormatter": "HookyQR.beautify"
