@@ -4,6 +4,3 @@
 [submodule "blog/themes/panaetius-chunky-theme"]
 	path = blog/themes/panaetius-chunky-theme
 	url = https://git.panaetius.co.uk/hugo/panaetius-chunky-theme
-[submodule "blog/themes/hugo-notice"]
-	path = blog/themes/hugo-notice
-	url = https://github.com/martignoni/hugo-notice
