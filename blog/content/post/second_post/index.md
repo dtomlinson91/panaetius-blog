@@ -11,6 +11,8 @@ tags: ["Introduction", "test", "another", "tagging", "hugo", "newz"]
 
 Hugo ships with several [Built-in Shortcodes](https://gohugo.io/content-management/shortcodes/#use-hugo-s-built-in-shortcodes) for rich content, along with a [Privacy Config](https://gohugo.io/about/hugo-and-gdpr/) and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.
 
+## <!--more-->
+
 ## Test code
 
 ```python
@@ -69,3 +71,21 @@ Hugo adds no css to the table. In order to style it you should select the `<tabl
 | ------ | -------- |
 | Daniel | Capacity |
 | Dale   | Capacity |
+
+## Admonitions
+
+{{< notice note >}}
+Note Admonition
+{{< /notice >}}
+
+{{< notice tip >}}
+Tip Admonition
+{{< /notice >}}
+
+{{< notice info >}}
+Infomation Admonition
+{{< /notice >}}
+
+{{< notice warning >}}
+This is a warning notice. Be warned! `code`
+{{< /notice >}}
