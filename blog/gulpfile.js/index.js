@@ -40,6 +40,8 @@ function minifyImages(cb) {
       `${currentDir}/static/**/*.svg`,
       `${themeDir}/static/**/*.png`,
       `${themeDir}/static/**/*.svg`,
+      `${currentDir}/public/**/*.png`,
+      `${currentDir}/public/**/*.svg`,
     ])
     .pipe(imagemin())
     .pipe(
