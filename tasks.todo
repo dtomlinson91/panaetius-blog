@@ -1,10 +1,18 @@
 Projects:
-
     ☐ Fix the navbar on mobile.
     ☐ Change text on homepage on mobile.
 
+  CSS:
+    ☐ Document using transition.
+
+  Hugo:
+    ☐ Document pagination
+      Notes:
+        ☐ Link <https://glennmccomb.com/articles/how-to-build-custom-hugo-pagination/> and <https://gohugo.io/templates/pagination/>.
+        ☐ Link to git
+
   Images:
-    ☐ Add random animal image to corner of card.
+    ✔ Add random animal image to corner of card. @done (6/9/2020, 1:18:32 PM)
 
     Note:
       How to edit the homepage, how to edit taxonomy content (the _index.html) file and what this means.
@@ -13,14 +21,16 @@ Projects:
     ☐ Another layout for cards (https://codewithhugo.com)
 
   Misc:
-    ☐ Add social metadata
-      ☐ Create own admonitions with shortcode with custom animal themeing.
+    ☐ Create archetypes for posts.
+    ☐ Configure pagination for homepage.
+    ✔ Add social metadata @done (6/9/2020, 1:27:26 PM)
+      ✔ Create own admonitions with shortcode with custom animal themeing. @done (6/9/2020, 1:27:24 PM)
 
   Custom layout:
-    ☐ Use the envanto website layouts (whole static themes) to find suitable wallpaper for a post page.
+    ✔ Use the envanto website layouts (whole static themes) to find suitable wallpaper for a post page. @done (6/9/2020, 1:27:29 PM)
     ☐ Add tags to front page cards
     ☐ Using date in the slug, customising the slugs further?
-    ☐ Find a font from envanto and customise the vars in bootstrap (https://getbootstrap.com/docs/4.0/content/reboot/#native-font-stack)
+    ✔ Find a font from envanto and customise the vars in bootstrap (https://getbootstrap.com/docs/4.0/content/reboot/#native-font-stack) @done (6/9/2020, 1:27:33 PM)
 
 
   Content:

@@ -2,13 +2,15 @@ baseURL = "http://127.0.0.1:6060"
 title = "panaetius.io"
 # theme = "panaetius-chunky-theme"
 theme = ["hugo-notice-admonition", "panaetius-theme"]
-paginate = 2
+paginate = 1
 languageCode = "en"
 DefaultContentLanguage = "en"
 enableInlineShortcodes = true
 footnoteReturnLinkContents = "^"
 description = "Tech blog showcasing Python, Machine-Learning, Vue, Homelab and other technologies to try at home."
 
+[permalinks]
+  post = "/:year/:month/:slug/"
 
 [languages]
 
