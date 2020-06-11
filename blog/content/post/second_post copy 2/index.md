@@ -1,5 +1,5 @@
 ---
-title: "Second Post Copy 2"
+title: "Really long title Second Post Copy for layout scaling with flexbox using css."
 date: "2020-05-05T02:14:50+01:00"
 images: ["images/banner.svg"]
 draft: true
