@@ -17,19 +17,20 @@ Tasks:
   ☐ Theme similar to forestry.
 
 Theme:
-  ☐ Colour scheme (forestry)
-    ☐ Choose a Colour
-    ☐ Change link colour
+  ✔ Colour scheme (forestry) @done (6/9/2020, 12:24:25 PM)
+    ✔ Choose a Colour @done (6/9/2020, 12:24:26 PM)
+    ✔ Change link colour @done (6/9/2020, 12:24:25 PM)
     ☐ Change post info colour
-  ☐ Info, warning admonitions (using colour scheme)
+  ✔ Info, warning admonitions (using colour scheme) @done (6/9/2020, 12:24:29 PM)
   ☐ Post layout
-  ☐ TOC
+  ✔ TOC @done (6/9/2020, 12:24:31 PM)
 
 Search:
-  ☐ Search bar like Font awesome
+  ✔ Search bar like Font awesome @done (6/9/2020, 12:24:33 PM)
   ✔ Have search auto run whenever a button is pressed @done (6/7/2020, 5:38:31 PM)
 
 Gulp:
+  ☐ Change lunr insert - should insert the whole script html with a dummy tag that it can use to find.
   ✔ Using <https://stackoverflow.com/questions/23247642/modify-file-in-place-same-dest-using-gulp-js-and-a-globbing-pattern> and <https://www.npmjs.com/package/gulp-replace> to handle hashed images. @done (6/4/2020, 1:28:15 AM)
   Notes:
     ✔ If you are not using Hugo, you could use the above to dynamically reference images in your html, and use gulp to replace them with the images bundled with webpack. Name the images the same as they're referenced, then replace any `<img src="">` with the bundled image in the html. You can get the mapping from the output from webpack, using the unique image name as the key.. You can then use gulp to minimise or resize the images. @done (6/4/2020, 1:28:13 AM)
