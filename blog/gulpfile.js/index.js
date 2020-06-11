@@ -34,12 +34,12 @@ async function buildHugo(cb) {
 function minifyImages(cb) {
   gulp
     .src([
-      `${currentDir}/content/**/*.png`,
-      `${currentDir}/content/**/*.svg`,
-      `${currentDir}/static/**/*.png`,
-      `${currentDir}/static/**/*.svg`,
-      `${themeDir}/static/**/*.png`,
-      `${themeDir}/static/**/*.svg`,
+      // `${currentDir}/content/**/*.png`,
+      // `${currentDir}/content/**/*.svg`,
+      // `${currentDir}/static/**/*.png`,
+      // `${currentDir}/static/**/*.svg`,
+      // `${themeDir}/static/**/*.png`,
+      // `${themeDir}/static/**/*.svg`,
       `${currentDir}/public/**/*.png`,
       `${currentDir}/public/**/*.svg`,
     ])

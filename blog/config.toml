@@ -3,6 +3,7 @@ title = "panaetius.io"
 # theme = "panaetius-chunky-theme"
 theme = ["hugo-notice-admonition", "panaetius-theme"]
 paginate = 1
+summaryLength = 2
 languageCode = "en"
 DefaultContentLanguage = "en"
 enableInlineShortcodes = true
@@ -40,11 +41,11 @@ name = "Tags"
 url = "/tags/"
 weight = 3
 
-[[menu.main]]
-identifier = "search"
-name = "Search"
-url = "/search/"
-weight = 4
+# [[menu.main]]
+# identifier = "search"
+# name = "Search"
+# url = "/search/"
+# weight = 4
 
 [taxonomies]
 category = "categories"
