@@ -11,7 +11,7 @@ footnoteReturnLinkContents = "^"
 description = "Tech blog showcasing Python, Machine-Learning, Vue, Homelab and other technologies to try at home."
 
 [permalinks]
-  post = "/:year/:month/:slug/"
+  post = "post/:year/:month/:slug/"
 
 [languages]
 
@@ -36,10 +36,16 @@ url = "/about/"
 weight = 2
 
 [[menu.main]]
+identifier = "series"
+name = "Series"
+url = "/series/"
+weight = 3
+
+[[menu.main]]
 identifier = "tags"
 name = "Tags"
 url = "/tags/"
-weight = 3
+weight = 4
 
 # [[menu.main]]
 # identifier = "search"

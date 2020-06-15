@@ -1,12 +1,21 @@
 ---
 title: "Really long title Second Post Copy for layout scaling with flexbox using css."
-date: "2020-05-05T02:14:50+01:00"
-images: ["images/banner.svg"]
+date: "2020-05-06T02:14:51+01:00"
+images:
+  - "images/banner.svg"
 draft: true
 authors:
   - "Daniel Tomlinson"
   - "New Authors"
-tags: ["Introduction", "test", "another", "tagging", "hugo", "newz"]
+tags:
+  - "Introduction"
+  - "test"
+  - "another"
+  - "tagging"
+  - "hugo"
+  - "newz"
+series:
+  - "Test series of articles"
 ---
 
 Hugo ships with several [Built-in Shortcodes](https://gohugo.io/content-management/shortcodes/#use-hugo-s-built-in-shortcodes) for rich content, along with a [Privacy Config](https://gohugo.io/about/hugo-and-gdpr/) and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds. and it goes on for more than one line.
