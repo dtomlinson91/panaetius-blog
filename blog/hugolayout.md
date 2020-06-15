@@ -899,3 +899,31 @@ Hugo ships with internal templates for common metadata for sites: <https://gohug
 {{- template "_internal/schema.html" . -}}
 {{- template "_internal/twitter_cards.html" . -}}
 ```
+
+## Navbar (active css) with bootstrap
+
+<https://discourse.gohugo.io/t/another-way-to-make-a-menu-item-active/17029/21>
+
+If using bootstrap and you want to apply the class `active` to a navbar item when it has been selected, you should add the following to the navbar:
+
+```Hugo
+<ul class="navbar-nav ml-auto">
+  {{- if .Site.Params.showLanguageSwitcher -}}
+  {{ partial "i18nlist.html" . }}
+  {{- end -}}
+  {{ with .Site.Menus.main }}
+  {{ range . }}
+  <li class="nav-item{{ if or (eq $current.URL .URL) ($current.HasMenuCurrent "main" .) }} active{{ end }}"><a class="nav-link" href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
+  {{ end }}
+  {{ end }}
+```
+
+You should make sure in your `config.toml` that the navbar item url ends with a trailing `/`:
+
+```toml
+[[menu.main]]
+identifier = "series"
+name = "Series"
+url = "/series/"
+weight = 3
+```
