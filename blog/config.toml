@@ -2,13 +2,16 @@ baseURL = "http://127.0.0.1:6060"
 title = "panaetius.io"
 # theme = "panaetius-chunky-theme"
 theme = ["hugo-notice-admonition", "panaetius-theme"]
-paginate = 2
+paginate = 3
+summaryLength = 2
 languageCode = "en"
 DefaultContentLanguage = "en"
 enableInlineShortcodes = true
 footnoteReturnLinkContents = "^"
 description = "Tech blog showcasing Python, Machine-Learning, Vue, Homelab and other technologies to try at home."
 
+[permalinks]
+  post = "post/:year/:month/:slug/"
 
 [languages]
 
@@ -33,16 +36,22 @@ url = "/about/"
 weight = 2
 
 [[menu.main]]
-identifier = "tags"
-name = "Tags"
-url = "/tags/"
+identifier = "series"
+name = "Series"
+url = "/series/"
 weight = 3
 
 [[menu.main]]
-identifier = "search"
-name = "Search"
-url = "/search/"
+identifier = "tags"
+name = "Tags"
+url = "/tags/"
 weight = 4
+
+# [[menu.main]]
+# identifier = "search"
+# name = "Search"
+# url = "/search/"
+# weight = 4
 
 [taxonomies]
 category = "categories"

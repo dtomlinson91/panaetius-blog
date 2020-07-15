@@ -1,14 +1,17 @@
 {
-    "editor.defaultFormatter": "akmittal.hugofy",
-    "editor.formatOnPaste": false,
-    "[html]": {
-        "editor.defaultFormatter": "HookyQR.beautify"
-    },
-    "[handlebars]": {
-    },
-    "beautify.config": {
-        "indent_handlebars": false
-    },
-    "twig-language-2.endComma": "always",
+  "editor.formatOnPaste": false,
+  "[html]": {
+    "editor.defaultFormatter": "HookyQR.beautify"
+  },
+  "[handlebars]": {},
+  "beautify.config": {
+    "indent_handlebars": false
+  },
+  "twig-language-2.endComma": "always",
+  "[scss]": {
+    "editor.defaultFormatter": "HookyQR.beautify"
+  },
+  "[tfvars]": {
+    "editor.defaultFormatter": "hashicorp.terraform"
+  }
 }
-

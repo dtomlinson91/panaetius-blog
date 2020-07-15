@@ -22,3 +22,5 @@ blog/static
 test/
 .DS_Store
 
+# terraform
+.terraform/

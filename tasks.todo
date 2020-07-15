@@ -1,26 +1,36 @@
 Projects:
+    ✔ Fix the navbar on mobile. @done (6/11/2020, 11:18:31 PM)
+    ✔ Change text on homepage on mobile. @done (6/11/2020, 11:18:32 PM)
 
-    ☐ Fix the navbar on mobile.
-    ☐ Change text on homepage on mobile.
+  CSS:
+    ☐ Document using transition.
+
+  Hugo:
+    ☐ Document pagination
+      Notes:
+        ☐ Link <https://glennmccomb.com/articles/how-to-build-custom-hugo-pagination/> and <https://gohugo.io/templates/pagination/>.
+        ☐ Link to git
 
   Images:
-    ☐ Add random animal image to corner of card.
+    ✔ Add random animal image to corner of card. @done (6/9/2020, 1:18:32 PM)
 
     Note:
       How to edit the homepage, how to edit taxonomy content (the _index.html) file and what this means.
 
-    ☐ Refactor front page like (https://www.educative.io/edpresso)
-    ☐ Another layout for cards (https://codewithhugo.com)
+    ✔ Refactor front page like (https://www.educative.io/edpresso) @done (6/11/2020, 11:18:37 PM)
+    ✔ Another layout for cards (https://codewithhugo.com) @done (6/11/2020, 11:18:38 PM)
 
   Misc:
-    ☐ Add social metadata
-      ☐ Create own admonitions with shortcode with custom animal themeing.
+    ☐ Create archetypes for posts.
+    ✔ Configure pagination for homepage. @done (6/11/2020, 11:18:48 PM)
+    ✔ Add social metadata @done (6/9/2020, 1:27:26 PM)
+      ✔ Create own admonitions with shortcode with custom animal themeing. @done (6/9/2020, 1:27:24 PM)
 
   Custom layout:
-    ☐ Use the envanto website layouts (whole static themes) to find suitable wallpaper for a post page.
-    ☐ Add tags to front page cards
-    ☐ Using date in the slug, customising the slugs further?
-    ☐ Find a font from envanto and customise the vars in bootstrap (https://getbootstrap.com/docs/4.0/content/reboot/#native-font-stack)
+    ✔ Use the envanto website layouts (whole static themes) to find suitable wallpaper for a post page. @done (6/9/2020, 1:27:29 PM)
+    ✔ Add tags to front page cards @done (6/11/2020, 11:18:52 PM)
+    ✔ Using date in the slug, customising the slugs further? @done (6/11/2020, 11:18:54 PM)
+    ✔ Find a font from envanto and customise the vars in bootstrap (https://getbootstrap.com/docs/4.0/content/reboot/#native-font-stack) @done (6/9/2020, 1:27:33 PM)
 
 
   Content:
@@ -30,7 +40,7 @@ Projects:
         Each series needs its own page with image and intro + TOC (https://simpleisbetterthancomplex.com/series/beginners-guide/1.11/)
         Could have a banner or side content saying this is part N in a series?
         Use this shortcode on pages in a series: <https://www.robinwieruch.de/webpack-eslint> - showing what part of N it is and of what series. Should dynamically show depending on whether it is a series or not.
-    ☐ Have a categories taxonomy (https://www.integralist.co.uk/posts/static-search-with-lunr/ at the bottom)
+    ✔ Have a categories taxonomy (https://www.integralist.co.uk/posts/static-search-with-lunr/ at the bottom) @done (6/11/2020, 11:20:04 PM)
       Notes:
         Categories are high level: code, guides/tutorials, deployment etc
         Tags will be specifics: python, aws etc
