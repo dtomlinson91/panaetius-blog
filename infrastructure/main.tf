@@ -35,7 +35,7 @@ module "cloudfront_s3_cdn" {
         "Effect":"Allow",
         "Principal": "*",
         "Action":["s3:GetObject"],
-        "Resource": "arn:aws:s3:::${var.bucket_name}/*"
+        "Resource": "arn:aws:s3:::${module.cloudfront_s3_cdn.s3_bucket}/*"
       }
     ]
   }
