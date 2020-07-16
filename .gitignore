@@ -18,7 +18,7 @@ blog/node_modules
 
 # static
 blog/static
-!blog/static/images
+!blog/static/images/*
 
 test/
 .DS_Store
