@@ -1,4 +1,4 @@
-baseURL = "http://127.0.0.1:6060"
+baseURL = "panaetius.io"
 title = "panaetius.io"
 # theme = "panaetius-chunky-theme"
 theme = ["hugo-notice-admonition", "panaetius-theme"]
