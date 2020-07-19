@@ -1,4 +1,5 @@
-baseURL = "panaetius.io"
+baseURL = "https://panaetius.io/"
+# relativeURLs = true
 title = "panaetius.io"
 # theme = "panaetius-chunky-theme"
 theme = ["hugo-notice-admonition", "panaetius-theme"]
