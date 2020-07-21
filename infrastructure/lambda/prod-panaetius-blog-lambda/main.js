@@ -5,10 +5,17 @@ exports.handler = (event, context, callback) => {
   var request = event.Records[0].cf.request;
 
   // Extract the URI from the request
-  var oldURI = request.url;
+  var oldURI = request.uri;
 
   // Match any '/' that occurs at the end of a URI. Replace it with a default index
-  var newURI = oldURI.replace(/\/$, '\/index.html'/);
+  function replace_uri(uri) {
+    uri = uri.replace(/\/$/, "/index.html");
+    // uri = uri.replace(/\.io\/search\?q\=(.*)/, ".io/search/index.html?q=$1");
+    // console.log(uri)
+    return uri;
+  }
+  // var newURI = oldURI.replace(/\/$/, "/index.html");
+  var newURI = replace_uri(oldURI);
 
   // Log the URI as received by Cloudfront and the new URI to be used to fetch from the origin
   console.log(`Old URI: ${oldURI}`);
@@ -18,5 +25,5 @@ exports.handler = (event, context, callback) => {
   request.uri = newURI;
 
   // Return to Cloudfront
-  return callback(null, request)
+  return callback(null, request);
 };

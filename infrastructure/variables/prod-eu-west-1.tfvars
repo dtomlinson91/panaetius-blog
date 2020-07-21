@@ -13,7 +13,7 @@ allowed_origins     = ["*.panaetius.io"]
 # s3 & lambda
 acl         = "private"
 lambda_key  = "main.zip"
-source_file = "./lambda/prod-panaetius-blog-lambda/main.zip"
+source_file = "./lambda/prod-panaetius-blog-lambda/main.js"
 handler     = "main.handler"
 runtime     = "nodejs12.x"
 s3_region   = "us-east-1"

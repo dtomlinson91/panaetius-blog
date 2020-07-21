@@ -35,16 +35,11 @@ module "cloudfront_s3_cdn" {
   tags                     = local.tags
   aliases                  = var.aliases
   index_document           = "index.html"
-
-  ordered_cache = [
+  lambda_function_association = [
     {
-      lambda_function_association = [
-        {
-          event_type : "origin-request",
-          lambda_arn : aws_lambda_function.directory_indexes.qualified_arn,
-          include_body : false
-        }
-      ]
+      event_type : "origin-request",
+      lambda_arn : aws_lambda_function.directory_indexes.qualified_arn,
+      include_body : false
     }
   ]
 
@@ -65,34 +60,42 @@ module "cloudfront_s3_cdn" {
   EOT
 }
 
-# cloudfront lambda@edge
+# # cloudfront lambda@edge
 
-resource "aws_s3_bucket" "lambda_s3" {
-  provider = aws.us_east_1
-  region   = var.s3_region
-  bucket   = "${var.stage}-${var.name}-lambda-function"
-  acl      = var.acl
-  tags     = local.tags
+# resource "aws_s3_bucket" "lambda_s3" {
+#   provider = aws.us_east_1
+#   region   = var.s3_region
+#   bucket   = "${var.stage}-${var.name}-lambda-function"
+#   acl      = var.acl
+#   tags     = local.tags
+# }
+
+data "archive_file" "lambda_main" {
+  type        = "zip"
+  source_file = var.source_file
+  output_path = "${var.source_file}.zip"
 }
 
-resource "aws_s3_bucket_object" "main" {
-  provider = aws.us_east_1
-  bucket   = aws_s3_bucket.lambda_s3.id
-  key      = var.lambda_key
-  acl      = var.acl
-  source   = var.source_file
-}
+# resource "aws_s3_bucket_object" "main" {
+#   provider = aws.us_east_1
+#   bucket   = aws_s3_bucket.lambda_s3.id
+#   key      = var.lambda_key
+#   acl      = var.acl
+#   source   = var.source_file
+# }
 
 resource "aws_lambda_function" "directory_indexes" {
   provider      = aws.us_east_1
   function_name = "${var.stage}-${var.name}-directory_indexes"
-  s3_bucket     = aws_s3_bucket.lambda_s3.id
-  s3_key        = var.lambda_key
-  handler       = var.handler
-  runtime       = var.runtime
-  role          = aws_iam_role.lambda_role.arn
-  publish       = true
-  tags          = local.tags
+  filename      = "${var.source_file}.zip"
+  source_code_hash = data.archive_file.lambda_main.output_base64sha256
+  # s3_bucket     = aws_s3_bucket.lambda_s3.id
+  # s3_key        = var.lambda_key
+  handler = var.handler
+  runtime = var.runtime
+  role    = aws_iam_role.lambda_role.arn
+  publish = true
+  tags    = local.tags
 
   depends_on = [aws_iam_role_policy_attachment.lambda_logging]
 }
