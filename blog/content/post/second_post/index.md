@@ -6,7 +6,6 @@ images:
 draft: true
 authors:
   - "Daniel Tomlinson"
-  - "New Authors"
 tags:
   - "Introduction"
   - "test"

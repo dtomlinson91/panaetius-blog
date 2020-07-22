@@ -1,5 +1,5 @@
 ---
-title: "Really long title Second Post Copy for layout scaling with flexbox using css."
+title: "Really long title Second Post Copy for layout scaling with flexbox using css"
 date: "2020-05-06T02:14:51+01:00"
 images:
   - "images/banner.svg"
