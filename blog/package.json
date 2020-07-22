@@ -14,14 +14,7 @@
     "webpack": "^4.43.0"
   },
   "scripts": {
-    "buildSearch": "gulp buildSearch",
-    "buildHugo": "gulp buildHugo",
     "buildBlog": "gulp buildBlog",
-    "buildTheme": "gulp buildTheme",
-    "buildLunr": "gulp buildLunr",
-    "cleanJS": "gulp cleanJS",
-    "insertJS": "gulp insertJS",
-    "minifyJS": "gulp minifyJS",
-    "minifyImages": "gulp minifyImages"
+    "buildLunr": "gulp buildLunr"
   }
 }

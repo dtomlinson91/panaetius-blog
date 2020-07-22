@@ -1,6 +1,6 @@
 # Webpack
 
-TODO: This note should also go under a note for structuring a website.s
+TODO: This note should also go under a note for structuring a website.
 
 Great tutorial for the basics: <https://www.sitepoint.com/bundle-static-site-webpack/>.
 

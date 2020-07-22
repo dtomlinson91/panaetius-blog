@@ -14,10 +14,6 @@ variable "profile" {
 
 }
 
-variable "bucket_name" {
-
-}
-
 variable "acm_certificate_arn" {
 
 }
@@ -34,11 +30,26 @@ variable "allowed_origins" {
 
 }
 
+variable "acl" {
 
-# variable "log_expiration_days" {
+}
 
-# }
+variable "lambda_key" {
 
-# variable "log_standard_transition_days" {
+}
 
-# }
+variable "source_file" {
+
+}
+
+variable "handler" {
+
+}
+
+variable "runtime" {
+
+}
+
+variable "s3_region" {
+
+}
