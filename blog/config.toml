@@ -84,5 +84,6 @@ page = ["HTML", "RSS"]
 [markup]
 
 [markup.highlight]
-style = "monokailight"
+# style = "monokailight"
+style = "paraiso-dark"
 lineNos = true
