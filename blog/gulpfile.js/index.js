@@ -27,7 +27,8 @@ async function buildSearch(cb) {
 
 // Function to build the Hugo project
 async function buildHugo(cb) {
-  await execFile("hugo", ["-D", "--minify"]);
+  // await execFile("hugo", ["-D", "--minify"]);
+  await execFile("hugo", ["--minify"]);
 }
 
 // Function to minify images
