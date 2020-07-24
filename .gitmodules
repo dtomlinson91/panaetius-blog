@@ -1,9 +1,6 @@
 [submodule "blog/themes/panaetius-theme"]
 	path = blog/themes/panaetius-theme
-	url = https://git.panaetius.co.uk/hugo/panaetius-theme
-[submodule "blog/themes/panaetius-chunky-theme"]
-	path = blog/themes/panaetius-chunky-theme
-	url = https://git.panaetius.co.uk/hugo/panaetius-chunky-theme
+	url = https://github.com/dtomlinson91/panaetius-theme
 [submodule "blog/themes/hugo-notice-admonition"]
 	path = blog/themes/hugo-notice-admonition
-	url = https://git.panaetius.co.uk/hugo/hugo-notice-admonition
+	url = https://github.com/dtomlinson91/hugo-notice-admonition
