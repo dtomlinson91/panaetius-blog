@@ -59,6 +59,7 @@ async function buildTheme(cb) {
   await exec(
     `cd ${themeDir} && node ${themeDir}/node_modules/webpack/bin/webpack.js --config ${themeDir}/webpack.prod.js`
   );
+  cb();
 }
 
 // Clear ./static/dist
@@ -130,9 +131,9 @@ module.exports = {
   buildLunr: gulp.series(cleanJS, minifyJS, insertLunrJS),
   buildBlog: gulp.series([
     buildSearch,
-    buildHugo,
     buildTheme,
-    minifyImages,
     gulp.series(cleanJS, minifyJS, insertLunrJS),
+    buildHugo,
+    minifyImages,
   ]),
 };

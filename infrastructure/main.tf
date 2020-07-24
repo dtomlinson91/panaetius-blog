@@ -85,9 +85,9 @@ data "archive_file" "lambda_main" {
 # }
 
 resource "aws_lambda_function" "directory_indexes" {
-  provider      = aws.us_east_1
-  function_name = "${var.stage}-${var.name}-directory_indexes"
-  filename      = "${var.source_file}.zip"
+  provider         = aws.us_east_1
+  function_name    = "${var.stage}-${var.name}-directory_indexes"
+  filename         = "${var.source_file}.zip"
   source_code_hash = data.archive_file.lambda_main.output_base64sha256
   # s3_bucket     = aws_s3_bucket.lambda_s3.id
   # s3_key        = var.lambda_key

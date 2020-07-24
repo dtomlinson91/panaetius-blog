@@ -17,7 +17,8 @@
 .PHONY: apply destroy-backend destroy destroy-target plan-destroy plan plan-target prep
 
 -include Makefile.env
-VARS="variables/$(ENV)-$(REGION).tfvars"
+# VARS="variables/$(ENV)-$(REGION).tfvars"
+VARS="$(ENV)-$(REGION).tfvars"
 CURRENT_FOLDER=$(shell basename "$$(pwd)")
 S3_BUCKET="$(ENV)-$(REGION)-$(PROJECT)-terraform"
 DYNAMODB_TABLE="$(ENV)-$(REGION)-$(PROJECT)-terraform"
