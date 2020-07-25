@@ -15,7 +15,7 @@ jobs:
       tag: "14.3.0"
     steps:
       - checkout
-      - install-packages:
+      - node/install-packages:
         app-dir: blog
         cache_path: blog/node_modules
         pkg_manager: yarn
