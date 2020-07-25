@@ -4,15 +4,13 @@ orbs:
   node: circleci/node@3.0.1
 
 workflows:
-  welcome:
+  initial:
     jobs:
       - print_workspace
 
 jobs:
   print_workspace:
-    executor:
-      name: node
-      tag: "13.11"
+    executor: node
     steps:
       - checkout
       - run:
