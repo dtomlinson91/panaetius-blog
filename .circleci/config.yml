@@ -16,3 +16,4 @@ jobs:
     steps:
       - checkout
       - run: echo $(pwd) && echo $(ls)
+      - run: node --version
