@@ -16,6 +16,6 @@ jobs:
     steps:
       - checkout
       - node/install-packages:
-          app-dir: blog
-          cache-path: blog/node_modules
+          app-dir: "./blog"
+          cache-path: "./blog/node_modules"
           pkg-manager: yarn
