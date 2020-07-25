@@ -15,6 +15,8 @@ jobs:
       tag: "14.3.0"
     steps:
       - checkout
+      - run: git submodule init
+      - run: git submodule update --remote
       - node/install-packages:
           app-dir: "./blog"
           cache-path: "./blog/node_modules"
