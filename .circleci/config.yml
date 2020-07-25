@@ -25,3 +25,5 @@ jobs:
           app-dir: "./blog/themes/panaetius-theme"
           cache-path: "./blog/themes/panaetius-theme/node_modules"
           pkg-manager: yarn
+      - run: cd blog
+      - run: yarn gulp --tasks
