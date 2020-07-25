@@ -10,9 +10,7 @@ workflows:
 
 jobs:
   print_workspace:
-    executor: node
+    executor: node/default
     steps:
       - checkout
-      - run:
-          name: "Print cwd and ls"
-          command: echo $(pwd) && echo $(ls)
+      - run: echo $(pwd) && echo $(ls)
