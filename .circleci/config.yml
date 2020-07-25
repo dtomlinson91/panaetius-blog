@@ -17,5 +17,5 @@ jobs:
       - checkout
       - node/install-packages:
           app-dir: blog
-          cache_path: blog/node_modules
-          pkg_manager: yarn
+          cache-path: blog/node_modules
+          pkg-manager: yarn
