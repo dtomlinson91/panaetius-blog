@@ -27,6 +27,3 @@ Repo for language docker images: <https://github.com/CircleCI-Public/circleci-do
 ## Slack Notifications
 
 <https://github.com/CircleCI-Public/slack-orb>
-
-https://hooks.slack.com/services/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
-
