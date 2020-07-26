@@ -8,6 +8,15 @@ We can use webpack to bundle up our resources (javascript files or css files) an
 
 You can bundle anything up, we can even write `scss` and have webpack lint, compile and minify into the `dist` directory for us automatically.
 
+## Overview
+
+- Any files to be picked up by webpack should go in `./src/`.
+  - Define a loader for these files in the webpack config file.
+  - Additional examples could be images that you want Webpack to minimize.
+- Any files that don't need to be bundled can go in the output folder `./static`, either in `dist/` or `images/`.
+
+You can also use Gulp if you need to do additional steps during the build (build a search index). You can also use Gulp to minimise images.
+
 ## Structure
 
 Overview:
