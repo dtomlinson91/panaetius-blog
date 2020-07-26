@@ -16,7 +16,7 @@ jobs:
       name: node/default
       tag: "14.3.0"
     steps:
-      - run: sudo apt-get install git-lfs
+      - run: sudo apt-get search lfs
       - checkout:
           path: "~/panaetius-blog"
       - run: git submodule update --init --recursive
