@@ -18,6 +18,7 @@ blog/node_modules
 
 # static
 blog/static
+!blog/static/*.svg
 !blog/static/images/*
 
 test/

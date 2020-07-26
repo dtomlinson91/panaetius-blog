@@ -53,6 +53,14 @@ function minifyImages(cb) {
   cb();
 }
 
+// Function to sync static assets to S3 instead of using git LFS.
+async function syncAssets(cb) {
+  await exec(
+    `aws s3 sync ${currentDir} s3://prod-panaetius-blog-static-assets/ --exclude "*" --include "*.png" --exclude "*node_modules/*" --exclude "*resources/*"  --exclude "public/*" --delete --profile admin`
+  );
+  cb();
+}
+
 // Function to build the theme
 async function buildTheme(cb) {
   console.log(themeDir);
@@ -122,13 +130,13 @@ function insertLunrJS() {
 }
 
 module.exports = {
-  buildSearch: buildSearch,
-  buildHugo: buildHugo,
-  buildTheme: buildTheme,
-  minifyImages: minifyImages,
-  cleanJS: cleanJS,
-  minifyJS: minifyJS,
-  buildLunr: gulp.series(cleanJS, minifyJS, insertLunrJS),
+  // buildSearch: buildSearch,
+  // buildHugo: buildHugo,
+  // buildTheme: buildTheme,
+  // minifyImages: minifyImages,
+  // cleanJS: cleanJS,
+  // minifyJS: minifyJS,
+  // buildLunr: gulp.series(cleanJS, minifyJS, insertLunrJS),
   buildBlog: gulp.series([
     buildSearch,
     buildTheme,
@@ -136,4 +144,5 @@ module.exports = {
     buildHugo,
     minifyImages,
   ]),
+  syncAssets: syncAssets,
 };
