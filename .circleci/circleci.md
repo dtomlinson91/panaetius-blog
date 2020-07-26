@@ -19,6 +19,16 @@ Seperate job to checkout
 - needs git lfs
 - use cache on the lfs folder: <https://www.develer.com/en/avoiding-git-lfs-bandiwdth-waste-with-github-and-circleci/>
 
+Create a bucket for static assets
+Use aws s3 sync . s3://MyBucket/ --exclude "*" --include "*.flv"
+to sync the files to S3
+Remove from git lfs
+
+Create two hooks:
+- pre/post commit
+- sync to s3
+- store in a branch folder TEST=$(git branch --show-current)
+
 ## Jobs
 
 CircleCI config reference (shows all commands/options): <https://circleci.com/docs/2.0/configuration-reference/>

@@ -3,6 +3,7 @@ version: 2.1
 orbs:
   node: circleci/node@3.0.1
   hugo: circleci/hugo@0.5.2
+  awss3: circleci/aws-s3@1.0.16
 
 workflows:
   initial:
@@ -16,23 +17,23 @@ jobs:
       name: node/default
       tag: "14.3.0"
     steps:
-      - run: sudo apt-cache search lfs
       - checkout:
           path: "~/panaetius-blog"
       - run: git submodule update --init --recursive
-      - run: cd content/authors/new-authors && ls -lah
-      - run: git lfs
-      # - node/install-packages:
-      #     app-dir: "."
-      #     cache-path: "./node_modules"
-      #     pkg-manager: yarn
-      # - node/install-packages:
-      #     app-dir: "./themes/panaetius-theme"
-      #     cache-path: "./themes/panaetius-theme/node_modules"
-      #     pkg-manager: yarn
-      # # - run: cd blog
-      # - run: yarn gulp --tasks
-      # - hugo/install:
-      #     version: "0.69.2"
-      # - run: yarn buildBlog
-      # - run: ll public
+      - awss3/sync:
+          from: "s3://prod-panaetius-blog-static-assets/"
+          to: "."
+      - node/install-packages:
+          app-dir: "."
+          cache-path: "./node_modules"
+          pkg-manager: yarn
+      - node/install-packages:
+          app-dir: "./themes/panaetius-theme"
+          cache-path: "./themes/panaetius-theme/node_modules"
+          pkg-manager: yarn
+      # - run: cd blog
+      - run: yarn gulp --tasks
+      - hugo/install:
+          version: "0.69.2"
+      - run: yarn buildBlog
+      - run: ll public
