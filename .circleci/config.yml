@@ -42,7 +42,7 @@ jobs:
     working_directory: ~/panaetius-blog/blog
     executor:
       name: node/default
-      tag: 14.3.0
+      tag: "14.3.0"
     steps:
       - attach_workspace:
           at: .
@@ -55,7 +55,7 @@ jobs:
           cache-path: ./themes/panaetius-theme/node_modules
           pkg-manager: yarn
       - hugo/install:
-          version: 0.69.2
+          version: "0.69.2"
       - run: yarn buildBlog
       - persist_to_workspace:
           root: .
@@ -66,7 +66,7 @@ jobs:
     working_directory: ~/panaetius-blog/blog
     executor:
       name: hugo/cibuilds
-      tag: 0.69
+      tag: "0.69"
     steps:
       - attach_workspace:
           at: .
@@ -80,7 +80,7 @@ jobs:
     working_directory: ~/panaetius-blog/blog
     executor:
       name: go/default
-      tag: 1.14.6
+      tag: "1.14.6"
     steps:
       - attach_workspace:
           at: .
