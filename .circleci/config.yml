@@ -13,6 +13,9 @@ workflows:
       - build_blog:
           requires:
             - checkout_project
+      - test:
+          requires:
+            - build_blog
 
 jobs:
   checkout_project:
@@ -50,6 +53,19 @@ jobs:
       - hugo/install:
           version: "0.69.2"
       - run: yarn buildBlog
+      - persist_to_workspace:
+          root: "."
+          paths:
+            - "."
+
+  test:
+    working_directory: ~/panaetius-blog/blog
+    executor:
+      name: hugo/cibuilds
+      tag: "0.69"
+    steps:
+      - attach_workspace:
+          at: "."
       - hugo/html-proofer:
           path: "./public"
           url-swap: "'https?://(panaetius.io):'"

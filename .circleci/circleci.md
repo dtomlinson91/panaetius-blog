@@ -40,4 +40,6 @@ Orbs can also come with executors pre-configured. The `node` orb comes with a `n
 
 CircleCI convenience docker images: <https://circleci.com/docs/2.0/circleci-images/#python>.
 
+CircleCI application docker images: <https://github.com/cibuilds>.
+
 Repo for language docker images: <https://github.com/CircleCI-Public/circleci-dockerfiles>.
