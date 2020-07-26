@@ -26,3 +26,6 @@ test/
 
 # terraform
 .terraform/
+
+# Yarn
+blog/yarn-error.log
