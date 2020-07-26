@@ -16,18 +16,11 @@ build with gulp
 Copy to s3
 
 Seperate job to checkout
+
 - needs git lfs
 - use cache on the lfs folder: <https://www.develer.com/en/avoiding-git-lfs-bandiwdth-waste-with-github-and-circleci/>
 
-Create a bucket for static assets
-Use aws s3 sync . s3://MyBucket/ --exclude "*" --include "*.flv"
-to sync the files to S3
-Remove from git lfs
-
-Create two hooks:
-- pre/post commit
-- sync to s3
-- store in a branch folder TEST=$(git branch --show-current)
+aws s3 sync . s3://prod-panaetius-blog-static-assets/ --exclude "_" --include "_.png" --exclude "_node_modules/_" --exclude "_resources/_" --profile admin
 
 ## Jobs
 
@@ -42,3 +35,9 @@ If you are not using an orb's executor, and you are defining your own, you can c
 Orbs give you access to special commands. E.g the `node` orb has commands built in to install node/yarn, and to automatically cache when you do an install of your packages.
 
 Orbs can also come with executors pre-configured. The `node` orb comes with a `node` docker executor bundled, so you don't need to worry about choosing the write docker image you can use the executor provided by the orb and pass in any additional paramters if you need to choose the version.
+
+## Docker images
+
+CircleCI convenience docker images: <https://circleci.com/docs/2.0/circleci-images/#python>.
+
+Repo for language docker images: <https://github.com/CircleCI-Public/circleci-dockerfiles>.
