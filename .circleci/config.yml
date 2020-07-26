@@ -32,4 +32,5 @@ jobs:
       - run: yarn gulp --tasks
       - hugo/install:
           version: "0.69.2"
-      - run: hugo version
+      - run: yarn buildBlog
+      - run: ll public
