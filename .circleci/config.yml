@@ -10,16 +10,32 @@ orbs:
 workflows:
   deploy_blog:
     jobs:
-      - checkout_project
+      - checkout_project:
+          filters:
+            branches:
+              only:
+                - master
       - build_blog:
           requires:
             - checkout_project
+          filters:
+            branches:
+              only:
+                - master
       - test:
           requires:
             - build_blog
+          filters:
+            branches:
+              only:
+                - master
       - deploy:
           requires:
             - test
+          filters:
+            branches:
+              only:
+                - master
 
 jobs:
   checkout_project:
@@ -66,7 +82,6 @@ jobs:
             - .
       - slack/status
 
-
   test:
     working_directory: ~/panaetius-blog/blog
     executor:
@@ -81,7 +96,6 @@ jobs:
           paths:
             - .
       - slack/status
-
 
   deploy:
     working_directory: ~/panaetius-blog/blog

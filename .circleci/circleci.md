@@ -1,7 +1,5 @@
 # CircleCI
 
-aws s3 sync . s3://prod-panaetius-blog-static-assets/ --exclude "*" --include "*.png" --exclude "*node_modules/*" --exclude "*resources/*"  --exclude "public/*" --profile admin
-
 ## Jobs
 
 CircleCI config reference (shows all commands/options): <https://circleci.com/docs/2.0/configuration-reference/>
@@ -29,3 +27,6 @@ Repo for language docker images: <https://github.com/CircleCI-Public/circleci-do
 ## Slack Notifications
 
 <https://github.com/CircleCI-Public/slack-orb>
+
+https://hooks.slack.com/services/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
+
