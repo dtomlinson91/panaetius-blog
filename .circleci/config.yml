@@ -36,4 +36,4 @@ jobs:
       - hugo/install:
           version: "0.69.2"
       - run: yarn buildBlog
-      - run: ll public
+      - run: ls -lah public
