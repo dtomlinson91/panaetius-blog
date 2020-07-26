@@ -10,6 +10,15 @@
 - `yarn`
 - `cd ../..`
 
+Save output
+New job with hugo orb
+build with gulp
+Copy to s3
+
+Seperate job to checkout
+- needs git lfs
+- use cache on the lfs folder: <https://www.develer.com/en/avoiding-git-lfs-bandiwdth-waste-with-github-and-circleci/>
+
 ## Jobs
 
 CircleCI config reference (shows all commands/options): <https://circleci.com/docs/2.0/configuration-reference/>

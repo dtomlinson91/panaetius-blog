@@ -16,7 +16,7 @@ jobs:
       name: node/default
       tag: "14.3.0"
     steps:
-      - run: sudo apt-get search lfs
+      - run: sudo apt-cache search lfs
       - checkout:
           path: "~/panaetius-blog"
       - run: git submodule update --init --recursive
