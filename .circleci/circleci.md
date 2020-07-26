@@ -1,26 +1,6 @@
 # CircleCI
 
-- `git clone https://git.panaetius.co.uk/hugo/blog`
-- `cd blog`
-- `git submodule init`
-- `git submodule update --remote`
-- `cd blog`
-- `yarn`
-- `cd themes/panaetius-theme`
-- `yarn`
-- `cd ../..`
-
-Save output
-New job with hugo orb
-build with gulp
-Copy to s3
-
-Seperate job to checkout
-
-- needs git lfs
-- use cache on the lfs folder: <https://www.develer.com/en/avoiding-git-lfs-bandiwdth-waste-with-github-and-circleci/>
-
-aws s3 sync . s3://prod-panaetius-blog-static-assets/ --exclude "_" --include "_.png" --exclude "_node_modules/_" --exclude "_resources/_" --profile admin
+aws s3 sync . s3://prod-panaetius-blog-static-assets/ --exclude "*" --include "*.png" --exclude "*node_modules/*" --exclude "*resources/*"  --exclude "public/*" --profile admin
 
 ## Jobs
 
@@ -45,3 +25,7 @@ CircleCI convenience docker images: <https://circleci.com/docs/2.0/circleci-imag
 CircleCI application docker images: <https://github.com/cibuilds>.
 
 Repo for language docker images: <https://github.com/CircleCI-Public/circleci-dockerfiles>.
+
+## Slack Notifications
+
+<https://github.com/CircleCI-Public/slack-orb>
