@@ -18,8 +18,7 @@ jobs:
     steps:
       - checkout:
           path: "~/panaetius-blog"
-      - run: git submodule init
-      - run: git submodule update --remote
+      - run: git submodule update --init --recursive
       - node/install-packages:
           app-dir: "."
           cache-path: "./node_modules"
