@@ -30,4 +30,5 @@ jobs:
           pkg-manager: yarn
       # - run: cd blog
       - run: yarn gulp --tasks
-      - hugo/install
+      - hugo/install:
+          version: "0.69.2"
