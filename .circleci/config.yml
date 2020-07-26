@@ -19,7 +19,7 @@ jobs:
       - checkout:
           path: "~/panaetius-blog"
       - run: git submodule update --init --recursive
-      - run: cd content/authors/new-authors && ls -la
+      - run: cd content/authors/new-authors && ls -lah
       # - node/install-packages:
       #     app-dir: "."
       #     cache-path: "./node_modules"
