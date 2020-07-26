@@ -60,6 +60,13 @@ module "cloudfront_s3_cdn" {
   EOT
 }
 
+# Bucket for static assets
+resource "aws_s3_bucket" "static_assets" {
+  bucket   = "${var.stage}-${var.name}-static-assets"
+  acl      = var.acl
+  tags     = local.tags
+}
+
 # # cloudfront lambda@edge
 
 # resource "aws_s3_bucket" "lambda_s3" {

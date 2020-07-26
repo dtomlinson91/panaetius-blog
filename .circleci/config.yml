@@ -1,13 +1,112 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
-# Use a package of configuration called an orb.
+
 orbs:
-  # Declare a dependency on the welcome-orb
-  welcome: circleci/welcome-orb@0.4.1
-# Orchestrate or schedule a set of jobs
+  node: circleci/node@3.0.1
+  hugo: circleci/hugo@0.5.2
+  awss3: circleci/aws-s3@1.0.16
+  go: circleci/go@1.3.0
+  slack: circleci/slack@3.4.2
+
 workflows:
-  # Name the workflow "welcome"
-  welcome:
-    # Run the welcome/run job in its own container
+  deploy_blog:
     jobs:
-      - welcome/run
+      - checkout_project:
+          filters:
+            branches:
+              only:
+                - master
+      - build_blog:
+          requires:
+            - checkout_project
+          filters:
+            branches:
+              only:
+                - master
+      - test:
+          requires:
+            - build_blog
+          filters:
+            branches:
+              only:
+                - master
+      - deploy:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - master
+
+jobs:
+  checkout_project:
+    working_directory: ~/panaetius-blog/blog
+    docker:
+      - image: circleci/python:3.8.3
+    steps:
+      - checkout:
+          path: ~/panaetius-blog
+      - slack/notify:
+          message: Building latest update for https://panaetius.io
+      - run: git submodule update --init --recursive
+      - awss3/sync:
+          from: s3://prod-panaetius-blog-static-assets/
+          to: .
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+      - slack/status
+
+  build_blog:
+    working_directory: ~/panaetius-blog/blog
+    executor:
+      name: node/default
+      tag: "14.3.0"
+    steps:
+      - attach_workspace:
+          at: .
+      - node/install-packages:
+          app-dir: .
+          cache-path: ./node_modules
+          pkg-manager: yarn
+      - node/install-packages:
+          app-dir: ./themes/panaetius-theme
+          cache-path: ./themes/panaetius-theme/node_modules
+          pkg-manager: yarn
+      - hugo/install:
+          version: "0.69.2"
+      - run: yarn buildBlog
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+      - slack/status
+
+  test:
+    working_directory: ~/panaetius-blog/blog
+    executor:
+      name: hugo/cibuilds
+      tag: "0.69"
+    steps:
+      - attach_workspace:
+          at: .
+      - run: htmlproofer ./public --url-swap 'https?\:\/\/(panaetius.io):'
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+      - slack/status
+
+  deploy:
+    working_directory: ~/panaetius-blog/blog
+    executor:
+      name: go/default
+      tag: "1.14.6"
+    steps:
+      - attach_workspace:
+          at: .
+      - run: go get -v github.com/bep/s3deploy
+      - run: s3deploy -source=./public -region=eu-west-1 -bucket=prod-panaetius-blog-origin -distribution-id=E2IHXIMPI3MZ2X
+      - slack/status
+      - slack/notify:
+          message: Build complete https://panaetius.io

@@ -1,0 +1,17 @@
+static/favicon-16x16.png
+static/android-chrome-192x192.png
+static/apple-touch-icon.png
+static/images/DUCK_256.png
+static/images/icons/warning-icon-notice.png
+static/images/icons/tip-icon-notice.png
+static/images/icons/series-scarecrow.png
+static/images/icons/Kraken.png
+static/images/icons/note-icon-notice.png
+static/images/icons/Wizard.png
+static/images/icons/Gods.png
+static/images/icons/series-icon-notice-old.png
+static/images/icons/info-icon-notice.png
+static/images/icons/series-icon-notice.png
+static/images/icons/pillar.png
+static/android-chrome-512x512.png
+static/favicon-32x32.png
