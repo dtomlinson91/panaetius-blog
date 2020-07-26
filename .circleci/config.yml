@@ -8,9 +8,21 @@ orbs:
 workflows:
   initial:
     jobs:
-      - print_workspace
+      # - print_workspace
+      - checkout_project
 
 jobs:
+  checkout_project:
+    working_directory: "~/panaetius-blog/blog"
+    docker:
+      - image: "circleci/python:3.8.3"
+    steps:
+      - checkout:
+          path: "~/panaetius-blog"
+      - awss3/sync:
+          from: "s3://prod-panaetius-blog-static-assets/"
+          to: "."
+
   print_workspace:
     working_directory: "~/panaetius-blog/blog"
     executor:
