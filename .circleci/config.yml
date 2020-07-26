@@ -66,6 +66,7 @@ jobs:
     steps:
       - attach_workspace:
           at: "."
-      - hugo/html-proofer:
-          path: "./public"
-          url-swap: "'https?://(panaetius.io):'"
+      - run: htmlproofer ./public --url-swap 'https?\:\/\/(panaetius.io)\:'
+      # - hugo/html-proofer:
+      #     path: "./public"
+      #     url-swap: "'https?://(panaetius.io):'"

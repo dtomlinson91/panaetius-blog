@@ -32,6 +32,8 @@ If you are not using an orb's executor, and you are defining your own, you can c
 
 ## Orbs
 
+Orb registry: <https://circleci.com/orbs/registry/>.
+
 Orbs give you access to special commands. E.g the `node` orb has commands built in to install node/yarn, and to automatically cache when you do an install of your packages.
 
 Orbs can also come with executors pre-configured. The `node` orb comes with a `node` docker executor bundled, so you don't need to worry about choosing the write docker image you can use the executor provided by the orb and pass in any additional paramters if you need to choose the version.
