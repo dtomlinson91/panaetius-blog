@@ -27,6 +27,8 @@ jobs:
     docker:
       - image: circleci/python:3.8.3
     steps:
+      - slack/notify:
+          message: Building latest update for https://panaetius.io
       - checkout:
           path: ~/panaetius-blog
       - run: git submodule update --init --recursive
@@ -62,6 +64,8 @@ jobs:
           root: .
           paths:
             - .
+      - slack/status
+
 
   test:
     working_directory: ~/panaetius-blog/blog
@@ -76,6 +80,8 @@ jobs:
           root: .
           paths:
             - .
+      - slack/status
+
 
   deploy:
     working_directory: ~/panaetius-blog/blog
@@ -87,3 +93,6 @@ jobs:
           at: .
       - run: go get -v github.com/bep/s3deploy
       - run: s3deploy -source=./public -region=eu-west-1 -bucket=prod-panaetius-blog-origin -distribution-id=E2IHXIMPI3MZ2X
+      - slack/status
+      - slack/notify:
+          message: Build complete https://panaetius.io
