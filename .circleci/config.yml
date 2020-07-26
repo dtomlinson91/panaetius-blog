@@ -52,4 +52,4 @@ jobs:
       - run: yarn buildBlog
       - hugo/html-proofer:
           path: "./public"
-          url-swap: "'https?:\/\/(panaetius.io):'"
+          url-swap: "'https?://(panaetius.io):'"
