@@ -74,6 +74,10 @@ github = "dtomlinson91"
 enable = true
 url = "https://commento.panaetius.co.uk/js/commento.js"
 
+[params.prismJS]
+enable = true
+theme = "tomorrow"
+
 [imaging]
 resampleFilter = "Lanczos"
 
@@ -81,9 +85,10 @@ resampleFilter = "Lanczos"
 home = ["HTML", "RSS", "JSON"]
 page = ["HTML", "RSS"]
 
-[markup]
+# [markup]
 
-[markup.highlight]
+# [markup.highlight]
 # style = "monokailight"
-style = "paraiso-dark"
-lineNos = true
+# style = "paraiso-dark"
+# lineNos = true
+
