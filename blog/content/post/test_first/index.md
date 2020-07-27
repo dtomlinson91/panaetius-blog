@@ -27,6 +27,8 @@ Hello 💁🏻‍♀️
 
 Deployed with circle CI ⏱
 
+Beginning _strapi_ 🐳
+
 ```javascript
 const webpack = require("webpack");
 const webpackConfig = require("./webpack.prod");
