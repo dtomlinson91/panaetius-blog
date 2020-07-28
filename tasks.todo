@@ -3,7 +3,7 @@ Projects:
     ✔ Change text on homepage on mobile. @done (6/11/2020, 11:18:32 PM)
 
   CSS:
-    ☐ Document using transition.
+    ✔ Document using transition. @done (7/28/2020, 11:40:32 PM)
 
   Hugo:
     ☐ Document pagination
@@ -35,11 +35,6 @@ Projects:
 
   Content:
     ✔ Add a series taxonomy @done (7/27/2020, 2:22:00 AM)
-      Notes:
-        Needs it's own page listing all series
-        Each series needs its own page with image and intro + TOC (https://simpleisbetterthancomplex.com/series/beginners-guide/1.11/)
-        Could have a banner or side content saying this is part N in a series?
-        Use this shortcode on pages in a series: <https://www.robinwieruch.de/webpack-eslint> - showing what part of N it is and of what series. Should dynamically show depending on whether it is a series or not.
     ✔ Have a categories taxonomy (https://www.integralist.co.uk/posts/static-search-with-lunr/ at the bottom) @done (6/11/2020, 11:20:04 PM)
       Notes:
         Categories are high level: code, guides/tutorials, deployment etc
@@ -54,8 +49,6 @@ Projects:
 
   CI:
     ✔ Use circle CI to deploy @done (7/27/2020, 2:22:07 AM)
-      Notes:
-        Make sure we run `yarn build` on the theme first.
 
   Final build:
     ✔ Change the front matter for `_index.md` in `post`. @done (7/27/2020, 2:22:10 AM)
@@ -64,4 +57,4 @@ Projects:
       Notes:
         This blog in general has some interesting things to look at.
 
-    ☐ Document using a fullscreen wallpaper (front-background in _variables.scss)
+    ✔ Document using a fullscreen wallpaper (front-background in _variables.scss) @done (7/28/2020, 11:40:26 PM)
