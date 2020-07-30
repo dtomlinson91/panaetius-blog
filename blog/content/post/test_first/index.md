@@ -29,9 +29,9 @@ Deployed with circle CI ⏱
 
 Beginning _strapi_ 🐳
 
-`test.js`
+`test.js` file below
 
-{{< highlighter go "linenos=table,hl_lines=8 10-12,linenostart=1" test.js>}}
+{{< highlighter javascript "linenos=table,hl_lines=8 10-12,linenostart=1" test.js>}}
 const webpack = require("webpack");
 const webpackConfig = require("./webpack.prod");
 
