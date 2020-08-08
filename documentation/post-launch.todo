@@ -1,2 +1,17 @@
-Posts:
-    ☐ Add dot and line to TOC like in <https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group>
+TOC:
+    ☐ Install `tocbot`: <http://tscanlin.github.io/tocbot/>
+    ☐ Install bootstrap toc + document: <https://afeld.github.io/bootstrap-toc/>
+
+Webpack:
+    ☐ Document this
+    ☐ Include `js` files outside the bundle using webpack.
+        ☐ Include JQuery in the webpack bundle - use multiple entry points <https://webpack.js.org/concepts/entry-points/>
+        Can avoid using CDNs this way.
+        See using the `entry` with `test.js` - this will bundle and minimify the code as part of the bundle, and inject it onto each page.
+
+Github Docs:
+    ☐ Using Jekyl for docs on github (see bootstrapTOC for an example) (just link to the relevant pages/config files for future use).
+
+Bootstrap:
+    ☐ Document that the height from top of page to start of column is 42px.
+    ☐ Document a column that doesn't scroll (TOC) - this needs the height of the navbar+height of top of page taking into account when using `sticky-top`.
