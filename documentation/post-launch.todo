@@ -1,5 +1,5 @@
 TOC:
-    ☐ Install `tocbot`: <http://tscanlin.github.io/tocbot/>
+    ✔ Install `tocbot`: <http://tscanlin.github.io/tocbot/> @done (8/9/2020, 3:59:59 PM)
     ☐ Install bootstrap toc + document: <https://afeld.github.io/bootstrap-toc/>
 
 Webpack:
@@ -8,6 +8,8 @@ Webpack:
         ☐ Include JQuery in the webpack bundle - use multiple entry points <https://webpack.js.org/concepts/entry-points/>
         Can avoid using CDNs this way.
         See using the `entry` with `test.js` - this will bundle and minimify the code as part of the bundle, and inject it onto each page.
+        ☐ For modules as entry points, any requirements they need should be exposed to the global object. E.g jQuery for bootstrapTOC. Use this link: <https://stackoverflow.com/questions/28969861/managing-jquery-plugin-dependency-in-webpack> which uses `expose-loader` to do this.
+    ☐ Document using multiple webpack configs for code that needs to go on different pages. We can extract the common code into webpack.common.js and have different config files for each page we want. This is an alternative to using jquery in the javascript to only run if the page is correct. We can use the asset json generated to load it in on only the pages needed keeping the code seperate and the site quick.
 
 Github Docs:
     ☐ Using Jekyl for docs on github (see bootstrapTOC for an example) (just link to the relevant pages/config files for future use).
@@ -15,3 +17,9 @@ Github Docs:
 Bootstrap:
     ☐ Document that the height from top of page to start of column is 42px.
     ☐ Document a column that doesn't scroll (TOC) - this needs the height of the navbar+height of top of page taking into account when using `sticky-top`.
+
+NPM + Git:
+    ☐ Document using a git repo as a dependency
+    Notes:
+        Add the repo to the `package.json`. It only needs `user/repo` as the reference.
+        Use bootstrap toc as an example.
