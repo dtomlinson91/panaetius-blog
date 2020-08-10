@@ -64,9 +64,11 @@ async function syncAssets(cb) {
 // Function to build the theme
 async function buildTheme(cb) {
   console.log(themeDir);
-  await exec(
-    `cd ${themeDir} && node ${themeDir}/node_modules/webpack/bin/webpack.js --config ${themeDir}/webpack.prod.js`
-  );
+  await exec(`cd ${themeDir} && yarn buildMain `);
+  await exec(`cd ${themeDir} && yarn buildPosts`);
+  // await exec(
+  //   `cd ${themeDir} && node ${themeDir}/node_modules/webpack/bin/webpack.js --config ${themeDir}/webpack.prod.js`
+  // );
   cb();
 }
 
@@ -132,7 +134,7 @@ function insertLunrJS() {
 module.exports = {
   // buildSearch: buildSearch,
   // buildHugo: buildHugo,
-  // buildTheme: buildTheme,
+  buildTheme: buildTheme,
   // minifyImages: minifyImages,
   // cleanJS: cleanJS,
   // minifyJS: minifyJS,
