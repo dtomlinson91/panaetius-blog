@@ -16,6 +16,7 @@
   "scripts": {
     "buildBlog": "gulp buildBlog",
     "buildLunr": "gulp buildLunr",
-    "syncAssets": "gulp syncAssets"
+    "syncAssets": "gulp syncAssets",
+    "buildTheme": "gulp buildTheme"
   }
 }
