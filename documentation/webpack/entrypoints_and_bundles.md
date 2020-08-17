@@ -1,5 +1,13 @@
 Entrypoints are `js` files that are ran when the page is loaded.
 
+## Links
+
+Good information on importing vendor bundles: <https://stackoverflow.com/questions/28969861/managing-jquery-plugin-dependency-in-webpack>.
+
+## Example
+
+- `webpack.prod.js` - <https://github.com/dtomlinson91/panaetius-theme/blob/develop/webpack/webpack.prod.js>
+
 ## Uses
 
 ### Running scripts sitewide
@@ -10,6 +18,17 @@ If you need to run a script sitewide you can create an entrypint for the `js` fi
 - CDN files (bootstrap, lunrjs).
 
 Entrypoints are ran when it is inserted into the page.
+
+If you want to import multiple libraries as an entrypoint as vendors you can use a list:
+
+```javascript
+  entry: {
+    mainGlobal: path.resolve(
+        __dirname, "../src/mainGlobal.js"
+    ),
+    vendors: ["bootstrap"],
+  },
+```
 
 ### Making something importable/available sitewide
 
