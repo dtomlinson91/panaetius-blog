@@ -13,5 +13,3 @@ An example is using the `bootstrap-toc` library on `posts` pages only in a blog.
 ### Webpack configs
 
 Create seperate webpack configs for each bundle. Have a global prod bundle for sitewide and a folder with a new prod bundle.
-
-
