@@ -1,0 +1,7 @@
+{
+    "html": {
+        "brace_style": "collapse",
+        "indent_handlebars": false,
+        "indent_size": 2
+    }
+}
