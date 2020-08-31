@@ -19,7 +19,10 @@ blog/node_modules
 # static
 blog/static
 !blog/static/*.svg
-!blog/static/images/*
+
+# content
+blog/content
+!blog/content/*.svg
 
 test/
 .DS_Store
