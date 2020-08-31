@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "gifsicle": "^5.1.0",
     "gulp": "^4.0.2",
     "gulp-clean": "^0.4.0",
     "gulp-hash-filename": "^3.0.0",
