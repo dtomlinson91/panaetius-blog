@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "gifsicle": "^5.1.0",
     "gulp": "^4.0.2",
     "gulp-clean": "^0.4.0",
     "gulp-hash-filename": "^3.0.0",
@@ -10,6 +11,8 @@
     "lunr": "^2.3.8",
     "merge-stream": "^2.0.0",
     "parser-front-matter": "^1.6.4",
+    "prettier": "^2.1.1",
+    "prettier-plugin-go-template": "^0.0.7",
     "readdirp": "^3.4.0",
     "webpack": "^4.43.0"
   },
@@ -17,6 +20,7 @@
     "buildBlog": "gulp buildBlog",
     "buildLunr": "gulp buildLunr",
     "syncAssets": "gulp syncAssets",
+    "syncAssetsR": "gulp syncAssetsR",
     "buildTheme": "gulp buildTheme"
   }
 }

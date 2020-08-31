@@ -61,10 +61,17 @@ async function syncAssets(cb) {
   cb();
 }
 
+async function syncAssetsR(cb) {
+  await exec(
+    `aws s3 sync s3://prod-panaetius-blog-static-assets/ ${currentDir} --exclude "*" --include "*.png" --exclude "*node_modules/*" --exclude "*resources/*"  --exclude "public/*" --delete --profile admin`
+  );
+  cb();
+}
+
 // Function to build the theme
 async function buildTheme(cb) {
   console.log(themeDir);
-  await exec(`cd ${themeDir} && yarn buildMain `);
+  await exec(`cd ${themeDir} && yarn buildGlobal `);
   await exec(`cd ${themeDir} && yarn buildPosts`);
   // await exec(
   //   `cd ${themeDir} && node ${themeDir}/node_modules/webpack/bin/webpack.js --config ${themeDir}/webpack.prod.js`
@@ -147,4 +154,5 @@ module.exports = {
     minifyImages,
   ]),
   syncAssets: syncAssets,
+  syncAssetsR: syncAssetsR,
 };

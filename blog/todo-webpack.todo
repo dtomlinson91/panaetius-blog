@@ -12,10 +12,10 @@ Tasks:
   ✔ Change main font weight using variables rather than font file. @done (6/2/2020, 3:46:51 AM)
   ✔ Fix table and bootstrap issues with monospace font. @done (6/2/2020, 3:47:27 AM)
   ✔ Create a gulpfile to build the search index. @done (6/3/2020, 4:05:01 AM)
-  ☐ Add matomo to project.
-  ☐ Using archetypes.
+  ✔ Add matomo to project. @done (8/17/2020, 1:57:57 AM)
+  ✔ Using archetypes. @done (8/17/2020, 1:57:58 AM)
   ✔ Theme similar to forestry. @done (6/14/2020, 2:49:09 AM)
-  ☐ Document making bavbar active (goes in the header.html or navbar) <https://discourse.gohugo.io/t/another-way-to-make-a-menu-item-active/17029/21> make sure in config.toml the url ends in /.
+  ✔ Document making bavbar active (goes in the header.html or navbar) <https://discourse.gohugo.io/t/another-way-to-make-a-menu-item-active/17029/21> make sure in config.toml the url ends in /. @done (8/17/2020, 1:58:48 AM)
 
 Theme:
   ✔ Colour scheme (forestry) @done (6/9/2020, 12:24:25 PM)
@@ -32,7 +32,7 @@ Search:
   ✔ Have search auto run whenever a button is pressed @done (6/7/2020, 5:38:31 PM)
 
 Gulp:
-  ☐ Change lunr insert - should insert the whole script html with a dummy tag that it can use to find.
+  ✔ Change lunr insert - should insert the whole script html with a dummy tag that it can use to find. @done (8/17/2020, 1:58:51 AM)
   ✔ Using <https://stackoverflow.com/questions/23247642/modify-file-in-place-same-dest-using-gulp-js-and-a-globbing-pattern> and <https://www.npmjs.com/package/gulp-replace> to handle hashed images. @done (6/4/2020, 1:28:15 AM)
   Notes:
     ✔ If you are not using Hugo, you could use the above to dynamically reference images in your html, and use gulp to replace them with the images bundled with webpack. Name the images the same as they're referenced, then replace any `<img src="">` with the bundled image in the html. You can get the mapping from the output from webpack, using the unique image name as the key.. You can then use gulp to minimise or resize the images. @done (6/4/2020, 1:28:13 AM)
