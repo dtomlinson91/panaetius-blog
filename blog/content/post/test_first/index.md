@@ -31,7 +31,9 @@ Beginning _strapi_ 🐳
 
 `test.js` file below
 
-{{< highlighter javascript "linenos=table,hl_lines=8 10-12,linenostart=1" test.js>}}
+sent from desktop
+
+{{< highlighter test.js "linenos=table,hl_lines=8 10-12,linenostart=1" javascript>}}
 const webpack = require("webpack");
 const webpackConfig = require("./webpack.prod");
 
