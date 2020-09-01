@@ -26,3 +26,9 @@ NPM + Git:
 
 Gulp:
     ✔ Document using gulp with multiple webpack configs. @done (8/17/2020, 2:01:42 AM)
+
+Misc:
+    ☐ Install TF in WSL2.
+    ☐ Configure TF in VSCode with new settings sync.
+    ☐ Configure and use terragrunt instead of Makefile.
+    ☐ Transfer all documentation into Trilium.
