@@ -1,9 +1,4 @@
 Projects:
-    ✔ Fix the navbar on mobile. @done (6/11/2020, 11:18:31 PM)
-    ✔ Change text on homepage on mobile. @done (6/11/2020, 11:18:32 PM)
-
-  CSS:
-    ✔ Document using transition. @done (7/28/2020, 11:40:32 PM)
 
   Hugo:
     ☐ Document pagination
@@ -11,50 +6,4 @@ Projects:
         ☐ Link <https://glennmccomb.com/articles/how-to-build-custom-hugo-pagination/> and <https://gohugo.io/templates/pagination/>.
         ☐ Link to git
 
-  Images:
-    ✔ Add random animal image to corner of card. @done (6/9/2020, 1:18:32 PM)
-
-    Note:
-      How to edit the homepage, how to edit taxonomy content (the _index.html) file and what this means.
-
-    ✔ Refactor front page like (https://www.educative.io/edpresso) @done (6/11/2020, 11:18:37 PM)
-    ✔ Another layout for cards (https://codewithhugo.com) @done (6/11/2020, 11:18:38 PM)
-
-  Misc:
-    ✔ Create archetypes for posts. @done (7/27/2020, 2:21:57 AM)
-    ✔ Configure pagination for homepage. @done (6/11/2020, 11:18:48 PM)
-    ✔ Add social metadata @done (6/9/2020, 1:27:26 PM)
-      ✔ Create own admonitions with shortcode with custom animal themeing. @done (6/9/2020, 1:27:24 PM)
-
-  Custom layout:
-    ✔ Use the envanto website layouts (whole static themes) to find suitable wallpaper for a post page. @done (6/9/2020, 1:27:29 PM)
-    ✔ Add tags to front page cards @done (6/11/2020, 11:18:52 PM)
-    ✔ Using date in the slug, customising the slugs further? @done (6/11/2020, 11:18:54 PM)
-    ✔ Find a font from envanto and customise the vars in bootstrap (https://getbootstrap.com/docs/4.0/content/reboot/#native-font-stack) @done (6/9/2020, 1:27:33 PM)
-
-
-  Content:
-    ✔ Add a series taxonomy @done (7/27/2020, 2:22:00 AM)
-    ✔ Have a categories taxonomy (https://www.integralist.co.uk/posts/static-search-with-lunr/ at the bottom) @done (6/11/2020, 11:20:04 PM)
-      Notes:
-        Categories are high level: code, guides/tutorials, deployment etc
-        Tags will be specifics: python, aws etc
-        Series will be like a collection of posts in a series.
-
-    Useful links that might be useful to the above for later
     ☐ https://www.netlify.com/blog/2018/07/24/hugo-tips-how-to-create-author-pages/
-
-  SEO:
-    ✔ Create social media accounts for the site and add to structured data + config.toml @done (7/27/2020, 2:22:05 AM)
-
-  CI:
-    ✔ Use circle CI to deploy @done (7/27/2020, 2:22:07 AM)
-
-  Final build:
-    ✔ Change the front matter for `_index.md` in `post`. @done (7/27/2020, 2:22:10 AM)
-
-    ☐ https://www.integralist.co.uk/posts/python-asyncio/
-      Notes:
-        This blog in general has some interesting things to look at.
-
-    ✔ Document using a fullscreen wallpaper (front-background in _variables.scss) @done (7/28/2020, 11:40:26 PM)
