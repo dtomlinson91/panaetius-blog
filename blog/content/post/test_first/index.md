@@ -8,7 +8,7 @@ authors:
 tags:
   - "tag1"
 series:
-  - "series"
+  - "Rust"
 draft:
   - false
 ---
