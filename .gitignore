@@ -22,7 +22,8 @@ blog/static
 
 # content
 # blog/content
-!blog/content/*.png
+# !blog/content/*.png
+blog/content/**/*.png
 
 test/
 .DS_Store
