@@ -1,5 +1,5 @@
 ---
-Title: "Test series of articles"
+Title: "Test series of articles 📒"
 Description: "some test descriptions"
 ---
 
