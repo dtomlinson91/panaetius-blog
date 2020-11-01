@@ -17,11 +17,13 @@ There is sometimes some confusion for those new to Rust about the differences be
 
 We explore the basic differences between them and how to use them in Rust projects comparing with Python to show the differences.
 
+{{< notice series >}}
+Part 1 in the [Creating modules in Rust 🦀 series](/series/creating-modules-in-rust/). Parts 2 and 3 to follow soon.
+{{< /notice >}}
+
 <!--more-->
 
-{{< notice info >}}
 If you haven't already you should check [Chapter 7 in the Rust book](https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html) on how to manage and create a Rust crate composed of submodules.
-{{< /notice >}}
 
 ## use
 
