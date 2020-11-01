@@ -7,8 +7,6 @@ authors:
   - "Daniel Tomlinson"
 tags:
   - "tag1"
-series:
-  - "Rust"
 draft:
   - false
 ---
