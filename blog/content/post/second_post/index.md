@@ -37,7 +37,7 @@ def flask():
 
 ## Instagram Simple Shortcode
 
-{{< instagram_simple BGvuInzyFAe hidecaption >}}
+<!-- {{< instagram_simple BGvuInzyFAe hidecaption >}} -->
 
 <br>
 
@@ -101,4 +101,3 @@ Infomation Admonition
 {{< notice warning >}}
 This is a warning notice. Be warned! `code`
 {{< /notice >}}
-

@@ -13,5 +13,6 @@
   },
   "[tfvars]": {
     "editor.defaultFormatter": "hashicorp.terraform"
-  }
+  },
+  "circleci-vscode.apiToken": "1053f9ce2121b6c7975c63d0cc686ee59fc5a8b3"
 }

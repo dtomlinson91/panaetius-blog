@@ -22,7 +22,7 @@ def flask():
 
 ## Instagram Simple Shortcode
 
-{{< instagram_simple BGvuInzyFAe hidecaption >}}
+<!-- {{< instagram_simple BGvuInzyFAe hidecaption >}} -->
 
 <br>
 
