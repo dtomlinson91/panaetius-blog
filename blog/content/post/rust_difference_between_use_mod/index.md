@@ -1,6 +1,6 @@
 ---
 title: "The difference between mod and use in Rust"
-date: 2020-11-01T17:46:54Z
+date: 2020-11-01T00:02:52Z
 images:
   - "images/banner.svg"
 authors:

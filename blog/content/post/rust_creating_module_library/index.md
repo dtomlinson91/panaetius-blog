@@ -7,8 +7,7 @@ authors:
   - "Daniel Tomlinson"
 tags:
   - "Rust"
-draft:
-  - false
+draft: true
 ---
 
 Introductory text

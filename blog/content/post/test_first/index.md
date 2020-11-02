@@ -7,8 +7,7 @@ authors:
   - "Daniel Tomlinson"
 tags:
   - "tag1"
-draft:
-  - false
+draft: true
 ---
 
 CF Lambda@Edge only need the lambda_function_association setting on the CF instance for the default origin.
