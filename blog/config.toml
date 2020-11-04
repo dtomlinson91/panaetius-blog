@@ -10,7 +10,7 @@ DefaultContentLanguage = "en"
 enableInlineShortcodes = true
 footnoteReturnLinkContents = "^"
 enableRobotsTXT = true
-description = "Tech blog showcasing various Python, Rust, Homelab and other technologies to try at home."
+description = "Tech blog showcasing Python, Rust, Homelab and various other technologies to try at home."
 
 [permalinks]
   post = "post/:year/:month/:slug/"
@@ -64,7 +64,7 @@ author = "authors"
 [params]
 header = "panaetius.io"
 author = "Daniel Tomlinson"
-description = "Tech blog showcasing Python, Machine-Learning, Vue, Homelab and other technologies to try at home."
+description = "Tech blog showcasing Python, Rust, Homelab and various other technologies to try at home."
 homepageImage = "/images/front-images/world.svg"
 logo = "/images/front-images/world.svg"
 share = true
