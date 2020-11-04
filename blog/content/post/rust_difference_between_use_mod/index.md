@@ -58,13 +58,15 @@ let spawned_thread = spawn(|| {
 });
 {{< /highlighter >}}
 
-In this example we have brought `std::thread::spawn` into the current namespace. It can now be accessed with just `spawn`.
+By bringing `std::thread::spawn` into the current namespace it can now be accessed with just `spawn()`.
 
-Simple enough, we can see that using `use` for items in the standard library can make things less repetitive, and more concise.
+This is what `use` is used for in Rust. By using it for items we can make things less repetitive, and more concise.
 
 ### external crates
 
-What about external crates? Let's look at using [`tungstenite`](https://crates.io/crates/tungstenite) - a WebSocket inplementation for Rust.
+What about external crates? Does using `use` have any effect on _importing_ items?
+
+Let's look at using [`tungstenite`](https://crates.io/crates/tungstenite) - a WebSocket inplementation for Rust.
 
 As usual for any external crates we need to add the dependency to our `cargo.toml` file:
 
@@ -72,7 +74,7 @@ As usual for any external crates we need to add the dependency to our `cargo.tom
 tungstenite = "0.11.1"
 {{< /highlighter >}}
 
-For an simple example, we can use the snippet given on the `tungstenite` main page:
+For a simple example, we can use the snippet given on the `tungstenite` main page:
 
 {{< highlighter rust "linenos=true,hl_lines=2-3 8-9" example.rs >}}
 use std::net::TcpListener;
@@ -97,6 +99,34 @@ for stream in server.incoming() {
 {{< /highlighter >}}
 
 We can see on the highlighted lines that by using `use` allows us to simply reference the items directly, without having to type out the full path each time.
+
+But what if we don't use `use` in this case? If we remove lines 2-3 and replace each function call with its full path instead:
+
+{{< highlighter rust "linenos=true,hl_lines=6-7" example.rs >}}
+use std::net::TcpListener;
+
+/// A WebSocket echo server
+let server = TcpListener::bind("127.0.0.1:9001").unwrap();
+for stream in server.incoming() {
+    std::thread::spawn (move || {
+        let mut websocket = tungstenite::server::accept(stream.unwrap()).unwrap();
+        loop {
+            let msg = websocket.read_message().unwrap();
+
+            // We do not want to send back ping/pong messages.
+            if msg.is_binary() || msg.is_text() {
+                websocket.write_message(msg).unwrap();
+            }
+        }
+    });
+}
+{{< /highlighter >}}
+
+We see that this compiles and runs just fine. No matter if you're using an item from the standard library, an item you've written yourself somewhere in your crate or a third party library you've imported - using `use` simply provides a convenient short way to bring items into the current namespace.
+
+{{< notice tip >}}
+Using `use` is entirely **optional**. It does not function like `import` in Python. You can access any item from any path directly, there is no need to explicitly import something if you want to use it.
+{{< /notice >}}
 
 ### additional information
 
@@ -173,7 +203,7 @@ Remember that in order to use `use` an item must be declared public with the `pu
 
 Finally one important tip when building modules is that you can use `use` to declare a public inteface for your library/module. For those coming from python this is similar to using an `__init__.py` to declare multiple `import` statements at some top level, which then conveniently brings any deeply nested objects into scope.
 
-Using the Python library [Pandas](https://github.com/pandas-dev/pandas/blob/master/pandas/__init__.py) as an example we can see that the bulk of the library is written in `pandas.core.api`, but by importing `pandas` the `__init__.py` brings all these into scope so you can access `DataFrame` by doing
+Using the Python library [Pandas](https://github.com/pandas-dev/pandas/blob/master/pandas/__init__.py) as an example we can see that the bulk of the library is written in `pandas.core.api`, but when you `import pandas` the `__init__.py` brings all these into scope so you can conveniently access `DataFrame` by doing
 
 {{< highlighter python "linenos=table,linenostart=1" main.py >}}
 import pandas as pd
@@ -214,17 +244,19 @@ fn main() {
 }
 {{< /highlighter >}}
 
-Although this example isn't using multiple `.rs` files, it is using the `mod` declaration showing how you can nest modules inside other modules. After looking at using `mod` in the next section and the rest of the articles in this series which show you how to create file heirarchies for Rust crates you will be able to achieve the same convenient imports you get when using an `__init__.py` file.
+Although this example isn't using multiple `.rs` files, it is using the `mod` declaration showing how you can nest modules inside other modules.
+
+We can see that the full path to `bar()` is `quux::foo::bar` (and similarly for `baz()`). But we have used `use` in the _parent_ module and declared the statement public meaning we can access `bar()` by doing `quux::bar()`.
+
+Using `use` in this way allows you to create logical structures for your Rust crates/libraries, while providing a nice easy to understand public api for other users (or just for yourself) to use.
+
+After looking at using `mod` in the next section and the rest of the articles in this series which show you how to create file heirarchies for Rust crates you will be able to achieve the same convenient imports you get when using an `__init__.py` file as shown in the `Pandas` example above.
 
 #### `use` summary
 
-In summary, using `use` just allows you to conveniently bring items from other Rust modules into the current namespace in the `.rs` file you are working in.
+In summary, using `use` just allows you to conveniently bring items from other Rust modules (or from other parts of your crate) into the current namespace in the `.rs` file you are working in.
 
-{{< notice tip >}}
-Using `use` is entirely **optional**. It does not function like `import` in Python. You can access any item from any path directly, there is no need to explicitly import something if you want to use it.
-{{< /notice >}}
-
-This is because Cargo does a lot of magic behind the scenes. When you `cargo build` your crate, it will dynamically import and bundle up anything you have accessed in your crate so it's accessible in the final binary/library.
+The reason there is no explicit need to import items is because Cargo does a lot of magic behind the scenes. When you `cargo build` your crate, it will dynamically import and bundle up anything you have accessed in your crate so it's accessible in the final binary/library.
 
 Using `use` is just for convenience. **There is no need to use `use` to import anything** in Rust - just access things directly, and use `use` to make things easier and avoid repetition.
 
@@ -234,7 +266,7 @@ As always the various Rust documentation resources are really well written and y
 
 ## mod
 
-In Rust a lot of beginners struggle with `mod` and the real difference over `use`. When creating submodules you use `mod` to declare them so you can utilise them in your current `.rs` file which can be confusing. Why not simply use `use`?
+In Rust a lot of beginners struggle with `mod` and the real difference over `use`. When creating modules and submodules you use `mod` to declare them so you can utilise them in your current `.rs` file which can be confusing. Why not simply use `use`?
 
 In Rust a module is simply a container for zero or more [items](https://doc.rust-lang.org/reference/items.html). It's a way of grouping items together in a logical way so that your module is easy to navigate.
 
@@ -248,7 +280,7 @@ Let's look at the standard library for an example. Consider the following path:
 
 `std::os::unix::fs::MetadataExt`
 
-Here `std` is the crate, `os` is a module, `unix` is a module inside `os`, `fs` is a module inside `unix` and `MetadataExt` is a [trait](https://doc.rust-lang.org/rust-by-example/trait.html) inside `linux`.
+Here `std` is the crate, `os` is a module, `unix` is a module inside `os`, `fs` is a module inside `unix` and `MetadataExt` is a [trait](https://doc.rust-lang.org/rust-by-example/trait.html) inside `fs`.
 
 If this were a single file it could look like (it doesn't but let's pretend it does):
 
@@ -320,11 +352,13 @@ Compare this to the first code block in the previous example for the `std` crate
 
 Importantly, what this does when you use `mod` in this way is it **brings the contents of `downloader.rs` and inserts it into the current file.**
 
-This means that in `lib.rs` you can use any items you've written in `downloader.rs` as if they were actually written in `lib.rs` (as this is what Cargo will do for you when you build your crate). Cargo also does some magic behind the scenes by wrapping the code block in a mod body using `{}`.
+This means that in `lib.rs` you can use any items you've written in `downloader.rs` as if they were actually written in `lib.rs` (as this is what Cargo will do for you when you build your crate). Cargo also does some work behind the scenes by wrapping the code block in a mod body using `{}`.
 
 This behaviour means you can write your code in separate `.rs` files, and declare them as modules using `mod` in some other file which then acts as a parent. When you do a `cargo build`, this parent file will contain all the code neatly wrapped in `mod {}` blocks. This makes it easy to split your source code out and build a heirarchy of files for your crate while mainting a nice and easy way for others to use your library.
 
-This is the main difference between `mod` and `use`. Remember that using `use` simply brings an item into the current namespace so you can access it more easily. Whereas `mod` (without a body block `{}`) literally brings the contents of a file and inserts in its place.
+**This is the main difference between `mod` and `use`.** Remember that using `use` simply brings an item into the current namespace so you can access it more easily. Whereas `mod` (without a body block `{}`) literally brings the contents of a file and inserts in its place.
+
+We cannot replace the `pub mod downloader;` line with a `use` statement. We have to declare `downloader.rs` as a module so it's added to the crate structure.
 
 If we published this to Cargo and someone added `myLibrary` to their `cargo.toml` file, they could then use
 
