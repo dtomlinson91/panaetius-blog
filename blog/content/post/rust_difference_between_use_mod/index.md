@@ -348,23 +348,39 @@ with `lib.rs` containing
 pub mod downloader;
 {{< /highlighter >}}
 
+{{< notice info >}}
+We are using a `lib.rs` file for this example and not `main.rs`. If you follow along your crate will compile but Rust will not create binary for you to run yourself. Part 3 of this series (coming soon) will show you the difference between these two special files in Rust, when to use each one and how they interact with each other.
+{{< /notice >}}
+
 Compare this to the first code block in the previous example for the `std` crate. We are not using a module body in a single file, rather we have simply declared `downloader.rs` a module by putting a `mod` declaration in its parent (`lib.rs`).
 
 Importantly, what this does when you use `mod` in this way is it **brings the contents of `downloader.rs` and inserts it into the current file.**
 
-This means that in `lib.rs` you can use any items you've written in `downloader.rs` as if they were actually written in `lib.rs` (as this is what Cargo will do for you when you build your crate). Cargo also does some work behind the scenes by wrapping the code block in a mod body using `{}`.
+This means that in `lib.rs` you can use any items you've written in `downloader.rs` as if they were actually written inside a `mod downloader {};` block in `lib.rs` (as this is what Cargo will do for you when you build your crate).
+
+Let's say we have a public function `download()` inside `downloader.rs`. In `lib.rs` you would refer to this (and indeed any other item) in `downloader.rs` with the path `downloader::download()` (or to be more explicit: `self::downloader::download()`).
+
+You can, of course, use a `use` statement:
+
+`use downloader::download;`
+
+which would allow you to simply call `download()` inside `lib.rs`, rather than its full path `downloader::download()`.
+
+{{< notice note >}}
+If you use both a `mod` and a `use` statement to refer to the same path, the order matters. In this example the `use` statement must come after the `mod` statement. If you reverse the order, Rust would not know `downloader.rs` is a module and it would not compile.
+{{< /notice >}}
 
 This behaviour means you can write your code in separate `.rs` files, and declare them as modules using `mod` in some other file which then acts as a parent. When you do a `cargo build`, this parent file will contain all the code neatly wrapped in `mod {}` blocks. This makes it easy to split your source code out and build a heirarchy of files for your crate while mainting a nice and easy way for others to use your library.
 
 **This is the main difference between `mod` and `use`.** Remember that using `use` simply brings an item into the current namespace so you can access it more easily. Whereas `mod` (without a body block `{}`) literally brings the contents of a file and inserts in its place.
 
-We cannot replace the `pub mod downloader;` line with a `use` statement. We have to declare `downloader.rs` as a module so it's added to the crate structure.
+**We cannot replace the `pub mod downloader;` line with a `use` statement**. We have to declare `downloader.rs` as a module so it's added to the crate structure.
 
 If we published this to Cargo and someone added `myLibrary` to their `cargo.toml` file, they could then use
 
-`use myLibrary::downloader::*;`
+`use myLibrary::downloader::download;`
 
-to access any items we write in this file.
+to access the function `download()`.
 
 Without using `pub mod downloader;` in `lib.rs`, Rust would not know that `downloader.rs` is a module (even if `downloader.rs` contains valid Rust code).
 
