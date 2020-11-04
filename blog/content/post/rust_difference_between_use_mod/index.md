@@ -401,3 +401,5 @@ Using `mod` allows you to group items together in a logical way. You can create 
 ## summary
 
 We have looked at both `use` and `mod` and seen how they can be used in a Rust crate you write. In the next article in this series, we will look at how we can use `mod` to create a file structure to allow you to create your own libraries in Rust.
+
+If you have any questions, queries or comments, leave them below.
