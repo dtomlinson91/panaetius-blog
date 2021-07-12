@@ -11,6 +11,7 @@ enableInlineShortcodes = true
 footnoteReturnLinkContents = "^"
 enableRobotsTXT = true
 description = "Tech blog showcasing Python, Rust, Homelab and various other technologies to try at home."
+ignoreErrors = ["error-missing-instagram-accesstoken"]
 
 [permalinks]
   post = "post/:year/:month/:slug/"
