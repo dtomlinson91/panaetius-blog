@@ -1,9 +1,7 @@
-Projects:
-
-  Hugo:
-    ☐ Document pagination
-      Notes:
-        ☐ Link <https://glennmccomb.com/articles/how-to-build-custom-hugo-pagination/> and <https://gohugo.io/templates/pagination/>.
-        ☐ Link to git
-
-    ☐ https://www.netlify.com/blog/2018/07/24/hugo-tips-how-to-create-author-pages/
+Refresh:
+  ☐ Change to dark theme
+  ☐ Migrate from Bootstrap TOC to TocBot
+  ☐ Update to bootstrap 5
+  ☐ Move Lunr into webpack
+  ☐ Tidy up + simplify webpack/gulp
+  ☐ Update to latest Hugo

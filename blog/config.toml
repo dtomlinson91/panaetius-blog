@@ -1,7 +1,6 @@
 baseURL = "https://panaetius.io/"
 # relativeURLs = true
 title = "panaetius.io"
-# theme = "panaetius-chunky-theme"
 theme = ["hugo-notice-admonition", "panaetius-theme"]
 paginate = 3
 summaryLength = 2

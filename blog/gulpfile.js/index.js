@@ -27,23 +27,13 @@ async function buildSearch(cb) {
 
 // Function to build the Hugo project
 async function buildHugo(cb) {
-  // await execFile("hugo", ["-D", "--minify"]);
   await execFile("hugo", ["--minify"]);
 }
 
 // Function to minify images
 function minifyImages(cb) {
   gulp
-    .src([
-      // `${currentDir}/content/**/*.png`,
-      // `${currentDir}/content/**/*.svg`,
-      // `${currentDir}/static/**/*.png`,
-      // `${currentDir}/static/**/*.svg`,
-      // `${themeDir}/static/**/*.png`,
-      // `${themeDir}/static/**/*.svg`,
-      `${currentDir}/public/**/*.png`,
-      `${currentDir}/public/**/*.svg`,
-    ])
+    .src([`${currentDir}/public/**/*.png`, `${currentDir}/public/**/*.svg`])
     .pipe(imagemin())
     .pipe(
       gulp.dest(function (file) {
@@ -73,9 +63,6 @@ async function buildTheme(cb) {
   console.log(themeDir);
   await exec(`cd ${themeDir} && yarn buildGlobal `);
   await exec(`cd ${themeDir} && yarn buildPosts`);
-  // await exec(
-  //   `cd ${themeDir} && node ${themeDir}/node_modules/webpack/bin/webpack.js --config ${themeDir}/webpack.prod.js`
-  // );
   cb();
 }
 
@@ -83,13 +70,6 @@ async function buildTheme(cb) {
 async function cleanJS() {
   gulp.src(`${currentDir}/static/dist/*.js`, { read: false }).pipe(clean());
 }
-
-// Define js scripts outside of webpack bundle.
-// const jsFiles = {
-//   lunrjs_gulp: {
-//     node_path: "/node_modules/lunr/lunr.js",
-//   },
-// };
 
 var jsFiles = [
   {
@@ -139,17 +119,11 @@ function insertLunrJS() {
 }
 
 module.exports = {
-  // buildSearch: buildSearch,
-  // buildHugo: buildHugo,
   buildTheme: buildTheme,
-  // minifyImages: minifyImages,
-  // cleanJS: cleanJS,
-  // minifyJS: minifyJS,
-  // buildLunr: gulp.series(cleanJS, minifyJS, insertLunrJS),
   buildBlog: gulp.series([
     buildSearch,
     buildTheme,
-    gulp.series(cleanJS, minifyJS, insertLunrJS),
+    // gulp.series(cleanJS, minifyJS, insertLunrJS),
     buildHugo,
     minifyImages,
   ]),
