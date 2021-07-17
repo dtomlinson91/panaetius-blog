@@ -2,6 +2,6 @@ Refresh:
   ☐ Change to dark theme
   ☐ Migrate from Bootstrap TOC to TocBot
   ☐ Update to bootstrap 5
-  ☐ Move Lunr into webpack
+  ✔ Move Lunr into webpack @done(21-07-16 00:36)
   ☐ Tidy up + simplify webpack/gulp
-  ☐ Update to latest Hugo
+  ✔ Update to latest Hugo @done(21-07-16 00:36)

@@ -62,7 +62,7 @@ async function syncAssetsR(cb) {
 async function buildTheme(cb) {
   console.log(themeDir);
   await exec(`cd ${themeDir} && yarn buildGlobal `);
-  await exec(`cd ${themeDir} && yarn buildPosts`);
+  // await exec(`cd ${themeDir} && yarn buildPosts`);
   cb();
 }
 
