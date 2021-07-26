@@ -5,3 +5,8 @@ Refresh:
   ✔ Move Lunr into webpack @done(21-07-16 00:36)
   ☐ Tidy up + simplify webpack/gulp
   ✔ Update to latest Hugo @done(21-07-16 00:36)
+  ☐ Fix the current page colour highlight in menu
+
+
+Snippets:
+  ☐ Check for css on media screen sizes (see cards.scss for width applied on md only)
