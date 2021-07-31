@@ -1,0 +1,39 @@
+{
+  "index_name": "panaetius_blog_docsearch",
+  "scrape_start_urls": false,
+  "start_urls": [
+    {
+      "url": "https://panaetius.io/tags/",
+      "selectors_key": "tags",
+      "page_rank": 2
+    },
+    {
+      "url": "https://panaetius.io/series/",
+      "selectors_key": "series",
+      "page_rank": 2
+    },
+    {
+      "url": "https://panaetius.io",
+      "page_rank": 1
+    }
+  ],
+  "selectors": {
+    "default": {
+      "lvl0": ".content-page h1",
+      "lvl1": ".content h2",
+      "lvl2": ".content h3",
+      "lvl3": ".content h4",
+      "lvl4": ".content h5",
+      "text": ".content p"
+    },
+    "tags": {
+      "lvl0": { "selector": ".tag-title h1", "default_value": "Tags" },
+      "lvl1": ".tag-title h2",
+      "text": ".card-body h5"
+    },
+    "series": {
+      "lvl0": { "selector": ".series-title h1", "default_value": "Series" },
+      "lvl1": ".series-title h2"
+    }
+  }
+}
