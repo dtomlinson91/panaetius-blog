@@ -80,7 +80,8 @@ page = ["HTML", "RSS"]
 
 [markup.highlight]
 # style = "monokailight"
-style = "paraiso-dark"
+# style = "paraiso-dark"
+style = "dracula"
 lineNos = true
 
 [outputFormats.Algolia]
