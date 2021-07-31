@@ -10,3 +10,20 @@ Refresh:
 
 Snippets:
   ☐ Check for css on media screen sizes (see cards.scss for width applied on md only)
+
+
+  Series color border
+663499
+
+.notice {
+    background: #121A27;
+    border: solid;
+    border-color: #663499;
+}
+
+change text color inside
+
+change icon for each one
+
+
+change author image
