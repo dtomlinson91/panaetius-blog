@@ -1,6 +1,6 @@
-[submodule "blog/themes/hugo-notice-admonition"]
-	path = blog/themes/hugo-notice-admonition
-	url = https://github.com/dtomlinson91/hugo-notice-admonition
+# [submodule "blog/themes/hugo-notice-admonition"]
+# 	path = blog/themes/hugo-notice-admonition
+# 	url = https://github.com/dtomlinson91/hugo-notice-admonition
 [submodule "blog/themes/panaetius-theme"]
 	path = blog/themes/panaetius-theme
 	url = https://github.com/dtomlinson91/panaetius-theme
