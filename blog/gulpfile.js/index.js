@@ -14,6 +14,7 @@ const themeDir = getCurrentDir(__dirname) + "/themes/panaetius-theme";
 // Function to build the Hugo project
 async function buildHugo(cb) {
   await execFile("hugo", ["--minify"]);
+  cb();
 }
 
 // Function to minify images
@@ -30,14 +31,14 @@ function minifyImages(cb) {
 }
 
 // Function to sync static assets to S3 instead of using git LFS.
-async function syncAssets(cb) {
+async function syncAssetsToS3(cb) {
   await exec(
     `aws s3 sync ${currentDir} s3://prod-panaetius-blog-static-assets/ --exclude "*" --include "*.png" --exclude "*node_modules/*" --exclude "*resources/*"  --exclude "public/*" --delete --profile admin`
   );
   cb();
 }
 
-async function syncAssetsR(cb) {
+async function syncAssetsFromS3(cb) {
   await exec(
     `aws s3 sync s3://prod-panaetius-blog-static-assets/ ${currentDir} --exclude "*" --include "*.png" --exclude "*node_modules/*" --exclude "*resources/*"  --exclude "public/*" --delete --profile admin`
   );
@@ -53,13 +54,7 @@ async function buildTheme(cb) {
 
 module.exports = {
   buildTheme: buildTheme,
-  buildBlog: gulp.series([
-    // buildSearch,
-    buildTheme,
-    // gulp.series(cleanJS, minifyJS, insertLunrJS),
-    buildHugo,
-    minifyImages,
-  ]),
-  syncAssets: syncAssets,
-  syncAssetsR: syncAssetsR,
+  buildBlog: gulp.series([buildTheme, buildHugo, minifyImages]),
+  syncAssetsToS3: syncAssetsToS3,
+  syncAssetsFromS3: syncAssetsFromS3,
 };

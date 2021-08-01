@@ -33,3 +33,6 @@ test/
 
 # Yarn
 blog/yarn-error.log
+
+.vscode/
+.env

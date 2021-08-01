@@ -7,6 +7,7 @@ Refresh:
   ✔ Fix the current page colour highlight in menu @done(21-07-31 18:35)
   ☐ Tidy up + simplify webpack/gulp
   ☐ Tidy up scss, use & and clean up
+  ☐ Go through gitguardian and revoke all exposed
 
   Notices:
     ✔ Find new icons for each admonition @done(21-08-01 01:29)
@@ -15,6 +16,9 @@ Refresh:
   Posts:
     ✔ Change author @done(21-08-01 01:50)
     ✔ Find new author icon @done(21-08-01 03:22)
+
+  Navbar:
+    ☐ Fix the dropdown menu
 
   CI/CD:
     ☐ Install Drone
