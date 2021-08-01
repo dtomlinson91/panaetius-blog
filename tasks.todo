@@ -7,7 +7,7 @@ Refresh:
   ✔ Fix the current page colour highlight in menu @done(21-07-31 18:35)
   ☐ Tidy up + simplify webpack/gulp
   ☐ Tidy up scss, use & and clean up
-  ☐ Go through gitguardian and revoke all exposed
+  ✔ Go through gitguardian and revoke all exposed @done(21-08-01 04:26)
 
   Notices:
     ✔ Find new icons for each admonition @done(21-08-01 01:29)
