@@ -48,7 +48,7 @@ async function syncAssetsFromS3(cb) {
 // Function to build the theme
 async function buildTheme(cb) {
   console.log(themeDir);
-  await exec(`cd ${themeDir} && yarn buildGlobal `);
+  await exec(`cd ${themeDir} && yarn build`);
   cb();
 }
 
