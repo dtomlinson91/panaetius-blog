@@ -86,7 +86,7 @@ jobs:
     working_directory: ~/panaetius-blog/blog
     executor:
       name: hugo/cibuilds
-      tag: "0.74"
+      tag: "0.83"
     steps:
       - attach_workspace:
           at: .

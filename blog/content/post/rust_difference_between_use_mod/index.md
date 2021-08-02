@@ -2,7 +2,7 @@
 title: "The difference between mod and use in Rust"
 date: 2020-11-01T00:02:52Z
 images:
-  - "images/banner.svg"
+  - "images/banner.png"
 authors:
   - "Daniel Tomlinson"
 tags:
@@ -16,11 +16,11 @@ There is sometimes some confusion for those new to Rust about the differences be
 
 We explore the basic differences between them and how to use them in Rust projects comparing with Python to show the differences.
 
+<!--more-->
+
 {{< notice series >}}
 Part 1 in the [Creating modules in Rust 🦀 series](/series/creating-modules-in-rust/). Parts 2 and 3 to follow soon.
 {{< /notice >}}
-
-<!--more-->
 
 If you haven't already you should check [Chapter 7 in the Rust book](https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html) on how to manage and create a Rust crate composed of submodules.
 

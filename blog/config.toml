@@ -1,8 +1,8 @@
 baseURL = "https://panaetius.io/"
 # relativeURLs = true
 title = "panaetius.io"
-# theme = "panaetius-chunky-theme"
-theme = ["hugo-notice-admonition", "panaetius-theme"]
+# theme = ["hugo-notice-admonition", "panaetius-theme"]
+theme = ["panaetius-theme"]
 paginate = 3
 summaryLength = 2
 languageCode = "en"
@@ -14,7 +14,7 @@ description = "Tech blog showcasing Python, Rust, Homelab and various other tech
 ignoreErrors = ["error-missing-instagram-accesstoken"]
 
 [permalinks]
-  post = "post/:year/:month/:slug/"
+post = "post/:year/:month/:slug/"
 
 [languages]
 
@@ -31,12 +31,6 @@ identifier = "home"
 name = "Home"
 url = "/"
 weight = 1
-
-# [[menu.main]]
-# identifier = "about"
-# name = "About"
-# url = "/about/"
-# weight = 2
 
 [[menu.main]]
 identifier = "series"
@@ -66,7 +60,7 @@ author = "authors"
 header = "panaetius.io"
 author = "Daniel Tomlinson"
 description = "Tech blog showcasing Python, Rust, Homelab and various other technologies to try at home."
-homepageImage = "/images/front-images/world.svg"
+homepageImage = "/images/front-images/v0032.svg"
 logo = "/images/front-images/world.svg"
 share = true
 twitter = "dmot7291"
@@ -76,20 +70,37 @@ github = "dtomlinson91"
 enable = true
 url = "https://commento.panaetius.co.uk/js/commento.js"
 
-[params.prismJS]
-enable = false
-theme = "tomorrow"
-
 [imaging]
 resampleFilter = "Lanczos"
 
 [outputs]
-home = ["HTML", "RSS", "JSON"]
+home = ["HTML", "RSS", "JSON", "Algolia"]
 page = ["HTML", "RSS"]
 
 [markup]
 
 [markup.highlight]
 # style = "monokailight"
-style = "paraiso-dark"
+# style = "paraiso-dark"
+style = "dracula"
 lineNos = true
+
+[outputFormats.Algolia]
+baseName = "algolia"
+isPlainText = true
+mediaType = "application/json"
+notAlternative = true
+
+[params.algolia]
+vars = [
+  "title",
+  "summary",
+  "date",
+  "publishdate",
+  "expirydate",
+  "permalink",
+  "content",
+  "fuzzywordcount",
+  "readingtime"
+]
+params = ["categories", "tags", "authors", "series", "images"]
