@@ -1,8 +1,8 @@
 ---
-title: "{{ replace .Name "-" " " | title }}"
+title: "{{ replace .Name "_" " " | title }}"
 date: {{ .Date }}
 images:
-  - "images/banner.svg"
+  - "images/banner.png"
 authors:
   - "Daniel Tomlinson"
 tags:
