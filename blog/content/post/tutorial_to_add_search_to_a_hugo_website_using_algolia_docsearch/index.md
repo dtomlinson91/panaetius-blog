@@ -48,7 +48,18 @@ Try it out using the search bar at the top of this page. Search for `rust` and y
 posts, tags, and series which have been indexed. You can also visit the [React](https://reactjs.org/docs/getting-started.html)
 documentation to see it in action.
 
-
 {{< img "images/example_search.png" "example of a search using Docsearch" >}}
 
 ## Requirements
+
+There are a few things you'll need to get started:
+
+- A working Hugo site that is deployed on the internet.
+- Docker so you can run the Docsearch scraper image.
+- An account with Algolia.
+- A search index on Algolia.
+
+{{< notice info >}}
+Algolia has a [free tier](https://www.algolia.com/pricing/) for all accounts which includes
+10,000 searches and 10,000 records. If you go over this limit you'll pay $1.00 per 1,000 requests.
+{{< /notice >}}
