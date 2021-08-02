@@ -67,7 +67,7 @@ def flask():
 
 ## Test img shortcode
 
-{{< img "images/banner.svg*" >}}
+{{< img "images/banner.svg" >}}
 
 ### Test indent
 
