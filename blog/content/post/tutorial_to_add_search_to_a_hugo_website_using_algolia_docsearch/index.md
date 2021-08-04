@@ -8,8 +8,6 @@ authors:
 tags:
   - "hugo"
   - "tutorials"
-series:
-  - "series"
 draft: true
 ---
 
