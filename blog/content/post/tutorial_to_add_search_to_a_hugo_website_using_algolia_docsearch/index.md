@@ -47,6 +47,7 @@ There are a few things you'll need to get started:
 - A working Hugo site that is deployed on the internet.
 - Docker so you can run the Docsearch scraper image.
   - Alternatively you can run the scraper without Docker using Python.
+- Familiarity with the command line (to run Docker).
 - An account with Algolia.
 - A search index on Algolia.
 
@@ -54,7 +55,7 @@ There are a few things you'll need to get started:
 Algolia has a [free tier](https://www.algolia.com/pricing/) for all accounts which includes 10,000 searches and 10,000 records. If you go over this limit you'll pay $1.00 per 1,000 requests.
 {{< /notice >}}
 
-You'll need to have a Hugo website that is published and live on the internet. This is so that the scraper can index the links to be used when a user runs a search. You shouldn't run the scraper on a local or development instance of your site.
+You'll need to have a Hugo website that is published and live on the internet. This is so that the scraper can index the links to be used when a user runs a search. You shouldn't run the scraper against a local or development instance of your site.
 
 ### Create an account on Algolia
 
@@ -97,3 +98,56 @@ To find your API keys look at the panel where you clicked the blue search icon. 
 {{< img "images/algolia_platform_page.png" "open the platform page" >}}
 
 On this page click the *copy to clipboard* icon to the right of the Admin API Key, Search-Only API Key and Application ID and make a note of these somewhere.
+
+## Populate your index
+
+Before we run the Docker image to scrape the site, we need to create a `docsearch.json` which tells the Docsearch scraper what to look for when it scrapes your website.
+
+### docsearch.json
+
+This is going to be different for every website, and my configuration might not necessarily be the same one you need. Docsearch naturally assumes your content is *tiered*, with well defined headings, subheadings and text underneath in order to create an index. You can read more about how this works in the Docsearch documentation [here](https://docsearch.algolia.com/docs/how-do-we-build-an-index).
+
+You should look at the Docsearch [documentation on config files](https://docsearch.algolia.com/docs/config-file) which has all the possible options you can use in a `docsearch.json` file.
+
+As each configuration is different, I will show the configuration I use, explain what each option is doing, and you should be able to create something similar for your own sites.
+
+{{< highlighter json "linenos=table,linenostart=1" docsearch.json >}}
+{
+  "index_name": "docsearch_tutorial",
+  "scrape_start_urls": false,
+  "start_urls": [
+    {
+      "url": "https://panaetius.io/tags/",
+      "selectors_key": "tags",
+      "page_rank": 2
+    },
+    {
+      "url": "https://panaetius.io/series/",
+      "selectors_key": "series",
+      "page_rank": 2
+    },
+    {
+      "url": "https://panaetius.io",
+      "page_rank": 1
+    }
+  ],
+  "selectors": {
+    "default": {
+      "lvl0": ".content-page h1",
+      "lvl1": ".content h2",
+      "lvl2": ".content h3",
+      "lvl3": ".content h4",
+      "lvl4": ".content h5",
+      "text": ".content p"
+    },
+    "tags": {
+      "lvl0": { "selector": "h1", "default_value": "Tags" },
+      "lvl1": ".tag-title h2"
+    },
+    "series": {
+      "lvl0": { "selector": "h1", "default_value": "Series" },
+      "lvl1": ".series-title h2"
+    }
+  }
+}
+{{< /highlighter >}}
