@@ -105,6 +105,8 @@ Before we run the Docker image to scrape the site, we need to create a `docsearc
 
 This is going to be different for every website, and my configuration might not necessarily be the same one you need. Docsearch naturally assumes your content is *tiered*, with well defined headings, subheadings and text underneath in order to create an index. You can read more about how this works in the Docsearch documentation [here](https://docsearch.algolia.com/docs/how-do-we-build-an-index).
 
+It's primarily designed for documentation websites, but is perfect for Hugo blogs as markdown is naturally tiered by using headings and subheadings to organise the content on your page.
+
 You should look at the Docsearch [documentation on config files](https://docsearch.algolia.com/docs/config-file) which has all the possible options you can use in a `docsearch.json` file.
 
 As each configuration is different, I will show the configuration I use, explain what each option is doing, and you should be able to create something similar for your own sites.
