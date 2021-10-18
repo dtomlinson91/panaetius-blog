@@ -101,11 +101,11 @@ jobs:
     working_directory: ~/panaetius-blog/blog
     executor:
       name: go/default
-      tag: "1.17.2"
+      tag: "1.14.15"
     steps:
       - attach_workspace:
           at: .
-      - run: go get -v github.com/bep/s3deploy
+      - run: go get -u -v github.com/bep/s3deploy
       - run: s3deploy -source=./public -region=eu-west-1 -bucket=prod-panaetius-blog-origin -distribution-id=E2IHXIMPI3MZ2X
       - slack/status
       - slack/notify:
