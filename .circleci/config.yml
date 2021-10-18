@@ -74,7 +74,7 @@ jobs:
           cache-path: ./themes/panaetius-theme/node_modules
           pkg-manager: yarn
       - hugo/install:
-          version: "0.74.3"
+          version: "0.86.0"
       - run: yarn buildBlog
       - persist_to_workspace:
           root: .
@@ -85,7 +85,7 @@ jobs:
   test:
     working_directory: ~/panaetius-blog/blog
     executor:
-      name: hugo/cibuilds
+      name: hugo/default
       tag: "0.86"
     steps:
       - attach_workspace:
