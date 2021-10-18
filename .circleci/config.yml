@@ -2,7 +2,7 @@
 
 orbs:
   node: circleci/node@3.0.1
-  hugo: circleci/hugo@0.5.2
+  hugo: circleci/hugo@1.2.2
   awss3: circleci/aws-s3@1.0.16
   go: circleci/go@1.3.0
   slack: circleci/slack@3.4.2
@@ -74,7 +74,7 @@ jobs:
           cache-path: ./themes/panaetius-theme/node_modules
           pkg-manager: yarn
       - hugo/install:
-          version: "0.74.3"
+          version: "0.86.0"
       - run: yarn buildBlog
       - persist_to_workspace:
           root: .
@@ -85,8 +85,8 @@ jobs:
   test:
     working_directory: ~/panaetius-blog/blog
     executor:
-      name: hugo/cibuilds
-      tag: "0.83"
+      name: hugo/default
+      tag: "0.86"
     steps:
       - attach_workspace:
           at: .

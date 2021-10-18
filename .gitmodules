@@ -1,3 +1,3 @@
-# [submodule "blog/themes/panaetius-theme"]
+[submodule "blog/themes/panaetius-theme"]
 	path = blog/themes/panaetius-theme
 	url = https://github.com/dtomlinson91/panaetius-theme
