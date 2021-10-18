@@ -85,7 +85,7 @@ jobs:
   test:
     working_directory: ~/panaetius-blog/blog
     executor:
-      name: default
+      name: hugo/default
       tag: "0.86"
     steps:
       - attach_workspace:
