@@ -3,8 +3,8 @@
 orbs:
   node: circleci/node@3.0.1
   hugo: circleci/hugo@1.2.2
-  awss3: circleci/aws-s3@1.0.16
-  go: circleci/go@1.7.0
+  awss3: circleci/aws-s3@3.0.0
+  # go: circleci/go@1.7.0
   slack: circleci/slack@3.4.2
 
 workflows:
@@ -99,14 +99,15 @@ jobs:
 
   deploy:
     working_directory: ~/panaetius-blog/blog
-    executor:
-      name: go/default
-      tag: "1.14.15"
+    docker:
+      - image: circleci/python:3.8.3
     steps:
       - attach_workspace:
           at: .
-      - run: go get -u -v github.com/bep/s3deploy
-      - run: s3deploy -source=./public -region=eu-west-1 -bucket=prod-panaetius-blog-origin -distribution-id=E2IHXIMPI3MZ2X
-      - slack/status
+      - awss3/sync:
+          from: ./public/
+          to: s3://prod-panaetius-blog-origin
+          arguments: --delete
       - slack/notify:
           message: Build complete https://panaetius.io
+      - slack/status
