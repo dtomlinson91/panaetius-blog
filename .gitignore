@@ -18,7 +18,7 @@ blog/node_modules
 
 # static
 blog/static
-!blog/static/*.svg
+!blog/static/**/*.svg
 
 # content
 # blog/content
@@ -33,3 +33,6 @@ test/
 
 # Yarn
 blog/yarn-error.log
+
+.vscode/
+.env

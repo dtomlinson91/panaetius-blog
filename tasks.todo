@@ -1,9 +1,29 @@
-Projects:
+Refresh:
+  ✔ Change to dark theme @done(21-07-31 18:35)
+  ✔ Migrate from Bootstrap TOC to TocBot @done(21-07-31 18:35)
+  ✔ Update to bootstrap 5 @done(21-07-31 18:35)
+  ✔ Move Lunr into webpack @done(21-07-16 00:36)
+  ✔ Update to latest Hugo @done(21-07-16 00:36)
+  ✔ Fix the current page colour highlight in menu @done(21-07-31 18:35)
+  ☐ Tidy up + simplify webpack/gulp
+  ☐ Tidy up scss, use & and clean up
+  ✔ Go through gitguardian and revoke all exposed @done(21-08-01 04:26)
 
-  Hugo:
-    ☐ Document pagination
-      Notes:
-        ☐ Link <https://glennmccomb.com/articles/how-to-build-custom-hugo-pagination/> and <https://gohugo.io/templates/pagination/>.
-        ☐ Link to git
+  Notices:
+    ✔ Find new icons for each admonition @done(21-08-01 01:29)
+    ✔ Write scss for each one @done(21-08-01 01:29)
 
-    ☐ https://www.netlify.com/blog/2018/07/24/hugo-tips-how-to-create-author-pages/
+  Posts:
+    ✔ Change author @done(21-08-01 01:50)
+    ✔ Find new author icon @done(21-08-01 03:22)
+
+  Navbar:
+    ☐ Fix the dropdown menu
+
+  CI/CD:
+    ☐ Install Drone
+    ☐ Migrate from circleCI
+
+
+Snippets:
+  ☐ Check for css on media screen sizes (see cards.scss for width applied on md only)
