@@ -49,6 +49,9 @@ jobs:
       - slack/notify:
           message: Building latest update for https://panaetius.io
       - run: git submodule update --init --recursive
+      - run: |
+          echo "ALGOLIA_APP_ID=$(echo $ALGOLIA_APP_ID)" >> .env
+          echo "ALGOLIA_API_KEY=$(echo $ALGOLIA_API_KEY)" >> .env
       - awss3/sync:
           from: s3://prod-panaetius-blog-static-assets/
           to: .

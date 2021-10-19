@@ -24,7 +24,7 @@ Part 1 in the [Creating modules in Rust 🦀 series](/series/creating-modules-in
 
 If you haven't already you should check [Chapter 7 in the Rust book](https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html) on how to manage and create a Rust crate composed of submodules.
 
-## TLDR
+## tldr
 
 Using `use` brings a Rust item into the current scope. In most cases, using `use` is optional, and can be avoided by referring to the full path of the item you want to access. `use` is primarily used to make code cleaner and less verbose.
 
