@@ -49,6 +49,9 @@ weight = 4
 # url = "/search/"
 # weight = 4
 
+[frontmatter]
+lastmod = [":fileModTime"]
+
 [taxonomies]
 category = "categories"
 tag = "tags"
