@@ -1,6 +1,6 @@
 ---
 title: "Add Search to a Hugo Website Using Algolia Docsearch"
-date: 2021-08-02T03:29:45+01:00
+date: 2021-10-20
 images:
   - "images/banner.png"
 authors:
@@ -13,13 +13,31 @@ draft: true
 
 In this tutorial we will show how you can add search to your Hugo website/blog to index your posts/tags/categories and any other taxonomies using the free tier of Algolia together with the convenience of Docsearch.
 
+This tutorial assumes you are running on MacOS or Linux (including Windows Subsystem for Linux).
+
 <!--more-->
+
+{{< notice update >}}
+2021-10-20
+
+Docsearch version 2, which this tutorial uses, is now considered _legacy_ by Algolia. This means that as soon as version 3 is out of Alpha and Beta testing, it will no longer be actively maintained.
+
+However, this version of Docsearch is open source, is feature rich, and has been used for years and continues to be used on thousands of sites. It will never break, as the Algolia index holds all your data and the Docsearch scraper will always populate this index in the same way.
+
+Although the legacy version will no longer be maintained, it is not obselete, and can be used for years to come. All new features to Algolia Docsearch will be going into version 3 - which isn't open source.
+{{< /notice >}}
 
 ## Why Aloglia Docsearch?
 
 [Algolia Docsearch](https://docsearch.algolia.com/) is a free service that is managed by Algolia for **documentation** websites. To make us of their service you [apply to the program](https://docsearch.algolia.com/apply/), provide your website address and, if approved, Algolia will scrape your website once a day and populate a search index for you. Algolia provides you with a css and javascript snippet to include on your site.
 
 If you want to use Docsearch for blogs or any other kind of website Algolia will decline your application. However, Docsearch is [open source](https://github.com/algolia/docsearch) and if you create an Algolia account and an index (which includes the free tier) you can use Algolia's provided Docker container to scrape your own website, and update your own index with little effort.
+
+{{< notice update >}}
+2021-10-20
+
+As of version 3 of Docsearch, technical blogs are now allowed to apply.
+{{< /notice >}}
 
 ### Advantages
 
@@ -101,13 +119,15 @@ On this page click the *copy to clipboard* icon to the right of the Admin API Ke
 
 Before we run the Docker image to scrape the site, we need to create a `docsearch.json` which tells the Docsearch scraper what to look for when it scrapes your website.
 
+Go ahead and create an empty `docsearch.json` file in the root of your Hugo project. This should be next to your Hugo `config` file.
+
 ### docsearch.json
 
-This is going to be different for every website, and my configuration might not necessarily be the same one you need. Docsearch naturally assumes your content is *tiered*, with well defined headings, subheadings and text underneath in order to create an index. You can read more about how this works in the Docsearch documentation [here](https://docsearch.algolia.com/docs/how-do-we-build-an-index).
+This is going to be different for every website, and my configuration might not necessarily be the same one you need. Docsearch naturally assumes your content is *tiered*, with well defined headings, subheadings and text underneath in order to create an index. You can read more about how this works in the Docsearch documentation [here](https://docsearch.algolia.com/docs/legacy/how-do-we-build-an-index).
 
 It's primarily designed for documentation websites, but is perfect for Hugo blogs as markdown is naturally tiered by using headings and subheadings to organise the content on your page.
 
-You should look at the Docsearch [documentation on config files](https://docsearch.algolia.com/docs/config-file) which has all the possible options you can use in a `docsearch.json` file.
+You should look at the Docsearch [documentation on config files](https://docsearch.algolia.com/docs/legacy/config-file) which has all the possible options you can use in a `docsearch.json` file.
 
 As each configuration is different, I will show the configuration I use, explain what each option is doing, and you should be able to create something similar for your own sites.
 
@@ -260,6 +280,200 @@ This ensures that when a user searches for a tag, Docsearch will have the highes
 
 {{< img "images/example_coding_tag.png" "example of Docsearch inserting the default value in a search result" >}}
 
-### Run the scraper
+{{< notice tip >}}
+If you're having trouble creating a `docsearch.json` file make sure to check the Algolia documentation [here](https://docsearch.algolia.com/docs/legacy/config-file). Try following the rest of the steps in this article to deploy your config, and add the search to your site. It might be easier to see search results live to see what's missing from your config.
+{{< /notice >}}
+
+### run the scraper
 
 Now you have a `docsearch.json` file we can run the scraper against your site.
+
+You'll need to have Docker installed to deploy your `docsearch.json`. If you do not have Docker you can install it [here](https://docs.docker.com/get-docker/).
+
+#### set environment variables
+
+Create a `.env` file in the root of your Hugo project (next to your Hugo `config` file) and open this file in your text editor. You will need your **Admin API Key** and Application ID that you made a note of earlier.
+
+Paste these into your `.env` file in the following format:
+
+{{< highlighter env "linenos=table,linenostart=1" ".env" >}}
+ALGOLIA_APP_ID="NQ5*******"
+ALGOLIA_API_KEY="42078ac16***********************"
+{{< /highlighter >}}
+
+replacing the masked values with your actual values. Docker will use this file and load these variables into the environment inside the container.
+
+Now run the container using your `docsearch.json` file. The container will scrape your website and extract all the search terms using your config. After it has scraped your website, it will load this data into an index in Algolia.
+
+Open your terminal and navigate to the directory your Hugo project is contained in. You should see your `docsearch.json` file, your `.env` file and your Hugo `config` file alongside any Hugo content directories you've defined.
+
+{{< img "images/root_of_hugo.png" "Directory containing your Hugo project." >}}
+
+Run the following command from this directory to scrape and populate your Algolia index.
+
+{{< highlighter bash "linenos=table,linenostart=1" >}}
+docker run -it --env-file=.env -e "CONFIG=$(cat ./docsearch.json | jq -r tostring)" algolia/docsearch-scraper
+{{< /highlighter >}}
+
+If all goes well you should see an output similar to the following:
+
+{{< img "images/successful_scrape.png" "Successful result of the scraper." >}}
+
+Now go back to your Algolia dashboard and load your index. You should see something similar to the following:
+
+{{< img "images/populated_index.png" "A populated index in Algolia." >}}
+
+We see that we have 108 records and the Docsearch container has extracted all the relevant metadata from your site to populate an index in Algolia.
+
+Now we have a populated index we can move on to the final step of adding the Docsearch widgets to your Hugo site.
+
+{{< notice note >}}
+If you run into trouble running the scraper using Docker make sure to check the Algolia documentation [here](https://docsearch.algolia.com/docs/legacy/run-your-own). You can run the scraper using Python on your machine if you don't want to use Docker. Alternatively, post in the comments at the bottom of this page for help.
+{{< /notice >}}
+
+## Add docsearch to your frontend
+
+To add docsearch to your front end you will need to add the following to your Hugo site:
+
+- A search input in the HTML.
+- The algolia css
+- The algolia javascript
+
+### search input
+
+The search input is the physical box where a user can run a search and it needs to be on every page you want a search box.
+
+In my Hugo project, I have a `header.html` as a partial page which contains the title and any top level links at the top of the page. Adding the search input to this `header.html` allows the search box to be present on every page on the site.
+
+In my `baseof.html` I have the `header.html` defined as:
+
+{{< highlighter html "linenos=table,linenostart=1,hl_lines=2" baseof.html >}}
+<body>
+    {{ partial "header.html" . }}
+    {{ block "main" . }}{{ end }}
+    {{ partial "footer.html" . }}
+    {{ partial "foot.html" . }}
+</body>
+{{< /highlighter >}}
+
+Inside this `header.html` you will need to add the search input. As I'm using bootstrap, my input looks like the following:
+
+{{< highlighter html "linenos=table,linenostart=1,hl_lines=5" header.html >}}
+<form class="d-flex" id="search-form">
+    <div class="input-group">
+        <input
+          type="search"
+          id="autocomplete"
+          class="form-control"
+          placeholder="Search"
+        >
+    </div>
+</form>
+{{< /highlighter >}}
+
+On line 5 we have an `id="autocomplete"`. This id can be anything you choose, you will need whatever value you choose here for the Docsearch javascript.
+
+### css
+
+To add the Algolia css we need to insert the provided links in your site's `<head>` tag.
+
+Open your `baseof.html` and paste the following highlighted lines inside your `<head>` tag:
+
+{{< highlighter html "linenos=table,linenostart=1,hl_lines=8-11" baseof.html >}}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    {{ partial "head.html" . }}
+    {{ partial "schema.html" . }}
+    {{ partial "matomo.html" }}
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
+    />
+</head>
+{{< /highlighter >}}
+
+### javascript
+
+To add the javascript, scroll down your `baseof.html` and add the following highlighted lines in your `<body>` tag:
+
+{{< highlighter html "linenos=table,linenostart=1,hl_lines=6-21" baseof.html >}}
+<body>
+    {{ partial "header.html" . }}
+    {{ block "main" . }}{{ end }}
+    {{ partial "footer.html" . }}
+    {{ partial "foot.html" . }}
+    <script
+      src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"
+    ></script>
+    <script>
+      docsearch({
+        // Your Search API Key
+        apiKey: '',
+        // The index populated by the DocSearch scraper
+        indexName: '',
+        // Your Algolia Application ID
+        appId: '',
+        // Replace inputSelector with a CSS selector
+        // matching your search input
+        inputSelector: '',
+        // Set debug to true to inspect the dropdown
+        debug: false,
+      });
+    </script>
+</body>
+{{< /highlighter >}}
+
+You can now fill in your **search** API Key, your Index name, your Application ID and the input selector you chose earlier.
+
+{{< notice warning >}}
+Make sure your API key is your **search only** key and not your admin key. Never expose your admin key in your front end - this key should only be used for the Docker container to populate your index. Keep this key secret.
+{{< /notice >}}
+
+When you've filled these out you should have something that looks like:
+
+{{< highlighter html "linenos=table,linenostart=1,hl_lines=6-21" baseof.html >}}
+<body>
+    {{ partial "header.html" . }}
+    {{ block "main" . }}{{ end }}
+    {{ partial "footer.html" . }}
+    {{ partial "foot.html" . }}
+    <script
+      src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"
+    ></script>
+    <script>
+      docsearch({
+        // Your Search API Key
+        apiKey: '42078ac***************',
+        // The index populated by the DocSearch scraper
+        indexName: 'your_index_name',
+        // Your Algolia Application ID
+        appId: 'NQ5PE1****',
+        // Replace inputSelector with a CSS selector
+        // matching your search input
+        inputSelector: '#autocomplete',
+        // Set debug to true to inspect the dropdown
+        debug: false,
+      });
+    </script>
+</body>
+{{< /highlighter >}}
+
+Note that the `inputSelector` must include the css selector for an id (`#`).
+
+You can now try running a search by typing in the search input at the top of the page. If everything was done correctly, you should see results:
+
+{{< img "images/successful_search.png" "a search running with algolia docsearch" >}}
+
+## Theming
+
+All that's left is to apply theming using css to your search input. Because this will vary depending on your theme, you should use the developer tools in your browser to inspect the search box. Try setting the `debug: false` to `debug: true` in the javascript in the snippet above - this will keep the search box open so you can inspect the results, and find the names of the classes you want to override.
+
+## Summary
+
+You should now have a working search box for your Hugo site using Algolia Docsearch.
+
+Whenever you add content to your site, you should rerun the Docker container using the same command to re-populate your index.
+
+If you're having difficulty on any of the steps feel free to comment below for help.
