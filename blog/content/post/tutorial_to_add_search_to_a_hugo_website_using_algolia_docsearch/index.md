@@ -8,7 +8,6 @@ authors:
 tags:
   - "hugo"
   - "tutorials"
-draft: true
 ---
 
 In this tutorial we will show how you can add search to your Hugo website/blog to index your posts/tags/categories and any other taxonomies using the free tier of Algolia together with the convenience of Docsearch.
