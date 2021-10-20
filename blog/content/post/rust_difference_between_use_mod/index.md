@@ -30,6 +30,8 @@ Using `use` brings a Rust item into the current scope. In most cases, using `use
 
 Using `mod` defines a module which is a collection of Rust items. When you define a module, you can refer to any item inside it either by its full path, or by using `use` to bring the module into scope.
 
+There is no need to explicity import crates in Rust using `use`. When you compile your crate, Cargo will handle this automatically.
+
 Read on for some code examples on where you would use `use` and `mod`.
 ## use
 
