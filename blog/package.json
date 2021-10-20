@@ -11,8 +11,8 @@
   },
   "scripts": {
     "buildBlog": "gulp buildBlog",
-    "syncAssets": "gulp syncAssets",
-    "syncAssetsR": "gulp syncAssetsR",
+    "syncAssetsToS3": "gulp syncAssetsToS3",
+    "syncAssetsFromS3": "gulp syncAssetsFromS3",
     "buildTheme": "gulp buildTheme",
     "algolia": "atomic-algolia"
   }
