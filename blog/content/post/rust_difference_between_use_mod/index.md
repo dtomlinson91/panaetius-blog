@@ -10,6 +10,7 @@ tags:
   - "coding"
 series:
   - "Creating modules in Rust 🦀"
+banner: true
 ---
 
 When starting out in Rust there can be some confusion around the differences between using `mod` and `use` in Rust projects, especially if you are coming from a language such as Python/Java.

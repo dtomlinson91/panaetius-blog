@@ -2,6 +2,8 @@
 
 ## Build and Deploy
 
+Use node 16, 17+ broken
+
 `yarn buildBlog`
 `docker run -v /Users/dtomlinson/git-repos/web-dev/panaetius-blog/blog/public/:/mounted-site mtlynch/htmlproofer /mounted-site --url-swap "https?\:\/\/(panaetius.io):"`
 `cd public`

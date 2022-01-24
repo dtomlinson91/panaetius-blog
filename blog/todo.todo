@@ -1,0 +1,5 @@
+Optimisation:
+    ☐ Change the gulp task that minifies images to be used only when a new one is added
+    The img minimifer in gulp is running repeatedly against images in `public`.
+    Should only run it after a SyncFromS3 or after adding a new image.
+    Should run against the source image files, not `public`.
