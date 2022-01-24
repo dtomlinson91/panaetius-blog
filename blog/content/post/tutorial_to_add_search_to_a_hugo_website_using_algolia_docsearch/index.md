@@ -8,6 +8,7 @@ authors:
 tags:
   - "hugo"
   - "tutorials"
+banner: true
 ---
 
 In this tutorial we will show how you can add search to your Hugo website/blog to index your posts/tags/categories and any other taxonomies using the free tier of Algolia together with the convenience of Docsearch.
@@ -397,7 +398,7 @@ Open your `baseof.html` and paste the following highlighted lines inside your `<
 
 To add the javascript, scroll down your `baseof.html` and add the following highlighted lines in your `<body>` tag:
 
-{{< highlighter html "linenos=table,linenostart=1,hl_lines=6-21" baseof.html >}}
+{{< highlighter html "linenos=table,linenostart=1,hl_lines=6-23" baseof.html >}}
 <body>
     {{ partial "header.html" . }}
     {{ block "main" . }}{{ end }}
@@ -432,7 +433,7 @@ Make sure your API key is your **search only** key and not your admin key. Never
 
 When you've filled these out you should have something that looks like:
 
-{{< highlighter html "linenos=table,linenostart=1,hl_lines=6-21" baseof.html >}}
+{{< highlighter html "linenos=table,linenostart=1,hl_lines=6-23" baseof.html >}}
 <body>
     {{ partial "header.html" . }}
     {{ block "main" . }}{{ end }}
